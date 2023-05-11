@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "opynfield"
+version = "0.1.0"
+description = ""
+authors = ["Ellen McMullen <72088579+EllenMcMullen@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "opynfield", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pandas = "^2.0.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

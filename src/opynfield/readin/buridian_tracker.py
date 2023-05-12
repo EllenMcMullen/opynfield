@@ -1,6 +1,6 @@
 from tkinter import filedialog
 import pandas as pd
-from src.opynfield.io.read_in import Track
+from src.opynfield.readin.read_in import Track
 from xml.dom import minidom as md
 
 

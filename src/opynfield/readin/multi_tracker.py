@@ -60,8 +60,7 @@ def subsample(coord, sample_freq: int, sample_interval: int) -> np.ndarray:
 
 def fill_missing_data(coord: np.ndarray, time: np.ndarray) -> np.ndarray:
     # takes in either the x or y coordinate and time
-    # interpolates missing values where the fly was not tracked (more
-    # important for etho -> test again on etho data)
+    # interpolates missing values where the fly was not tracked
     time_orig = time
     # delete x where y is nan
     time = time[~np.isnan(coord)]
@@ -74,8 +73,6 @@ def fill_missing_data(coord: np.ndarray, time: np.ndarray) -> np.ndarray:
     with warnings.catch_warnings():
         warnings.simplefilter('ignore', RuntimeWarning)
         # catch warnings bc if x had nan y could not be calculated
-        # maybe revisit this -> might not want to drop nans and just trim
-        # the final product later
         coord_new = f(time_orig)
     coord_new = pd.Series(coord_new)
     return coord_new.values

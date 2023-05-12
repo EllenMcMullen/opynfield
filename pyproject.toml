@@ -10,6 +10,7 @@ packages = [{include = "opynfield", from = "src"}]
 python = ">=3.9,<3.12"
 pandas = "^2.0.1"
 scipy = "^1.10.1"
+openpyxl = "^3.1.2"
 
 
 [tool.poetry.group.dev.dependencies]

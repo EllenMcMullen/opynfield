@@ -1,4 +1,4 @@
-from src.opynfield.readin.read_in import Track
+from src.opynfield.readin.track import Track
 from tkinter import filedialog
 import pandas as pd
 import numpy as np

@@ -7,7 +7,6 @@ import warnings
 
 def running_line(y_array: np.ndarray, n: int, dn: int) -> np.ndarray:
     # based on the MATLAB runline function
-
     # y is the input coordinate
     # n is the length of the running window in samples
     # dn is the step size of the window in samples

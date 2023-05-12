@@ -2,6 +2,7 @@ from tkinter import filedialog
 import openpyxl as xl
 import pandas as pd
 from src.opynfield.readin.read_in import Track
+from src.opynfield.readin import multi_tracker
 import numpy as np
 import xlrd
 
@@ -189,7 +190,7 @@ def read_etho_ml(groups_with_file_type: list[str], verbose: bool, sample_freq: i
             track.etho_ml_fill_missing(verbose)
             # since we don't know which arena the track came from, we must calculate the center point
             # from the track's coordinates, rather than combined coordinates
-            track_center = calc_center(track.x, track.y, verbose)
+            track_center = multi_tracker.calc_center(track.x, track.y, verbose)
             track.etho_ml_convert_to_center(track_center, verbose)
             track.standardized = True
             all_tracks.append(track)
@@ -228,18 +229,9 @@ def extract_arena_center_point(combined_coords_by_arena: dict[str: tuple[np.ndar
     center_points_by_area = dict()
     for arena in combined_coords_by_arena:
         # for each arena, calculate the center point from the combined coordinates of all tracks run in that arena
-        center_point = calc_center(combined_coords_by_arena[arena][0], combined_coords_by_arena[arena][1], verbose)
+        center_point = multi_tracker.calc_center(combined_coords_by_arena[arena][0],
+                                                 combined_coords_by_arena[arena][1], verbose)
         if verbose:
             print(f'Arena {arena} Center Point: {center_point}')
         center_points_by_area[arena] = center_point
     return center_points_by_area
-
-
-def calc_center(combined_x: np.ndarray, combined_y: np.ndarray, verbose: bool) -> tuple[float, float]:
-    # this is a rough calculation of the center point
-    # would be better to calculate a minimum enclosing circle and compare rough to precise calc
-    x_cen_rough = np.nanmin(combined_x) + ((np.nanmax(combined_x) - np.nanmin(combined_x)) / 2)
-    y_cen_rough = np.nanmin(combined_y) + ((np.nanmax(combined_y) - np.nanmin(combined_y)) / 2)
-    if verbose:
-        print('Combined Coordinate Center Point Calculated')
-    return x_cen_rough, y_cen_rough

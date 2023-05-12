@@ -75,3 +75,13 @@ def fill_missing_data(coord: np.ndarray, time: np.ndarray) -> np.ndarray:
         coord_new = f(time_orig)
     coord_new = pd.Series(coord_new)
     return coord_new.values
+
+
+def calc_center(combined_x: np.ndarray, combined_y: np.ndarray, verbose: bool, trim: int = 0) -> tuple[float, float]:
+    # this is a rough calculation of the center point
+    # would be better to calculate a minimum enclosing circle and compare rough to precise calc
+    x_cen_rough = np.nanmin(combined_x[trim:]) + ((np.nanmax(combined_x[trim:]) - np.nanmin(combined_x[trim:])) / 2)
+    y_cen_rough = np.nanmin(combined_y[trim:]) + ((np.nanmax(combined_y[trim:]) - np.nanmin(combined_y[trim:])) / 2)
+    if verbose:
+        print('Combined Coordinate Center Point Calculated')
+    return x_cen_rough, y_cen_rough

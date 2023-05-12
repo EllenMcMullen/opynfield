@@ -202,10 +202,110 @@ class Track:
         if verbose:
             print('Etho ML Track Centered')
 
+    def anymaze_center_numeric(self, verbose: bool):
+        assert self.track_type == 'AnyMaze Center'
+        self.x = pd.to_numeric(self.x, errors='coerce')
+        self.y = pd.to_numeric(self.y, errors='coerce')
+        if verbose:
+            print('Anymaze Center Point Track Converted To Numeric')
+
+    def anymaze_center_running_line(self, running_window_length: int, window_step_size: int, verbose: bool):
+        assert self.track_type == 'AnyMaze Center'
+        # smooth the coordinates using the same function used in ethovision tracks
+        self.x = multi_tracker.running_line(self.x, running_window_length, window_step_size)
+        self.y = multi_tracker.running_line(self.y, running_window_length, window_step_size)
+        if verbose:
+            print('AnyMaze Center Point Track Smoothed')
+
+    def anymaze_center_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        assert self.track_type == 'AnyMaze Center'
+        # subsample the coordinates to the desired sampling frequency
+        self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
+        self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
+        self.t = multi_tracker.subsample(self.t, sample_freq, time_bin_size)
+        if verbose:
+            print('AnyMaze Center Point Track Subsampled')
+
+    def anymaze_center_fill_missing(self, verbose: bool):
+        assert self.track_type == 'AnyMaze Center'
+        # fill missing data using linear extrapolation
+        self.x = multi_tracker.fill_missing_data(self.x, self.t)
+        self.y = multi_tracker.fill_missing_data(self.y, self.t)
+        if verbose:
+            print('AnyMaze Center Point Track Missing Values Filled')
+
+    def anymaze_center_convert_to_center(self, track_center, verbose):
+        assert self.track_type == 'AnyMaze Center'
+        # these are all in pixels
+        self.x = self.x - track_center[0]
+        self.y = self.y - track_center[1]
+        if verbose:
+            print('AnyMaze Center Point Units Centered')
+
+    def anymaze_center_convert_units(self, arena_radius_cm, trim):
+        assert self.track_type == 'AnyMaze Center'
+        # find the radius in pixels
+        arena_radius_px_x = (np.nanmax(self.x[trim:]) - np.nanmin(self.x[trim:])) / 2
+        arena_radius_px_y = (np.nanmax(self.y[trim:]) - np.nanmin(self.y[trim:])) / 2
+        arena_radius_px = max(arena_radius_px_x, arena_radius_px_y)
+        # convert units from pixels to cm
+        self.x = self.x * (arena_radius_cm / arena_radius_px)
+        self.y = self.y * (arena_radius_cm / arena_radius_px)
+
+    def anymaze_head_numeric(self, verbose: bool):
+        assert self.track_type == 'AnyMaze Head'
+        self.x = pd.to_numeric(self.x, errors='coerce')
+        self.y = pd.to_numeric(self.y, errors='coerce')
+        if verbose:
+            print('Anymaze Center Point Track Converted To Numeric')
+
+    def anymaze_head_running_line(self, running_window_length: int, window_step_size: int, verbose: bool):
+        assert self.track_type == 'AnyMaze Head'
+        # smooth the coordinates using the same function used in ethovision tracks
+        self.x = multi_tracker.running_line(self.x, running_window_length, window_step_size)
+        self.y = multi_tracker.running_line(self.y, running_window_length, window_step_size)
+        if verbose:
+            print('AnyMaze Center Point Track Smoothed')
+
+    def anymaze_head_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        assert self.track_type == 'AnyMaze Head'
+        # subsample the coordinates to the desired sampling frequency
+        self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
+        self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
+        self.t = multi_tracker.subsample(self.t, sample_freq, time_bin_size)
+        if verbose:
+            print('AnyMaze Center Point Track Subsampled')
+
+    def anymaze_head_fill_missing(self, verbose: bool):
+        assert self.track_type == 'AnyMaze Head'
+        # fill missing data using linear extrapolation
+        self.x = multi_tracker.fill_missing_data(self.x, self.t)
+        self.y = multi_tracker.fill_missing_data(self.y, self.t)
+        if verbose:
+            print('AnyMaze Center Point Track Missing Values Filled')
+
+    def anymaze_head_convert_to_center(self, track_center, verbose):
+        assert self.track_type == 'AnyMaze Head'
+        # these are all in pixels
+        self.x = self.x - track_center[0]
+        self.y = self.y - track_center[1]
+        if verbose:
+            print('AnyMaze Center Point Units Centered')
+
+    def anymaze_head_convert_units(self, arena_radius_cm, trim):
+        assert self.track_type == 'AnyMaze Head'
+        # find the radius in pixels
+        arena_radius_px_x = (np.nanmax(self.x[trim:]) - np.nanmin(self.x[trim:])) / 2
+        arena_radius_px_y = (np.nanmax(self.y[trim:]) - np.nanmin(self.y[trim:])) / 2
+        arena_radius_px = max(arena_radius_px_x, arena_radius_px_y)
+        # convert units from pixels to cm
+        self.x = self.x * (arena_radius_cm / arena_radius_px)
+        self.y = self.y * (arena_radius_cm / arena_radius_px)
+
 
 def read_track_types(file_type: str, groups_with_file_type: list[str], verbose: bool, arena_radius_cm: float,
                      running_window_length: int, window_step_size: int, sample_freq: int, time_bin_size: int,
-                     all_tracks: list[Track], trim: int = 0) -> list[Track]:
+                     trim, all_tracks: list[Track]) -> list[Track]:
     if file_type == 'Buridian Tracker':
         all_tracks = buridian_tracker.read_buridian(groups_with_file_type, verbose, arena_radius_cm,
                                                     running_window_length, window_step_size, sample_freq,
@@ -218,9 +318,13 @@ def read_track_types(file_type: str, groups_with_file_type: list[str], verbose: 
         all_tracks = etho_tracker.read_etho_txt(groups_with_file_type, verbose, sample_freq, time_bin_size, all_tracks)
     if file_type == 'Ethovision Through MATLAB':
         all_tracks = etho_tracker.read_etho_ml(groups_with_file_type, verbose, sample_freq, time_bin_size, all_tracks)
-    if file_type == 'Buridian Tracker':
+    if file_type == 'AnyMaze Center':
         all_tracks = anymaze_tracker.read_anymaze_center(groups_with_file_type, verbose, arena_radius_cm,
-                                                          running_window_length, window_step_size, sample_freq,
-                                                          time_bin_size, trim, all_tracks)
+                                                         running_window_length, window_step_size, sample_freq,
+                                                         time_bin_size, trim, all_tracks)
+    if file_type == 'AnyMaze Head':
+        all_tracks = anymaze_tracker.read_anymaze_head(groups_with_file_type, verbose, arena_radius_cm,
+                                                       running_window_length, window_step_size, sample_freq,
+                                                       time_bin_size, trim, all_tracks)
 
     return all_tracks

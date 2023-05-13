@@ -92,8 +92,8 @@ class Track:
 
     def etho_v1_convert_to_center(self, center_points_by_area: dict[str: tuple[float, float]], verbose: bool):
         assert self.track_type == 'Ethovision Excel Version 1'
-        self.x = self.x - center_points_by_area[self.options][0]  # x coordinate of the arena's center point
-        self.y = self.y - center_points_by_area[self.options][1]  # x coordinate of the arena's center point
+        self.x = self.x - center_points_by_area[self.options[0]][0]  # x coordinate of the arena's center point
+        self.y = self.y - center_points_by_area[self.options[0]][1]  # x coordinate of the arena's center point
         if verbose:
             print('Etho V1 Track Centered')
 

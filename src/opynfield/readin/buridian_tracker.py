@@ -17,7 +17,7 @@ def read_buridian(groups_with_file_type: list[str], verbose: bool, arena_radius_
         meta_files = filedialog.askopenfilenames(filetypes=[("xml files", "*.xml")], title=title2)
         for file_num in range(len(data_files)):
             if verbose:
-                print(f"{buridian_group}, File{file_num + 1} Out Of {len(data_files)}")
+                print(f"{buridian_group}, File {file_num + 1} Out Of {len(data_files)}")
             # read in each file's data
             file_data = pd.read_csv(data_files[file_num], sep='\t', lineterminator='\r')
             file_data = file_data.iloc[0:-2]

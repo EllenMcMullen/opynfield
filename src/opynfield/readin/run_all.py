@@ -7,7 +7,9 @@ def run_all_track_types(groups_and_types: dict[str: list[str]], verbose: bool, a
                         running_window_length: int, window_step_size: int, sample_freq: int, time_bin_size: int,
                         trim: int) -> list[src.opynfield.readin.track.Track]:
     file_types_included = groups_to_types(groups_and_types)  # what file types to run
+    print(file_types_included)
     groups_by_filetype = types_to_groups(file_types_included, groups_and_types)
+    print(groups_by_filetype)
     all_tracks = list()
     for f in file_types_included:
         print(f"Read In {f} Files For Groups {groups_by_filetype[f]}")

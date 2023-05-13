@@ -12,6 +12,7 @@ pandas = "^2.0.1"
 scipy = "^1.10.1"
 openpyxl = "^3.1.2"
 xlrd = "^2.0.1"
+numba = "^0.57.0"
 
 
 [tool.poetry.group.dev.dependencies]

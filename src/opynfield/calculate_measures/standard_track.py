@@ -25,7 +25,7 @@ class StandardTrack:
     percent_coverage: np.ndarray = field(repr=False)  # percent coverage
     pica: np.ndarray = field(repr=False)  # percent of individual coverage asymptote
     pica_asymptote: float  # individual coverage asymptote
-    pgca: np.ndarray = field(repr=False) # percent of group coverage asymptote
+    pgca: np.ndarray = field(repr=False)  # percent of group coverage asymptote
     pgca_asymptote: float  # individual coverage asymptote
 
     def set_pgca(self, input_pgca, input_pgca_a):

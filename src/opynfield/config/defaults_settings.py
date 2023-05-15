@@ -6,5 +6,3 @@ class Defaults:
     # what angle should we use to create the bins for coverage (degrees)
     node_size: float = 0.1
 
-
-test_defaults = Defaults()

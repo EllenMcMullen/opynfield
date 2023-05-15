@@ -27,5 +27,3 @@ class CoverageAsymptote:
     parameter_bounds: tuple[list[int], list[int]] = ([-10, -10], [0, 0])
     max_f_eval: int = 4000
 
-
-test_cov_asymptote = CoverageAsymptote()

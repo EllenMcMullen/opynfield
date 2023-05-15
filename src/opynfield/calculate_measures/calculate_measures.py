@@ -3,17 +3,12 @@ import math
 import warnings
 from scipy.optimize import curve_fit
 from collections import defaultdict
-from opynfield.readin.run_all import run_all_track_types
-from opynfield.config.user_input import test_user_config
-from opynfield.config.defaults_settings import test_defaults
+from src.opynfield.config.user_input import UserInput
+from src.opynfield.config.defaults_settings import Defaults
 from opynfield.calculate_measures import coverage_math
-from opynfield.config import cov_asymptote
+from opynfield.config.cov_asymptote import CoverageAsymptote
+from src.opynfield.readin.track import Track
 from src.opynfield.calculate_measures.standard_track import StandardTrack
-
-all_tracks = run_all_track_types(test_user_config.groups_and_types, test_user_config.verbose,
-                                 test_user_config.arena_radius_cm, test_user_config.running_window_length,
-                                 test_user_config.window_step_size, test_user_config.sample_freq,
-                                 test_user_config.time_bin_size, test_user_config.trim)
 
 
 def cartesian_to_polar(x: np.ndarray, y: np.ndarray, verbose: bool) -> tuple[np.ndarray, np.ndarray]:
@@ -171,7 +166,7 @@ def calculate_percent_coverage(cov: np.ndarray, verbose: bool) -> np.ndarray:
     return perc_cov
 
 
-def calculate_pica(cov: np.ndarray, asymptote_info: cov_asymptote.CoverageAsymptote,
+def calculate_pica(cov: np.ndarray, asymptote_info: CoverageAsymptote,
                    verbose: bool) -> tuple[np.ndarray, float]:
     # format the input data to the fit
     x2 = np.arange(len(cov))
@@ -192,7 +187,7 @@ def calculate_pica(cov: np.ndarray, asymptote_info: cov_asymptote.CoverageAsympt
 
 
 def calculate_group_coverage_asymptote(group_tracks: list[StandardTrack],
-                                       asymptote_info: cov_asymptote.CoverageAsymptote):
+                                       asymptote_info: CoverageAsymptote):
     group_coverage = list()
     group_time = list()
     for track_g in group_tracks:
@@ -211,41 +206,48 @@ def calculate_group_coverage_asymptote(group_tracks: list[StandardTrack],
 
 
 def calculate_pgca(s_track: StandardTrack, asymptote_g: float, verbose: bool):
-    s_track.pgca = s_track.coverage/asymptote_g
-    s_track.pgca_asymptote = asymptote_g
+    track_pgca = s_track.coverage/asymptote_g
+    s_track.set_pgca(track_pgca, asymptote_g)
     if verbose:
         print('PGCA Calculated')
     pass
 
 
-tracks_by_group = defaultdict(list)
-all_standard_tracks = list()
-for track in all_tracks:
-    assert track.standardized
-    # calculate all the independent measures for the track
-    r, theta = cartesian_to_polar(track.x, track.y, test_user_config.verbose)
-    activity = step_distance(track.x, track.y, test_user_config.verbose)
-    turn = turning_angle(track.x, track.y, test_user_config.verbose)
-    p_plus_plus, p_plus_minus, p_plus_zero, p_zero_plus, p_zero_zero = motion_probabilities(
-        r, activity, turn, test_user_config.inactivity_threshold, test_user_config.set_edge_radius(),
-        test_user_config.verbose)
-    coverage_bins, n_bins = locate_bin(r, theta, test_defaults.node_size, test_user_config.set_edge_radius(),
-                                       test_user_config.verbose)
-    coverage = calculate_coverage(coverage_bins, n_bins, test_user_config.verbose)
-    percent_coverage = calculate_percent_coverage(coverage, test_user_config.verbose)
-    pica, asymptote = calculate_pica(coverage, cov_asymptote.test_cov_asymptote, test_user_config.verbose)
-    # save to standard track with all measures as attributes
-    standard_track = StandardTrack(track.group, track.x, track.y, track.t, r, theta, activity, turn, p_plus_plus,
-                                   p_plus_minus, p_plus_zero, p_zero_plus, p_zero_zero, coverage_bins, n_bins,
-                                   coverage, percent_coverage, pica, asymptote)
-    all_standard_tracks.append(standard_track)
-    # create list of tracks in that group
-    tracks_by_group[standard_track.group].append(standard_track)
-if test_user_config.verbose:
-    print('All Independent Track Measures Calculated')
-    print('Tracks Converted To Standard Tracks')
-# now find the coverage asymptote for the whole group to get pgca
-for g in tracks_by_group:
-    group_asymptote = calculate_group_coverage_asymptote(tracks_by_group[g], cov_asymptote.test_cov_asymptote)
-    for track in tracks_by_group[g]:
-        calculate_pgca(track, group_asymptote, test_user_config.verbose)
+def tracks_to_measures(all_tracks: list[Track], user_config: UserInput,
+                       default_settings: Defaults, coverage_settings: CoverageAsymptote)\
+                       -> tuple[list[StandardTrack], defaultdict[str: list[StandardTrack]]]:
+    tracks_by_group = defaultdict(list)
+    all_standard_tracks = list()
+    for track in all_tracks:
+        assert track.standardized
+        # calculate all the independent measures for the track
+        r, theta = cartesian_to_polar(track.x, track.y, user_config.verbose)
+        activity = step_distance(track.x, track.y, user_config.verbose)
+        turn = turning_angle(track.x, track.y, user_config.verbose)
+        p_plus_plus, p_plus_minus, p_plus_zero, p_zero_plus, p_zero_zero = motion_probabilities(
+            r, activity, turn, user_config.inactivity_threshold, user_config.set_edge_radius(),
+            user_config.verbose)
+        coverage_bins, n_bins = locate_bin(r, theta, default_settings.node_size, user_config.set_edge_radius(),
+                                           user_config.verbose)
+        coverage = calculate_coverage(coverage_bins, n_bins, user_config.verbose)
+        percent_coverage = calculate_percent_coverage(coverage, user_config.verbose)
+        pica, asymptote = calculate_pica(coverage, coverage_settings, user_config.verbose)
+        # save to standard track with all measures as attributes
+        # initialize the pgca as ones and np.nan until they are calculated
+        standard_track = StandardTrack(track.group, track.x, track.y, track.t, r, theta, activity, turn, p_plus_plus,
+                                       p_plus_minus, p_plus_zero, p_zero_plus, p_zero_zero, coverage_bins, n_bins,
+                                       coverage, percent_coverage, pica, asymptote, np.ones(shape=pica.shape), np.nan)
+        all_standard_tracks.append(standard_track)
+        # create list of tracks in that group
+        tracks_by_group[standard_track.group].append(standard_track)
+    if user_config.verbose:
+        print('All Independent Track Measures Calculated')
+        print('Tracks Converted To Standard Tracks')
+    # now find the coverage asymptote for the whole group to get pgca
+    for g in tracks_by_group:
+        # this group's asymptote
+        group_asymptote = calculate_group_coverage_asymptote(tracks_by_group[g], coverage_settings)
+        for track in tracks_by_group[g]:
+            # use the group's asymptote to calculate pgca for each track in that group
+            calculate_pgca(track, group_asymptote, user_config.verbose)
+    return all_standard_tracks, tracks_by_group

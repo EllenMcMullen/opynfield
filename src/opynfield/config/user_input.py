@@ -38,7 +38,3 @@ class UserInput:
 
     def change_trim(self, new_trim):
         self.trim = new_trim
-
-
-test_user_config = UserInput({'Canton S': ['Buridian Tracker'], 'Canton S 2': ['Buridian Tracker']},
-                             {'Canton S': 'CS1', 'Canton S 2': 'CS2'}, 4.2, 30, 1, 1, 0.001, True)

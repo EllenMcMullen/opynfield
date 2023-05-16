@@ -1,6 +1,7 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 
 import numpy as np
+import pandas as pd
 
 
 @dataclass
@@ -27,6 +28,28 @@ class StandardTrack:
     pica_asymptote: float  # individual coverage asymptote
     pgca: np.ndarray = field(repr=False)  # percent of group coverage asymptote
     pgca_asymptote: float  # individual coverage asymptote
+
+    @classmethod
+    def to_dataframes(cls: "StandardTrack", instances: list["StandardTrack"],
+                      extra_fields_by_name: list[str]) -> dict[str, pd.DataFrame]:
+        # make sure we are giving it a list of standard tracks for instances
+        assert all(isinstance(i, StandardTrack) for i in instances)
+        # TODO: Check validity of `extra_fields_by_name`
+        # get the names of all the fields of standard track
+        all_fields = fields(cls)
+        # since we want to save the np array ones, get list of just those that are np arrays
+        array_fields_names = [f.name for f in all_fields if f.type == np.ndarray]
+        # add any additional fields we want to make a df from (like pica or pgca asymptote)
+        fields_to_dataframe = array_fields_names + extra_fields_by_name
+        # initialize a place to store the dfs in a dict by key = name of attribute
+        all_dataframes: dict[str, pd.DataFrame] = {}
+        for f in fields_to_dataframe:
+            # for each field we want a df from
+            arrays = [getattr(i, f) for i in instances]
+            # get that field from every instance and put it in a df
+            all_dataframes[f] = pd.DataFrame(arrays)
+            # save that df to the dict with the field name as key
+        return all_dataframes
 
     def set_pgca(self, input_pgca, input_pgca_a):
         self.pgca = input_pgca

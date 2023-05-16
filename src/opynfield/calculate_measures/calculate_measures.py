@@ -20,7 +20,7 @@ def cartesian_to_polar(x: np.ndarray, y: np.ndarray, verbose: bool) -> tuple[np.
         # find distance from (0, 0)
         rad = np.sqrt(x[i] ** 2 + y[i] ** 2)
         # find angle from positive x-axis
-        theta_radians = np.arctan2(y, x)
+        theta_radians = np.arctan2(y[i], x[i])
         theta_degrees = math.degrees(theta_radians)
         radius[i] = rad
         angle[i] = theta_degrees
@@ -175,8 +175,8 @@ def calculate_pica(cov: np.ndarray, asymptote_info: CoverageAsymptote,
     y = y1[~np.isnan(y1)]
     x = x1[~np.isnan(y1)]
     # fit a model to the coverage data
-    params = curve_fit(asymptote_info.f_name, x, y, asymptote_info.initial_parameters,
-                       bounds=asymptote_info.parameter_bounds, **{'maxfev': asymptote_info.max_f_eval})
+    params, cv = curve_fit(asymptote_info.f_name, x, y, asymptote_info.initial_parameters,  # noqa
+                           bounds=asymptote_info.parameter_bounds, **{'maxfev': asymptote_info.max_f_eval})
     # extract the asymptote value from the model
     asymptote_i = params[asymptote_info.asymptote_param]*asymptote_info.asymptote_sign
     # calculate pica
@@ -198,8 +198,8 @@ def calculate_group_coverage_asymptote(group_tracks: list[StandardTrack],
     y1 = np.array(group_coverage)
     y = y1[~np.isnan(y1)]
     x = x1[~np.isnan(y1)]
-    params = curve_fit(asymptote_info.f_name, x, y, asymptote_info.initial_parameters,
-                       bounds=asymptote_info.parameter_bounds, **{'maxfev': asymptote_info.max_f_eval})
+    params, cv = curve_fit(asymptote_info.f_name, x, y, asymptote_info.initial_parameters,  # noqa
+                           bounds=asymptote_info.parameter_bounds, **{'maxfev': asymptote_info.max_f_eval})
     # extract the asymptote value from the model
     asymptote_g = params[asymptote_info.asymptote_param] * asymptote_info.asymptote_sign
     return asymptote_g

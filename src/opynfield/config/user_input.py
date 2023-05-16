@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import os
 
 
 @dataclass
@@ -19,6 +20,8 @@ class UserInput:
     inactivity_threshold: float
     # do you want to display progress updates
     verbose: bool
+    # path to folder where you will store results
+    result_path: str
     # smoothing function parameter set to match ethovision
     running_window_length: int = 5
     # smoothing function parameter set to match ethovision
@@ -38,3 +41,6 @@ class UserInput:
 
     def change_trim(self, new_trim):
         self.trim = new_trim
+
+    def prep_directory(self):
+        os.makedirs(self.result_path, exist_ok=True)

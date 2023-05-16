@@ -4,6 +4,7 @@ from src.opynfield.config.defaults_settings import Defaults
 from src.opynfield.config.cov_asymptote import CoverageAsymptote
 from src.opynfield.calculate_measures.calculate_measures import tracks_to_measures
 from src.opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
+from src.opynfield.summarize_measures.summarize_groups_by_time import time_average, coverage_average
 
 
 # create your user config settings
@@ -22,3 +23,5 @@ test_cov_asymptote = CoverageAsymptote()
 # calculate measures from track data
 standard_tracks, tracks_by_groups = tracks_to_measures(track_list, user_config, test_defaults, test_cov_asymptote)
 individual_measures_dfs = individual_measures_to_dfs(tracks_by_groups, test_defaults, user_config)
+time_averages = time_average(individual_measures_dfs, test_defaults, user_config)
+coverage_averages = coverage_average(individual_measures_dfs, test_defaults, user_config)

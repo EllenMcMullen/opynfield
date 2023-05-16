@@ -213,6 +213,63 @@ def calculate_pgca(s_track: StandardTrack, asymptote_g: float, verbose: bool):
     pass
 
 
+def motion_probabilities_given_previous(ppp: np.ndarray, ppm: np.ndarray, ppz: np.ndarray, pzp: np.ndarray,
+                                        pzz: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray,
+                                                                  np.ndarray, np.ndarray, np.ndarray,
+                                                                  np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    # take the 'raw' motion probs (zero everywhere but one where mp occurred)
+    # convert to given plus, given zero, and given any formats
+    # np.nans everywhere, 1 where mp occurred, 0 where mp could have occurred
+
+    # previous steps
+    given_plus = ppp + ppm + ppz
+    given_zero = pzp + pzz
+    given_any = given_plus + given_zero
+
+    # ppp given plus should first 0 where given_plus is true and np.nan where it is not
+    # then it should be 1 where ppp is true and 0/nan (ppp given plus) where not
+    pppgp = np.where(given_plus == 1, 0, np.nan)
+    pppgp = np.where(ppp == 1, 1, pppgp)
+    # ppm given plus should first 0 where given_plus is true and np.nan where it is not
+    # then it should be 1 where ppm is true and 0/nan (ppm given plus) where not
+    ppmgp = np.where(given_plus == 1, 0, np.nan)
+    ppmgp = np.where(ppm == 1, 1, ppmgp)
+    # ppz given plus should first 0 where given_plus is true and np.nan where it is not
+    # then it should be 1 where ppz is true and 0/nan (ppz given plus) where not
+    ppzgp = np.where(given_plus == 1, 0, np.nan)
+    ppzgp = np.where(ppz == 1, 1, ppzgp)
+    # pzp given zero should first 0 where given_zero is true and np.nan where it is not
+    # then it should be 1 where pzp is true and 0/nan (pzp given zero) where not
+    pzpgz = np.where(given_zero == 1, 0, np.nan)
+    pzpgz = np.where(pzp == 1, 1, pzpgz)
+    # pzz given zero should first 0 where given_zero is true and np.nan where it is not
+    # then it should be 1 where pzz is true and 0/nan (pzz given zero) where not
+    pzzgz = np.where(given_zero == 1, 0, np.nan)
+    pzzgz = np.where(pzz == 1, 1, pzzgz)
+
+    # ppp given any should first 0 where given_any is true and np.nan where it is not
+    # then it should be 1 where ppp is true and 0/nan (ppp given any) where not
+    pppga = np.where(given_any == 1, 0, np.nan)
+    pppga = np.where(ppp == 1, 1, pppga)
+    # ppm given any should first 0 where given_any is true and np.nan where it is not
+    # then it should be 1 where ppm is true and 0/nan (ppm given any) where not
+    ppmga = np.where(given_any == 1, 0, np.nan)
+    ppmga = np.where(ppm == 1, 1, ppmga)
+    # ppz given any should first 0 where given_any is true and np.nan where it is not
+    # then it should be 1 where ppz is true and 0/nan (ppz given any) where not
+    ppzga = np.where(given_any == 1, 0, np.nan)
+    ppzga = np.where(ppz == 1, 1, ppzga)
+    # pzp given any should first 0 where given_any is true and np.nan where it is not
+    # then it should be 1 where pzp is true and 0/nan (pzp given any) where not
+    pzpga = np.where(given_any == 1, 0, np.nan)
+    pzpga = np.where(pzp == 1, 1, pzpga)
+    # pzz given any should first 0 where given_any is true and np.nan where it is not
+    # then it should be 1 where pzz is true and 0/nan (pzz given any) where not
+    pzzga = np.where(given_any == 1, 0, np.nan)
+    pzzga = np.where(pzz == 1, 1, pzzga)
+    return pppgp, ppmgp, ppzgp, pzpgz, pzzgz, pppga, ppmga, ppzga, pzpga, pzzga
+
+
 def tracks_to_measures(all_tracks: list[Track], user_config: UserInput,
                        default_settings: Defaults, coverage_settings: CoverageAsymptote)\
                        -> tuple[list[StandardTrack], defaultdict[str: list[StandardTrack]]]:
@@ -227,6 +284,13 @@ def tracks_to_measures(all_tracks: list[Track], user_config: UserInput,
         p_plus_plus, p_plus_minus, p_plus_zero, p_zero_plus, p_zero_zero = motion_probabilities(
             r, activity, turn, user_config.inactivity_threshold, user_config.set_edge_radius(),
             user_config.verbose)
+        p_plus_plus_given_plus, p_plus_minus_given_plus, p_plus_zero_given_plus, p_zero_plus_given_zero, \
+            p_zero_zero_given_zero, p_plus_plus_given_any, p_plus_minus_given_any, p_plus_zero_given_any, \
+            p_zero_plus_given_any, p_zero_zero_given_any = motion_probabilities_given_previous(p_plus_plus,
+                                                                                               p_plus_minus,
+                                                                                               p_plus_zero,
+                                                                                               p_zero_plus,
+                                                                                               p_zero_zero)
         coverage_bins, n_bins = locate_bin(r, theta, default_settings.node_size, user_config.set_edge_radius(),
                                            user_config.verbose)
         coverage = calculate_coverage(coverage_bins, n_bins, user_config.verbose)
@@ -236,7 +300,11 @@ def tracks_to_measures(all_tracks: list[Track], user_config: UserInput,
         # initialize the pgca as ones and np.nan until they are calculated
         standard_track = StandardTrack(track.group, track.x, track.y, track.t, r, theta, activity, turn, p_plus_plus,
                                        p_plus_minus, p_plus_zero, p_zero_plus, p_zero_zero, coverage_bins, n_bins,
-                                       coverage, percent_coverage, pica, asymptote, np.ones(shape=pica.shape), np.nan)
+                                       coverage, percent_coverage, pica, asymptote, np.ones(shape=pica.shape), np.nan,
+                                       p_plus_plus_given_plus, p_plus_minus_given_plus, p_plus_zero_given_plus,
+                                       p_zero_plus_given_zero, p_zero_zero_given_zero,
+                                       p_plus_plus_given_any, p_plus_minus_given_any, p_plus_zero_given_any,
+                                       p_zero_plus_given_any, p_zero_zero_given_any)
         all_standard_tracks.append(standard_track)
         # create list of tracks in that group
         tracks_by_group[standard_track.group].append(standard_track)

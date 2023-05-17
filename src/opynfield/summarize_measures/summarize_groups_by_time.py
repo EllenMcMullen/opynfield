@@ -1,3 +1,5 @@
+import numpy as np
+
 from src.opynfield.config.defaults_settings import Defaults
 from src.opynfield.config.user_input import UserInput
 import pandas as pd
@@ -56,6 +58,54 @@ def time_average(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], de
     return group_avg_dfs
 
 
+def pair_to_coverage(group_measures_dict: dict[str, pd.DataFrame],
+                     response_measures: list[str]) -> tuple[pd.DataFrame, list[str]]:
+    # set up a df with possible coverage values and empty lists
+    measures = response_measures[:]
+    measures.insert(0, 'coverage')
+    pre_sorted_values = pd.DataFrame()
+    for measure in measures:
+        pre_sorted_values[measure] = group_measures_dict[measure].drop(columns='Group').values.flatten(order='C')
+    return pre_sorted_values, measures
+
+
+def sort_by_coverage(coverages: pd.DataFrame, possible_coverage_values: np.ndarray,
+                     group_measures_dict: dict[str, pd.DataFrame],
+                     response_measures: list[str]) -> pd.DataFrame:
+    # pair up measures and the coverage they occurred at
+    pre_sorted_values, measures = pair_to_coverage(group_measures_dict, response_measures)
+    # set up a df with possible coverage values and empty lists
+    sorted_values = pd.DataFrame()
+    for measure in measures:
+        if measure == 'coverage':
+            sorted_values[measure] = possible_coverage_values
+        else:
+            sorted_values[measure] = sorted_values.apply(lambda x: [], axis=1)
+    # then iterate through pre_sorted_values rows and append measures to lists
+    for ind in pre_sorted_values.index:
+        c_index = np.argmin(np.abs(pre_sorted_values['coverage'][ind] - possible_coverage_values))
+        for m in response_measures:
+            sorted_values[m][c_index].append(pre_sorted_values[m][ind])
+    return sorted_values
+
+
+def make_measures_by_coverage(group_individual_measures_dfs: dict[str, pd.DataFrame], defaults: Defaults):
+    # pull the coverage values from all the individuals out
+    coverages = group_individual_measures_dfs['coverage']
+    # find the maximum coverage value reached by any fly in the group
+    max_coverage = coverages.drop(columns=['Group']).max(axis=1, skipna=True).max(skipna=True)
+    # create a list (rounded to 5 digits) of all the possible coverage values
+    possible_coverage_values = np.round(np.linspace(0, max_coverage, int(max_coverage*360/defaults.node_size)), 5)
+    # now we want to sort measure values into lists at each matching coverage value
+    sorted_df = sort_by_coverage(coverages, possible_coverage_values, group_individual_measures_dfs,
+                                 defaults.coverage_averaged_measures)
+    # now we want to take every n points to average
+    pass
+
+
 def coverage_average(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], defaults: Defaults,
                      user_inputs: UserInput):
+    for group in individual_measures_dfs:
+        # group_measures_by_coverage = \
+        make_measures_by_coverage(individual_measures_dfs[group], defaults)
     pass

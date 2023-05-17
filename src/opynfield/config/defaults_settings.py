@@ -15,3 +15,8 @@ class Defaults:
                               'p_plus_minus_given_plus', 'p_plus_zero_given_plus', 'p_zero_plus_given_zero',
                               'p_zero_zero_given_zero', 'p_plus_plus_given_any', 'p_plus_minus_given_any',
                               'p_plus_zero_given_any', 'p_zero_plus_given_any', 'p_zero_zero_given_any']
+    coverage_averaged_measures = ['activity', 'p_plus_plus', 'p_plus_minus', 'p_plus_zero', 'p_zero_plus',
+                                  'p_zero_zero', 'p_plus_plus_given_plus', 'p_plus_minus_given_plus',
+                                  'p_plus_zero_given_plus', 'p_zero_plus_given_zero', 'p_zero_zero_given_zero',
+                                  'p_plus_plus_given_any', 'p_plus_minus_given_any', 'p_plus_zero_given_any',
+                                  'p_zero_plus_given_any', 'p_zero_zero_given_any']

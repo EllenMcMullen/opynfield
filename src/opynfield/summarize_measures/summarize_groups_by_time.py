@@ -69,7 +69,7 @@ def pair_to_coverage(group_measures_dict: dict[str, pd.DataFrame],
     return pre_sorted_values, measures
 
 
-def sort_by_coverage(coverages: pd.DataFrame, possible_coverage_values: np.ndarray,
+def sort_by_coverage(possible_coverage_values: np.ndarray,
                      group_measures_dict: dict[str, pd.DataFrame],
                      response_measures: list[str]) -> pd.DataFrame:
     # pair up measures and the coverage they occurred at
@@ -89,20 +89,15 @@ def sort_by_coverage(coverages: pd.DataFrame, possible_coverage_values: np.ndarr
     return sorted_values
 
 
-def n_points_average(sorted_df: pd.DataFrame, n_points_coverage: int) -> pd.DataFrame:
-    # figure out how many rows should be in the final dataframe
-    lens_act = []
-    for row in sorted_df['activity']:
-        lens_act.append(len(row))
-    n_points_total = sum(lens_act)
-    n_rows = n_points_total / n_points_coverage
-    # initialize results
-    average_df = pd.DataFrame(np.ones(shape=(n_rows, len(sorted_df.columns))), columns=sorted_df.columns)
-    for col in average_df:
-        average_df[col] = average_df.apply(lambda x: [], axis = 1)
-    # add items to lists to average
-
-    return
+def n_points_average(sorted_df: pd.DataFrame, n_points_coverage: int, base_column: str = 'coverage'):
+    response_columns = [item for item in sorted_df.columns if item != base_column]
+    exploded_df = sorted_df.explode(response_columns)
+    dummy_col = 'grouping'
+    exploded_df[dummy_col] = np.repeat(range(int(1+len(exploded_df)/n_points_coverage)),
+                                       n_points_coverage)[:len(exploded_df)]
+    for_average = exploded_df.groupby(dummy_col).agg({c: list for c in response_columns} | {base_column: list})
+    ready_for_average = for_average.reset_index().drop(columns=dummy_col)
+    return ready_for_average
 
 
 def make_measures_by_coverage(group_individual_measures_dfs: dict[str, pd.DataFrame], defaults: Defaults):
@@ -113,16 +108,16 @@ def make_measures_by_coverage(group_individual_measures_dfs: dict[str, pd.DataFr
     # create a list (rounded to 5 digits) of all the possible coverage values
     possible_coverage_values = np.round(np.linspace(0, max_coverage, int(max_coverage*360/defaults.node_size)), 5)
     # now we want to sort measure values into lists at each matching coverage value
-    sorted_df = sort_by_coverage(coverages, possible_coverage_values, group_individual_measures_dfs,
+    sorted_df = sort_by_coverage(possible_coverage_values, group_individual_measures_dfs,
                                  defaults.coverage_averaged_measures)
     # now we want to take every n points to average
-    n_points_average(sorted_df, defaults.n_points_coverage)
-    return
+    ready_for_average = n_points_average(sorted_df, defaults.n_points_coverage)
+    return ready_for_average
 
 
 def coverage_average(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], defaults: Defaults,
                      user_inputs: UserInput):
     for group in individual_measures_dfs:
         # group_measures_by_coverage = \
-        make_measures_by_coverage(individual_measures_dfs[group], defaults)
-    return
+        ready_for_average = make_measures_by_coverage(individual_measures_dfs[group], defaults)
+    return ready_for_average

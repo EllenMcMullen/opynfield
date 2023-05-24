@@ -9,6 +9,8 @@ class Defaults:
     save_group_csvs: bool = True
     # should we save out a csv with the measures from all the groups in it? (better for stats)
     save_all_group_csvs: bool = True
+    # number of points to group together in an average
+    n_points_coverage: int = 36
     # measures to time average (not all measures make sense to average (e.g. angular position))
     time_averaged_measures = ['r', 'activity', 'p_plus_plus', 'p_plus_minus', 'p_plus_zero', 'p_zero_plus',
                               'p_zero_zero', 'coverage', 'percent_coverage', 'pica', 'pgca', 'p_plus_plus_given_plus',

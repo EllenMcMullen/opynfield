@@ -9,7 +9,7 @@ def path_coverage(cov_bins: np.ndarray, num_bins: float) -> np.ndarray:
     return _path_coverage(bins, m)
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def _path_coverage(fbl: np.ndarray, num_bins: int) -> np.ndarray:
     initial_visits = np.zeros(num_bins, dtype=np.int16)  # HERE1
     # list of visits by bin (start at all 0)
@@ -39,7 +39,7 @@ def _path_coverage(fbl: np.ndarray, num_bins: int) -> np.ndarray:
     return cov
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def update_first_visit(visits: np.ndarray, first_vis: int) -> np.ndarray:
     if first_vis != -1:
         # -1 if not in the edge region
@@ -50,7 +50,7 @@ def update_first_visit(visits: np.ndarray, first_vis: int) -> np.ndarray:
     return visits
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def fly_coverage(visits: np.ndarray, m: int) -> np.ndarray:
     # number of visits to all bins
     min_visits = visits.min()
@@ -60,7 +60,7 @@ def fly_coverage(visits: np.ndarray, m: int) -> np.ndarray:
     return v_new
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def update_visits(past_fly_bin: int, current_fly_bin: int, past_visits: np.ndarray, m: int) -> np.ndarray:
     if current_fly_bin == -1 or past_fly_bin == current_fly_bin:
         # the fly left the edge, or did not move, visits did not change
@@ -77,7 +77,7 @@ def update_visits(past_fly_bin: int, current_fly_bin: int, past_visits: np.ndarr
     return v_new
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def update_visits_for_steps_between_bins(past_fly_bin: int, current_fly_bin: int,
                                          past_visits: np.ndarray, m: int) -> np.ndarray:
     # figure out what direction the fly is moving, and how many steps
@@ -93,7 +93,7 @@ def update_visits_for_steps_between_bins(past_fly_bin: int, current_fly_bin: int
     return past_visits
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def sign_to_step(past_fly_bin: int, current_fly_bin: int, num_bins: int) -> tuple[int, int]:
     # figure out which way the fly is moving
     simple_step_number = abs(past_fly_bin - current_fly_bin)
@@ -118,7 +118,7 @@ def sign_to_step(past_fly_bin: int, current_fly_bin: int, num_bins: int) -> tupl
             return 1, steps_to_take
 
 
-@nb.jit(fastmath=True)
+@nb.jit(fastmath=True, nopython=True)
 def bins_traversed(past_fly_bin, n_steps, step_direction, m):
     start = past_fly_bin + step_direction  # don't count the bin that was already visited
     end = past_fly_bin + (step_direction * n_steps) + step_direction  # count up in the right direction

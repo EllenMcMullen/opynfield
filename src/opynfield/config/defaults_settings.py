@@ -8,6 +8,7 @@ class Defaults:
     # should we save out a csv for each group's component measures?
     save_group_csvs: bool = True
     # should we save out a csv with the measures from all the groups in it? (better for stats)
+    # save_group_csvs must be true for save_all_group_csvs to be true
     save_all_group_csvs: bool = True
     # number of points to group together in an average
     n_points_coverage: int = 36

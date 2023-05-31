@@ -4,7 +4,9 @@ from src.opynfield.config.defaults_settings import Defaults
 from src.opynfield.config.cov_asymptote import CoverageAsymptote
 from src.opynfield.calculate_measures.calculate_measures import tracks_to_measures
 from src.opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
-from src.opynfield.summarize_measures.summarize_groups import time_average, cov_measure_average
+from src.opynfield.summarize_measures.summarize_groups import time_average, cov_measure_average,\
+    percent_coverage_average
+
 
 def run():
     # create your user config settings
@@ -27,4 +29,5 @@ def run():
     group_measures_by_coverage = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'coverage')
     group_measures_by_pica = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pica')
     group_measures_by_pgca = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pgca')
-    return group_measures_by_pgca
+    group_measures_by_percent_coverage = percent_coverage_average(individual_measures_dfs, test_defaults, user_config)
+    return group_measures_by_percent_coverage

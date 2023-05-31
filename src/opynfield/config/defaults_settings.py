@@ -16,6 +16,8 @@ class Defaults:
     n_points_pica: int = 36
     # number of points to group together in an average
     n_points_pgca: int = 36
+    # number of bins to group together in an average
+    n_bins_percent_coverage: int = 10
     # measures to time average (not all measures make sense to average (e.g. angular position))
     time_averaged_measures = ['r', 'activity', 'p_plus_plus', 'p_plus_minus', 'p_plus_zero', 'p_zero_plus',
                               'p_zero_zero', 'coverage', 'percent_coverage', 'pica', 'pgca', 'p_plus_plus_given_plus',

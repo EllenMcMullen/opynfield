@@ -114,7 +114,8 @@ def average_points(ready_for_average: pd.DataFrame) -> pd.DataFrame:
     return coverage_averages
 
 
-def make_measures_by_cov_measure(group_individual_measures_dfs: dict[str, pd.DataFrame], defaults: Defaults, mode: str):
+def make_measures_by_cov_measure(group_individual_measures_dfs: dict[str, pd.DataFrame],
+                                 defaults: Defaults, mode: str) -> pd.DataFrame:
     # pull the coverage values from all the individuals out
     coverages = group_individual_measures_dfs[mode]
     # find the maximum coverage value reached by any fly in the group
@@ -182,3 +183,59 @@ def cov_measure_average(individual_measures_dfs: dict[str, dict[str, pd.DataFram
                 # save csv for combined group
                 combined_avg_dfs[df_key].to_csv(path_or_buf=df_path)  # , index=False)
     return group_measures_by_coverage
+
+
+def n_bins_average_pcov(exploded_df: pd.DataFrame) -> pd.DataFrame:
+    row_avg_lists = []
+    n_avgs = int(exploded_df['bin'].iloc[-1])
+    for i in range(n_avgs):
+        range_df = exploded_df[exploded_df['bin'] == i]
+        new_columns = [[col + ' mean', col + ' sem'] for col in exploded_df.columns]
+        new_columns = [item for sublist in new_columns for item in sublist]
+        row_avg = pd.DataFrame([np.ones(shape=(len(new_columns),))*np.nan],
+                               columns=new_columns)
+        for col in range_df:
+            if col != 'bin':
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore", category=RuntimeWarning)
+                    row_avg[col+' mean'] = np.nanmean(range_df[col].astype('float'))
+                    try:
+                        std = np.nanstd(range_df[col])
+                    except ZeroDivisionError:
+                        std = np.nan
+                    count = np.count_nonzero(~np.isnan(range_df[col].astype('float')))
+                    try:
+                        row_avg[col + ' sem'] = std/np.sqrt(count)
+                    except ZeroDivisionError:
+                        row_avg[col + ' sem'] = np.nan
+        row_avg_lists.append(row_avg)
+    average_df = pd.concat(row_avg_lists)
+    average_df = average_df.drop(['bin mean', 'bin sem'], axis = 1)
+    return average_df
+
+
+def make_measures_by_pcov(group_individual_measures_dfs: dict[str, pd.DataFrame], defaults: Defaults) -> pd.DataFrame:
+    # create a list (rounded to 5 digits) of all the possible coverage values
+    possible_pcov_values = np.round(np.linspace(0, 1, 1001), 5)
+    # now we want to sort measure values into lists at each matching coverage value
+    sorted_df = sort_by_cov_measure(possible_pcov_values, group_individual_measures_dfs,
+                                    defaults.coverage_averaged_measures, 'percent_coverage')
+    n_rows = sorted_df.shape[0]
+    # give the sorted_df a number for its group of pcov values
+    sorted_df['bin'] = np.repeat(np.arange(n_rows/defaults.n_bins_percent_coverage),
+                                 defaults.n_bins_percent_coverage)[:n_rows]
+    # then we group every n bins and average all points in those bins
+    response_columns = [item for item in sorted_df.columns if item != 'percent_coverage' and item != 'bin']
+    exploded_df = sorted_df.explode(response_columns)
+    # now take values of exploded_df within a bin group
+    # and actually average the n points
+    coverage_averages = n_bins_average_pcov(exploded_df)
+    return coverage_averages
+
+
+def percent_coverage_average(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], defaults: Defaults,
+                             user_inputs: UserInput) -> dict[str, pd.DataFrame]:
+    group_measures_by_pcov = {}
+    for group in individual_measures_dfs:
+        group_measures_by_pcov[group] = make_measures_by_pcov(individual_measures_dfs[group], defaults)
+    return group_measures_by_pcov

@@ -238,4 +238,39 @@ def percent_coverage_average(individual_measures_dfs: dict[str, dict[str, pd.Dat
     group_measures_by_pcov = {}
     for group in individual_measures_dfs:
         group_measures_by_pcov[group] = make_measures_by_pcov(individual_measures_dfs[group], defaults)
+    # have a dict of group name -> df with all measures
+    if defaults.save_group_csvs:
+        df_group_dict = {}
+        cov_avg = 'percent_coverage mean'
+        cov_sem = 'percent_coverage sem'
+        for group in group_measures_by_pcov:
+            group_dict = {}
+            path = user_inputs.result_path + '/Groups/' + user_inputs.groups_to_paths[group] + '/AverageMeasures'
+            os.makedirs(path, exist_ok=True)
+            for measure in defaults.coverage_averaged_measures:
+                m_avg = measure + ' mean'
+                m_sem = measure + ' sem'
+                measure_df = group_measures_by_pcov[group][[cov_avg, cov_sem, m_avg, m_sem]].T
+                df_path = path + '/percent_coverageAverage_' + measure + '.csv'
+                measure_df.to_csv(path_or_buf=df_path)
+                group_dict[measure] = measure_df
+            df_group_dict[group] = group_dict
+        if defaults.save_all_group_csvs:
+            # can only do the save_all_group_csvs if save_group_csvs is done
+            combined_avg_dfs = {}
+            for measure in defaults.coverage_averaged_measures:
+                m_list = []
+                for group in df_group_dict:
+                    # add group column to the df
+                    group_m_df = df_group_dict[group][measure]
+                    group_m_df.insert(0, "Group", group)
+                    m_list.append(group_m_df)
+                    # combine them into one df
+                    combined_avg_dfs[measure] = pd.concat(m_list)
+                path = user_inputs.result_path + '/Groups/CombinedGroups/AverageMeasures'
+                os.makedirs(path, exist_ok=True)
+                for df_key in combined_avg_dfs:
+                    df_path = path + '/CombinedGroups_percent_coverageAverage_' + df_key + '.csv'
+                    # save csv for combined group
+                    combined_avg_dfs[df_key].to_csv(path_or_buf=df_path)
     return group_measures_by_pcov

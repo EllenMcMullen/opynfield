@@ -36,5 +36,5 @@ def run():
     # set up model fit defaults
     model_params = set_up_fits()
     # fit initial models on individual track data
-    group_time_measure = fit_all(individual_measures_dfs, test_defaults, user_config, model_params)
-    return model_params, group_time_measure
+    fits = fit_all(individual_measures_dfs, test_defaults, user_config, model_params)
+    return fits

@@ -28,6 +28,8 @@ class UserInput:
     window_step_size: int = 1
     # how many points until animal is in the arena
     trim: int = 0
+    # how many stds to bound parameter fits to
+    bound_level = 2
 
     def set_edge_radius(self):
         edge_radius = self.arena_radius_cm - self.edge_dist_cm

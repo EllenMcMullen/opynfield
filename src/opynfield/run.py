@@ -7,7 +7,7 @@ from src.opynfield.summarize_measures.summarize_individuals import individual_me
 from src.opynfield.summarize_measures.summarize_groups import time_average, cov_measure_average,\
     percent_coverage_average
 from src.opynfield.config.model_settings import set_up_fits
-from src.opynfield.fit_models.fit_individual_models import fit_all
+from src.opynfield.fit_models.fit_individual_models import fit_all, find_fit_bounds, re_fit_all
 
 
 def run():
@@ -36,5 +36,10 @@ def run():
     # set up model fit defaults
     model_params = set_up_fits()
     # fit initial models on individual track data
-    fits = fit_all(individual_measures_dfs, test_defaults, user_config, model_params)
-    return fits
+    fits = fit_all(individual_measures_dfs, test_defaults, model_params)
+    # change bounds based on the distribution of the parameters
+    fit_upper_bounds, fit_lower_bounds, fit_initial_params = find_fit_bounds(fits, user_config)
+    # refit the models on individual track data
+    bounded_fits = re_fit_all(individual_measures_dfs, test_defaults, model_params, fit_upper_bounds, fit_lower_bounds,
+                              fit_initial_params)
+    return fits, fit_lower_bounds, fit_initial_params, fit_upper_bounds, bounded_fits

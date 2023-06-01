@@ -12,6 +12,7 @@ def time_average(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], de
     group_avg_dfs = {}
     for group in individual_measures_dfs:
         # for all the measures of that group
+        print(f'Averaging Tracks From Group {group} by time')
         g_avg_dfs = {}
         for measure in individual_measures_dfs[group]:
             if measure in defaults.time_averaged_measures:
@@ -146,6 +147,7 @@ def cov_measure_average(individual_measures_dfs: dict[str, dict[str, pd.DataFram
                         user_inputs: UserInput, mode: str) -> dict[str, pd.DataFrame]:
     group_measures_by_coverage = {}
     for group in individual_measures_dfs:
+        print(f'Averaging Tracks From Group {group} By {mode}')
         group_measures_by_coverage[group] = make_measures_by_cov_measure(individual_measures_dfs[group], defaults, mode)
     # have a dict of group name -> df with all measures
     if defaults.save_group_csvs:
@@ -237,6 +239,7 @@ def percent_coverage_average(individual_measures_dfs: dict[str, dict[str, pd.Dat
                              user_inputs: UserInput) -> dict[str, pd.DataFrame]:
     group_measures_by_pcov = {}
     for group in individual_measures_dfs:
+        print(f'Averaging Tracks From Group {group} by percent coverage')
         group_measures_by_pcov[group] = make_measures_by_pcov(individual_measures_dfs[group], defaults)
     # have a dict of group name -> df with all measures
     if defaults.save_group_csvs:

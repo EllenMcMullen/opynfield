@@ -6,6 +6,8 @@ from src.opynfield.calculate_measures.calculate_measures import tracks_to_measur
 from src.opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
 from src.opynfield.summarize_measures.summarize_groups import time_average, cov_measure_average,\
     percent_coverage_average
+from src.opynfield.config.model_settings import set_up_fits
+from src.opynfield.fit_models.fit_individual_models import fit_all
 
 
 def run():
@@ -25,9 +27,14 @@ def run():
     # calculate measures from track data
     standard_tracks, tracks_by_groups = tracks_to_measures(track_list, user_config, test_defaults, test_cov_asymptote)
     individual_measures_dfs = individual_measures_to_dfs(tracks_by_groups, test_defaults, user_config)
+    # calculate group averages of measures
     time_averages = time_average(individual_measures_dfs, test_defaults, user_config)
     group_measures_by_coverage = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'coverage')
     group_measures_by_pica = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pica')
     group_measures_by_pgca = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pgca')
     group_measures_by_percent_coverage = percent_coverage_average(individual_measures_dfs, test_defaults, user_config)
-    return group_measures_by_percent_coverage
+    # set up model fit defaults
+    model_params = set_up_fits()
+    # fit initial models on individual track data
+    group_time_measure = fit_all(individual_measures_dfs, test_defaults, user_config, model_params)
+    return model_params, group_time_measure

@@ -8,6 +8,9 @@ from src.opynfield.summarize_measures.summarize_groups import time_average, cov_
     percent_coverage_average
 from src.opynfield.config.model_settings import set_up_fits
 from src.opynfield.fit_models.fit_individual_models import fit_all, find_fit_bounds, re_fit_all
+from src.opynfield.fit_models.fit_group_models import group_fit_all
+from src.opynfield.stat_test.stat_test import format_params, format_group_params, run_tests
+from copy import deepcopy
 
 
 def run():
@@ -39,7 +42,15 @@ def run():
     fits = fit_all(individual_measures_dfs, test_defaults, model_params)
     # change bounds based on the distribution of the parameters
     fit_upper_bounds, fit_lower_bounds, fit_initial_params = find_fit_bounds(fits, user_config)
-    # refit the models on individual track data
+    # refit the models on individual track data with the bounds
     bounded_fits = re_fit_all(individual_measures_dfs, test_defaults, model_params, fit_upper_bounds, fit_lower_bounds,
                               fit_initial_params)
-    return fits, fit_lower_bounds, fit_initial_params, fit_upper_bounds, bounded_fits
+    # fit group models with the bounds
+    group_fits = group_fit_all(individual_measures_dfs, test_defaults, model_params, fit_upper_bounds, fit_lower_bounds,
+                               fit_initial_params)
+    # format the bounded_fits to do statistical tests
+    formatted_bounded_fits = format_params(deepcopy(bounded_fits), test_defaults, user_config)
+    # format the group fits to save out
+    formatted_group_fits = format_group_params(deepcopy(group_fits), test_defaults, user_config)
+    run_tests(formatted_bounded_fits, test_defaults, user_config)
+    return

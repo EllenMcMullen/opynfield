@@ -18,7 +18,7 @@ def fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: ModelS
         x_filter = x_raw[~np.isnan(y_raw)]
         y_filter = y_raw[~np.isnan(y_raw)]
         x = x_filter[~np.isnan(x_filter)]
-        y = y_filter[~np.isnan(y_filter)]
+        y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", message='Covariance')
             try:
@@ -48,7 +48,7 @@ def fit_measure_by_cov(group_individual_measure_df: pd.DataFrame, group_individu
         x_filter = x_raw[~np.isnan(y_raw)]
         y_filter = y_raw[~np.isnan(y_raw)]
         x = x_filter[~np.isnan(x_filter)]
-        y = y_filter[~np.isnan(y_filter)]
+        y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", message='Covariance')
             try:
@@ -87,8 +87,8 @@ def fit_by_cov_measure(individual_measures_dfs: dict[str, dict[str, pd.DataFrame
     cov_measures = {}
     for measure in coverage_averaged_measures:
         specs = model_params[mode][measure]
-        m_params = fit_measure_by_cov(individual_measures_dfs[group][mode],
-                                      individual_measures_dfs[group][measure], specs)
+        m_params = fit_measure_by_cov(individual_measures_dfs[group][measure],
+                                      individual_measures_dfs[group][mode], specs)
         cov_measures[measure] = m_params
     # dict key is measure
     # result is a df with rows as individuals and columns as parameters
@@ -173,7 +173,7 @@ def re_fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: Mod
         x_filter = x_raw[~np.isnan(y_raw)]
         y_filter = y_raw[~np.isnan(y_raw)]
         x = x_filter[~np.isnan(x_filter)]
-        y = y_filter[~np.isnan(y_filter)]
+        y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", message='Covariance')
             try:
@@ -193,7 +193,8 @@ def re_fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: Mod
 
 def re_fit_by_time(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], time_averaged_measures: list[str],
                    model_params: dict[str, dict[str, ModelSpecification]], upper: dict[str, dict[str, pd.DataFrame]],
-                   lower: dict[str, dict[str, pd.DataFrame]], initial: dict[str, dict[str, pd.DataFrame]], group: str):
+                   lower: dict[str, dict[str, pd.DataFrame]], initial: dict[str, dict[str, pd.DataFrame]], group: str) \
+        -> dict[str, pd.DataFrame]:
     print(f'Re-Fitting Models To Tracks From Group {group} by time')
     time_measures = {}
     for measure in time_averaged_measures:
@@ -220,7 +221,7 @@ def re_fit_measure_by_cov_measure(group_individual_measure_df: pd.DataFrame, gro
         x_filter = x_raw[~np.isnan(y_raw)]
         y_filter = y_raw[~np.isnan(y_raw)]
         x = x_filter[~np.isnan(x_filter)]
-        y = y_filter[~np.isnan(y_filter)]
+        y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", message='Covariance')
             try:
@@ -242,13 +243,13 @@ def re_fit_by_cov_measure(individual_measures_dfs: dict[str, dict[str, pd.DataFr
                           model_params: dict[str, dict[str, ModelSpecification]], mode: str,
                           upper: dict[str, dict[str, pd.DataFrame]], lower: dict[str, dict[str, pd.DataFrame]],
                           initial: dict[str, dict[str, pd.DataFrame]],
-                          group: str):
+                          group: str) -> dict[str, pd.DataFrame]:
     print(f'Re-Fitting Models To Tracks From Group {group} by {mode}')
     cov_measures = {}
     for measure in coverage_averaged_measures:
         specs = model_params[mode][measure]
         m_params = re_fit_measure_by_cov_measure(individual_measures_dfs[group][measure],
-                                                 individual_measures_dfs[group][measure], specs,
+                                                 individual_measures_dfs[group][mode], specs,
                                                  upper[mode][measure], lower[mode][measure], initial[mode][measure])
         cov_measures[measure] = m_params
     # dict key is measure

@@ -53,4 +53,9 @@ def run():
     # format the group fits to save out
     formatted_group_fits = format_group_params(deepcopy(group_fits), test_defaults, user_config)
     run_tests(formatted_bounded_fits, test_defaults, user_config)
+    # TODO: plotting code - individuals, solo groups, groups comparison
+    # TODO: new!! plotting code - individuals and group average views
+    # TODO: other csv input format
+    # TODO: testing code
+    # TODO: other summary info in stats folder separate file
     return

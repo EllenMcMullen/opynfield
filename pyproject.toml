@@ -14,6 +14,8 @@ openpyxl = "^3.1.2"
 xlrd = "^2.0.1"
 numba = "^0.57.0"
 statsmodels = "^0.14.0"
+matplotlib = "^3.7.1"
+jupyter = "^1.0.0"
 
 
 [tool.poetry.group.dev.dependencies]

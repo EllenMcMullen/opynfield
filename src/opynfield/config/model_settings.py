@@ -8,6 +8,7 @@ class ExponentialModel:
     initial_params: tuple[float, float, float] = (0.1, -0.1, 0.01)
     bounds: tuple[tuple[float, float, float], tuple[float, float, float]] = ((0, -10, 0), (10, 0, 10))
     max_eval: int = 4000
+    display_parts: tuple[str] = ('y = ', ' * e ^ (', ' * x) + ')
 
     @staticmethod
     def model_function(x, a, b, c):
@@ -21,6 +22,7 @@ class FixedExponentialModel:
     initial_params: tuple[float, float] = (-0.1, -0.1)
     bounds: tuple[tuple[float, float], tuple[float, float]] = ((-10, -10), (0, 0))
     max_eval: int = 4000
+    display_parts: tuple[str] = ('y = ', ' * (e ^ (', ' * x) - 1)')
 
     @staticmethod
     def model_function(x, a, b):
@@ -34,6 +36,7 @@ class LinearIncreaseModel:
     initial_params: tuple[float, float] = (0.1, 0.1)
     bounds: tuple[tuple[float, float], tuple[float, float]] = ((0, 0), (10, 10))
     max_eval: int = 4000
+    display_parts: tuple[str] = ('y = ', ' * x + ')
 
     @staticmethod
     def model_function(x, a, b):
@@ -47,6 +50,7 @@ class LinearDecreaseModel:
     initial_params: tuple[float, float] = (-0.1, 0.1)
     bounds: tuple[tuple[float, float], tuple[float, float]] = ((-10, 0), (0, 10))
     max_eval: int = 4000
+    display_parts: tuple[str] = ('y = ', ' * x + ')
 
     @staticmethod
     def model_function(x, a, b):

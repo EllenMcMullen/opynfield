@@ -108,7 +108,8 @@ def set_up_fits(x_list: tuple[str] = ('time', 'coverage', 'pica', 'pgca', 'perce
                                          'p_plus_zero', 'p_plus_zero_given_plus', 'p_plus_zero_given_any',
                                          'p_zero_zero', 'p_zero_zero_given_zero', 'p_zero_zero_given_any',
                                          'coverage', 'percent_coverage', 'pica', 'pgca'),
-                map_linear_increase: tuple[str] = (), map_linear_decrease: tuple[str] = ()):
+                map_linear_increase: tuple[str] = (),
+                map_linear_decrease: tuple[str] = ()) -> dict[str, dict[str, ModelSpecification]]:
     xy_dict = {}
     for x in x_list:
         x_dict = {}

@@ -212,7 +212,7 @@ def n_bins_average_pcov(exploded_df: pd.DataFrame) -> pd.DataFrame:
                         row_avg[col + ' sem'] = np.nan
         row_avg_lists.append(row_avg)
     average_df = pd.concat(row_avg_lists)
-    average_df = average_df.drop(['bin mean', 'bin sem'], axis = 1)
+    average_df = average_df.drop(['bin mean', 'bin sem'], axis=1)
     return average_df
 
 

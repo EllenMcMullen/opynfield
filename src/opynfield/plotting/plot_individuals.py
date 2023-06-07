@@ -31,20 +31,24 @@ def plot_time_measure(group: str, i: int, measure: str, measure_data: pd.DataFra
     x_plot = np.arange(len(y_plot))
     # scatter plot
     ax.scatter(x_plot, y_plot, s=plot_settings.marker_size, c=plot_settings.marker_color)
-    if plot_settings.model_fit:
+    if plot_settings.individual_model_fit:
         # plot the model fit
         fit_params = model_params.iloc[i].values
         if ~np.isnan(fit_params[0]):  # if the fit was successful
             y_fit = model_info.model.model_function(x_plot, *fit_params)
             ax.plot(x_plot, y_fit, c=plot_settings.fit_color, alpha=plot_settings.alpha)
+            if plot_settings.equation:
+                equation_str = generate_individual_equation_str(fit_params, model_info.model.display_parts)
+                ax.set_title(f'model fit: {equation_str}')
     # add the axis labels
     ax.set_xlabel('time (s)')
     ax.set_ylabel(f'{measure}')
     # add the plot title
     fig.suptitle(f'{measure} by time individual {i} from group {group}')
     # set axis limits
-    # ax.set_xlims()
-    # ax.set_ylims()
+    if measure not in ['activity', 'percent_coverage', 'pica', 'pgca', 'coverage']:
+        # ax.set_xlim()
+        ax.set_ylim((-0.1, 1.1))
     if plot_settings.display_individual_figures:
         # show the figure
         fig.show()
@@ -52,7 +56,8 @@ def plot_time_measure(group: str, i: int, measure: str, measure_data: pd.DataFra
         # save the figure
         path = user_config.result_path + '/Individuals/' + user_config.groups_to_paths[group] + '/Plots/by_time/'
         os.makedirs(path, exist_ok=True)
-        fig_path = generate_fig_title(path, i, 'time', measure, plot_settings.model_fit, plot_settings.fig_extension)
+        fig_path = generate_fig_title(path, i, 'time', measure, plot_settings.individual_model_fit,
+                                      plot_settings.fig_extension)
         fig.savefig(fname=fig_path, bbox_inches='tight')
     plt.close(fig=fig)
     return
@@ -83,7 +88,7 @@ def plot_cmeasure_measure(x_measure: str, group: str, i: int, measure: str, meas
     x_plot = measure_data_y.iloc[i][1:].values
     # scatter plot
     ax.scatter(x_plot, y_plot, s=plot_settings.marker_size, c=plot_settings.marker_color)
-    if plot_settings.model_fit:
+    if plot_settings.individual_model_fit:
         # plot the model fit
         fit_params = model_params.iloc[i].values
         if ~np.isnan(fit_params[0]):  # if the fit was successful
@@ -98,8 +103,9 @@ def plot_cmeasure_measure(x_measure: str, group: str, i: int, measure: str, meas
     # add the plot title
     fig.suptitle(f'{measure} by {x_measure} individual {i} from group {group}')
     # set axis limits
-    # ax.set_xlims()
-    # ax.set_ylims()
+    if measure != 'activity':
+        # ax.set_xlim()
+        ax.set_ylim((-0.1, 1.1))
     if plot_settings.display_individual_figures:
         # show the figure
         fig.show()
@@ -108,7 +114,8 @@ def plot_cmeasure_measure(x_measure: str, group: str, i: int, measure: str, meas
         path = user_config.result_path + '/Individuals/' + user_config.groups_to_paths[group] + '/Plots/by_' \
                + x_measure + '/'
         os.makedirs(path, exist_ok=True)
-        fig_path = generate_fig_title(path, i, x_measure, measure, plot_settings.model_fit, plot_settings.fig_extension)
+        fig_path = generate_fig_title(path, i, x_measure, measure, plot_settings.individual_model_fit,
+                                      plot_settings.fig_extension)
         fig.savefig(fname=fig_path, bbox_inches='tight')
     plt.close(fig=fig)
     return
@@ -168,8 +175,8 @@ def plot_individual_trace(track: StandardTrack, i: int, group: str, plot_setting
     t_scaled = np.arange(len(track.x))
     cmap = matplotlib.cm.get_cmap(plot_settings.colormap_name)
     # plot each step segment and color it by the time
-    for i in range(len(x_starts)):
-        ax.plot([x_starts[i], x_stops[i]], [y_starts[i], y_stops[i]], c=cmap(t_scaled[i]), alpha=plot_settings.alpha)
+    for j in range(len(x_starts)):
+        ax.plot([x_starts[j], x_stops[j]], [y_starts[j], y_stops[j]], c=cmap(t_scaled[j]), alpha=plot_settings.alpha)
     # plot the arena
     angle = np.linspace(0, 2 * np.pi, 150)
     x = user_input.arena_radius_cm * np.cos(angle)
@@ -180,6 +187,16 @@ def plot_individual_trace(track: StandardTrack, i: int, group: str, plot_setting
     fig.suptitle(f'Individual {i} From Group {group} Track Trace')
     norm = matplotlib.colors.Normalize(vmin=t_scaled[0], vmax=t_scaled[-1])
     fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap))
+    if plot_settings.display_individual_figures:
+        # show the figure
+        fig.show()
+    if plot_settings.save_individual_figures:
+        # save the figure
+        path = user_input.result_path + '/Individuals/' + user_input.groups_to_paths[group] + '/Plots/traces/'
+        os.makedirs(path, exist_ok=True)
+        fig_path = path + 'individual_' + str(i) + plot_settings.fig_extension
+        fig.savefig(fname=fig_path, bbox_inches='tight')
+    plt.close(fig=fig)
     return
 
 

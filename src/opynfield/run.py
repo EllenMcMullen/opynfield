@@ -13,6 +13,7 @@ from src.opynfield.stat_test.stat_test import format_params, format_group_params
 from copy import deepcopy
 from src.opynfield.plotting.plot_individuals import plot_all_individuals, plot_traces
 from src.opynfield.config.plot_settings import PlotSettings
+from src.opynfield.plotting.plot_solo_groups import plot_all_solo_groups
 
 
 def run():
@@ -54,15 +55,20 @@ def run():
     formatted_bounded_fits = format_params(deepcopy(bounded_fits), test_defaults, user_config)
     # format the group fits to save out
     formatted_group_fits = format_group_params(deepcopy(group_fits), test_defaults, user_config)
-    # run_tests(formatted_bounded_fits, test_defaults, user_config)
+    # run the stat tests with the model fits
+    ## run_tests(formatted_bounded_fits, test_defaults, user_config)
+    # plot individuals with model fits
     plot_settings = PlotSettings()
-    # run with model fits
-    plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings, user_config)
-    # run without model fits
-    # plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults,
-    #                      PlotSettings(model_fit=False), user_config)
+    ## plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings, user_config)
+    # plot individuals without model fits
+    ## plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults,
+    ##                      PlotSettings(model_fit=False), user_config)
     # plot individual traces
-    # plot_traces(tracks_by_groups, plot_settings, user_config)
+    ## plot_traces(tracks_by_groups, plot_settings, user_config)
+    # plot groups with model fits and error bars
+    plot_all_solo_groups(time_averages, group_measures_by_coverage, group_measures_by_pica, group_measures_by_pgca,
+                         group_measures_by_percent_coverage, group_fits, model_params, test_defaults, plot_settings,
+                         user_config)
     # TODO: plotting code - individuals, solo groups, groups comparison
     # TODO: new!! plotting code - individuals and group average views
     # TODO: other csv input format
@@ -70,4 +76,4 @@ def run():
     # TODO: other summary info in stats folder separate file
     # TODO: check the assumptions of time plots and models based on the time binning
     # TODO: add verbose setting
-    return tracks_by_groups
+    return

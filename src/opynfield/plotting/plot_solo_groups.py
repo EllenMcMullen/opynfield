@@ -53,6 +53,7 @@ def plot_solo_group_measure_by_time(measure_by_time: pd.DataFrame, plot_settings
                     alpha=plot_settings.alpha)
     # scatter plot
     ax.scatter(x_plot, y_plot, s=plot_settings.marker_size, c=plot_settings.marker_color)
+
     if plot_settings.group_model_fit:
         y_fit = model_specs.model.model_function(x_plot, *group_fits.values)
         ax.plot(x_plot, y_fit, c=plot_settings.fit_color, alpha=plot_settings.alpha)

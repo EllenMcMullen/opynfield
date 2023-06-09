@@ -3,6 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class PlotSettings:
+    # group_colors
+    group_colors: dict[str, str]
     # size for the markers in scatter plots
     marker_size: int = 2
     # individual marker color
@@ -41,3 +43,5 @@ class PlotSettings:
     edge_color: str = 'k'
     # how thick the error bars should be
     error_width: float = 0.5
+    # save the plots of group comparisons
+    save_group__comparison_figures: bool = True

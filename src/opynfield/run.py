@@ -14,6 +14,7 @@ from src.opynfield.plotting.plot_individuals import plot_all_individuals, plot_t
 from src.opynfield.config.plot_settings import PlotSettings
 from src.opynfield.plotting.plot_solo_groups import plot_all_solo_groups
 from src.opynfield.plotting.plot_solo_groups_with_individuals import plot_components_of_solo_groups
+from src.opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
 
 
 def run():
@@ -54,29 +55,19 @@ def run():
     # run the stat tests with the model fits
     # run_tests(formatted_bounded_fits, test_defaults, user_config)
     # plot individuals with model fits
-    plot_settings = PlotSettings()
+    plot_settings = PlotSettings(group_colors={'Canton S': 'b', 'Canton S 2': 'r'})
     # plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings,
     # user_config)
-    # plot individuals without model fits
-    # plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults,
-    #                     PlotSettings(individual_model_fit=False), user_config)
     # plot individual traces
     # plot_traces(tracks_by_groups, plot_settings, user_config)
     # plot groups with model fits and error bars
     # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults, plot_settings, user_config)
-    # plot groups with model fits and no error bars
-    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults,
-    # PlotSettings(group_error_bars=False), user_config)
-    # plot groups with no model fits and error bars
-    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults, PlotSettings(group_model_fit=False),
-    #                      user_config)
-    # plot groups with no model fits and no error bars
-    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults,
-    #                      PlotSettings(group_error_bars=False, group_model_fit=False), user_config)
-    plot_components_of_solo_groups(individual_measures_dfs, bounded_fits, group_averages, group_fits, model_params,
-                                   test_defaults, plot_settings, user_config)
+    # plot individual makeup of groups with individual and group models and error bars
+    # plot_components_of_solo_groups(individual_measures_dfs, bounded_fits, group_averages, group_fits, model_params,
+    #                               test_defaults, plot_settings, user_config)
+    # plot group comparisons with models and error bars
+    plot_all_group_comparisons(group_averages, group_fits, model_params, test_defaults, plot_settings, user_config)
     # TODO: plotting code groups comparison
-    # TODO: new!! plotting code - individuals and group average views
     # TODO: other csv input format
     # TODO: testing code
     # TODO: other summary info in stats folder separate file

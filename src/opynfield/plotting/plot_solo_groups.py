@@ -148,20 +148,15 @@ def plot_solo_group_by_cmeasure(by_coverage: pd.DataFrame, defaults: Defaults, c
     return
 
 
-def plot_all_solo_groups(by_time: dict[str, dict[str, pd.DataFrame]], by_coverage: dict[str, pd.DataFrame],
-                         by_pica: dict[str, pd.DataFrame], by_pgca: dict[str, pd.DataFrame],
-                         by_percent_coverage: dict[str, pd.DataFrame],
-                         group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]],
-                         model_params: dict[str, dict[str, ModelSpecification]],
-                         test_defaults: Defaults, plot_settings: PlotSettings, user_config: UserInput):
-    by_cmeasure = {'coverage': by_coverage, 'pica': by_pica, 'pgca': by_pgca, 'percent_coverage': by_percent_coverage}
-    for group in by_time:
+def plot_all_solo_groups(group_averages: dict[str, dict], group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]],
+                         model_params: dict[str, dict[str, ModelSpecification]], test_defaults: Defaults,
+                         plot_settings: PlotSettings, user_config: UserInput):
+    for group in group_averages['time']:
         print(f'Plotting Group {group} by time')
-        plot_solo_group_by_time(by_time[group], test_defaults, plot_settings, model_params['time'],
+        plot_solo_group_by_time(group_averages['time'][group], test_defaults, plot_settings, model_params['time'],
                                 group_fits[group]['time'], group, user_config)
         for x_measure in ['coverage', 'pica', 'pgca', 'percent_coverage']:
             print(f'Plotting Group {group} by {x_measure}')
-            plot_solo_group_by_cmeasure(by_cmeasure[x_measure][group], test_defaults, x_measure, plot_settings,
+            plot_solo_group_by_cmeasure(group_averages[x_measure][group], test_defaults, x_measure, plot_settings,
                                         model_params[x_measure], group_fits[group][x_measure], group, user_config)
-
     return

@@ -66,7 +66,7 @@ def format_group_params(group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]
         os.makedirs(path, exist_ok=True)
         df_path = path + '/CombinedGroups_GroupModels.csv'
         f_df.to_csv(path_or_buf=df_path, index=False)
-    return f_df
+    return
 
 
 def create_full_formula(test_df):

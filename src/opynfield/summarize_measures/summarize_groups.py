@@ -277,3 +277,15 @@ def percent_coverage_average(individual_measures_dfs: dict[str, dict[str, pd.Dat
                     # save csv for combined group
                     combined_avg_dfs[df_key].to_csv(path_or_buf=df_path)
     return group_measures_by_pcov
+
+
+def all_group_averages(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+                       test_defaults: Defaults, user_config: UserInput) -> dict[str, dict]:
+    group_averages = {'time': time_average(individual_measures_dfs, test_defaults, user_config),
+                      'coverage': cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'coverage'),
+                      'pica': cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pica'),
+                      'pgca': cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pgca'),
+                      'percent_coverage': percent_coverage_average(individual_measures_dfs, test_defaults, user_config)}
+    # for time its x -> group -> y
+    # for cmeasures its x -> group -> df
+    return group_averages

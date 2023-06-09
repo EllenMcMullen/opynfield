@@ -31,6 +31,8 @@ class PlotSettings:
     display_solo_group_figures: bool = False
     # save the plots from solo groups
     save_solo_group_figures: bool = True
+    # save the plots with individual and group combined view
+    save_combined_view_figures: bool = True
     # figure format to save in
     fig_extension: str = '.png'
     # which colormap to use for track color bar

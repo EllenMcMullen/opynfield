@@ -4,8 +4,7 @@ from src.opynfield.config.defaults_settings import Defaults
 from src.opynfield.config.cov_asymptote import CoverageAsymptote
 from src.opynfield.calculate_measures.calculate_measures import tracks_to_measures
 from src.opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
-from src.opynfield.summarize_measures.summarize_groups import time_average, cov_measure_average,\
-    percent_coverage_average
+from src.opynfield.summarize_measures.summarize_groups import all_group_averages
 from src.opynfield.config.model_settings import set_up_fits
 from src.opynfield.fit_models.fit_individual_models import fit_all, find_fit_bounds, re_fit_all
 from src.opynfield.fit_models.fit_group_models import group_fit_all
@@ -14,6 +13,7 @@ from copy import deepcopy
 from src.opynfield.plotting.plot_individuals import plot_all_individuals, plot_traces
 from src.opynfield.config.plot_settings import PlotSettings
 from src.opynfield.plotting.plot_solo_groups import plot_all_solo_groups
+from src.opynfield.plotting.plot_solo_groups_with_individuals import plot_components_of_solo_groups
 
 
 def run():
@@ -34,11 +34,7 @@ def run():
     standard_tracks, tracks_by_groups = tracks_to_measures(track_list, user_config, test_defaults, test_cov_asymptote)
     individual_measures_dfs = individual_measures_to_dfs(tracks_by_groups, test_defaults, user_config)
     # calculate group averages of measures
-    time_averages = time_average(individual_measures_dfs, test_defaults, user_config)
-    group_measures_by_coverage = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'coverage')
-    group_measures_by_pica = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pica')
-    group_measures_by_pgca = cov_measure_average(individual_measures_dfs, test_defaults, user_config, 'pgca')
-    group_measures_by_percent_coverage = percent_coverage_average(individual_measures_dfs, test_defaults, user_config)
+    group_averages = all_group_averages(individual_measures_dfs, test_defaults, user_config)
     # set up model fit defaults
     model_params = set_up_fits()
     # fit initial models on individual track data
@@ -54,22 +50,32 @@ def run():
     # format the bounded_fits to do statistical tests
     formatted_bounded_fits = format_params(deepcopy(bounded_fits), test_defaults, user_config)
     # format the group fits to save out
-    formatted_group_fits = format_group_params(deepcopy(group_fits), test_defaults, user_config)
+    format_group_params(deepcopy(group_fits), test_defaults, user_config)
     # run the stat tests with the model fits
-    ## run_tests(formatted_bounded_fits, test_defaults, user_config)
+    # run_tests(formatted_bounded_fits, test_defaults, user_config)
     # plot individuals with model fits
     plot_settings = PlotSettings()
-    ## plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings, user_config)
+    # plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings,
+    # user_config)
     # plot individuals without model fits
-    ## plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults,
-    ##                      PlotSettings(model_fit=False), user_config)
+    # plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults,
+    #                     PlotSettings(individual_model_fit=False), user_config)
     # plot individual traces
-    ## plot_traces(tracks_by_groups, plot_settings, user_config)
+    # plot_traces(tracks_by_groups, plot_settings, user_config)
     # plot groups with model fits and error bars
-    plot_all_solo_groups(time_averages, group_measures_by_coverage, group_measures_by_pica, group_measures_by_pgca,
-                         group_measures_by_percent_coverage, group_fits, model_params, test_defaults, plot_settings,
-                         user_config)
-    # TODO: plotting code - individuals, solo groups, groups comparison
+    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults, plot_settings, user_config)
+    # plot groups with model fits and no error bars
+    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults,
+    # PlotSettings(group_error_bars=False), user_config)
+    # plot groups with no model fits and error bars
+    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults, PlotSettings(group_model_fit=False),
+    #                      user_config)
+    # plot groups with no model fits and no error bars
+    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults,
+    #                      PlotSettings(group_error_bars=False, group_model_fit=False), user_config)
+    plot_components_of_solo_groups(individual_measures_dfs, bounded_fits, group_averages, group_fits, model_params,
+                                   test_defaults, plot_settings, user_config)
+    # TODO: plotting code groups comparison
     # TODO: new!! plotting code - individuals and group average views
     # TODO: other csv input format
     # TODO: testing code

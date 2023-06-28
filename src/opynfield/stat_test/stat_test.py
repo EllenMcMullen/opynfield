@@ -41,7 +41,7 @@ def format_params(bounded_fits: dict[str, dict[str, dict[str, pd.DataFrame]]], d
 
 
 def format_group_params(group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]], defaults: Defaults,
-                        user_inputs: UserInput) -> pd.DataFrame:
+                        user_inputs: UserInput):
     dict_groups = {}
     for group in group_fits:
         group_df_list = []
@@ -132,7 +132,8 @@ class ManovaModels:
             print('\n')
             print(f'{p} Pairwise T-test Results')
             print('\n')
-            print(self.component_model_results[p].t_test_pairwise(self.independent_var).result_frame)
+            frame = self.component_model_results[p].t_test_pairwise(self.independent_var).result_frame
+            print(frame)
             print('\n')
         return
 

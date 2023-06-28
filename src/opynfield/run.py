@@ -53,21 +53,19 @@ def run():
     # format the group fits to save out
     format_group_params(deepcopy(group_fits), test_defaults, user_config)
     # run the stat tests with the model fits
-    # run_tests(formatted_bounded_fits, test_defaults, user_config)
+    run_tests(formatted_bounded_fits, test_defaults, user_config)
     # plot individuals with model fits
     plot_settings = PlotSettings(group_colors={'Canton S': 'b', 'Canton S 2': 'r'})
-    # plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings,
-    # user_config)
+    plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings, user_config)
     # plot individual traces
-    # plot_traces(tracks_by_groups, plot_settings, user_config)
+    plot_traces(tracks_by_groups, plot_settings, user_config)
     # plot groups with model fits and error bars
-    # plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults, plot_settings, user_config)
+    plot_all_solo_groups(group_averages, group_fits, model_params, test_defaults, plot_settings, user_config)
     # plot individual makeup of groups with individual and group models and error bars
-    # plot_components_of_solo_groups(individual_measures_dfs, bounded_fits, group_averages, group_fits, model_params,
-    #                               test_defaults, plot_settings, user_config)
+    plot_components_of_solo_groups(individual_measures_dfs, bounded_fits, group_averages, group_fits, model_params,
+                                   test_defaults, plot_settings, user_config)
     # plot group comparisons with models and error bars
     plot_all_group_comparisons(group_averages, group_fits, model_params, test_defaults, plot_settings, user_config)
-    # TODO: plotting code groups comparison
     # TODO: other csv input format
     # TODO: testing code
     # TODO: other summary info in stats folder separate file

@@ -42,6 +42,7 @@ def running_line(y_array: np.ndarray, n: int, dn: int) -> np.ndarray:
     y_line[mask] = y_line[mask]/norm[mask]
     index = (num_windows-1)*dn+(n-1)
     num_end_pts = len(y_array) - index+1
+    # noinspection PyUnboundLocalVariable
     y_line[np.arange(index-1, num_points)] = np.arange(n+1, n+num_end_pts+1) * m_model + b_model
 
     return y_line

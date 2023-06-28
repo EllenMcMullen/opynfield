@@ -13,7 +13,7 @@ def exponential(x, a, b, c):
 def fixed_exponential(x, a, b):
     # growth towards an asymptote
     y = a*(np.exp(b*x)-1)
-    # a is asymptote and negative
+    # parameter 'a' is asymptote and negative
     return y
 
 

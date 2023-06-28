@@ -53,6 +53,7 @@ def update_first_visit(visits: np.ndarray, first_vis: int) -> np.ndarray:
 @nb.jit(fastmath=True, nopython=True)
 def fly_coverage(visits: np.ndarray, m: int) -> np.ndarray:
     # number of visits to all bins
+    # noinspection PyArgumentList
     min_visits = visits.min()
     # fraction of bins that have been visited more than that
     frac_more_than_min = (visits > min_visits).sum()/m

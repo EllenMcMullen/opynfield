@@ -45,4 +45,3 @@ class Defaults:
                 for y in self.coverage_averaged_measures:
                     test_list.append(f'{x}_{y}_parameter_')
         return test_list
-

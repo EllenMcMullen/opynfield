@@ -14,6 +14,7 @@ def read_etho_v1(groups_with_file_type: list[str], verbose: bool, sample_freq: i
             print(f'Running Ethovision V1 Tracker Files For Group: {etho_group}')
     title1 = 'Select all .xls v1 files for this experiment'
     # select excel files for all groups
+    # noinspection PyArgumentList
     all_group_data_files = filedialog.askopenfilenames(filetypes=[("Excel Files", "*.xls *.xlsx")], title=title1,
                                                        multiple=True)
     etho_tracks = list()
@@ -66,6 +67,7 @@ def read_etho_v2(groups_with_file_type: list[str], verbose: bool, sample_freq: i
             print(f'Running Ethovision V2 Tracker Files For Group: {etho_group}')
     title1 = 'Select all .xls v2 files for this experiment'
     # select excel files for all groups
+    # noinspection PyArgumentList
     all_group_data_files = filedialog.askopenfilenames(filetypes=[("Excel Files", "*.xls *.xlsx")], title=title1,
                                                        multiple=True)
     etho_tracks = list()
@@ -121,6 +123,7 @@ def read_etho_txt(groups_with_file_type: list[str], verbose: bool, sample_freq: 
             print(f'Running Ethovision Text Tracker Files For Group: {etho_group}')
     title1 = 'Select all .txt files for this experiment'
     # select text files for all groups
+    # noinspection PyArgumentList
     all_group_data_files = filedialog.askopenfilenames(filetypes=[("Text Files", "*.txt")], title=title1,
                                                        multiple=True)
     etho_tracks = list()

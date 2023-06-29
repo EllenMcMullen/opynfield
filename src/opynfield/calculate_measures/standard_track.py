@@ -40,8 +40,11 @@ class StandardTrack:
     p_zero_zero_given_any: np.ndarray = field(repr=False)  # p00 given any
 
     @classmethod
-    def to_dataframes(cls: "StandardTrack", instances: list["StandardTrack"],
-                      extra_fields_by_name: list[str]) -> tuple[dict[str, pd.DataFrame], list[str]]:
+    def to_dataframes(
+        cls: "StandardTrack",
+        instances: list["StandardTrack"],
+        extra_fields_by_name: list[str],
+    ) -> tuple[dict[str, pd.DataFrame], list[str]]:
         # make sure we are giving it a list of standard tracks for instances
         assert all(isinstance(i, StandardTrack) for i in instances)
         # TODO: Check validity of `extra_fields_by_name`

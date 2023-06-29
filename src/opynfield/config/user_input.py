@@ -5,9 +5,9 @@ import os
 @dataclass
 class UserInput:
     # key for group names, value for list of file_types that group was recorded with
-    groups_and_types: dict[str: list[str]]
+    groups_and_types: dict[str, list[str]]
     # key for group names as found in data files, value for a variation of that name without forbidden characters
-    groups_to_paths: dict[str: str]
+    groups_to_paths: dict[str, str]
     # radius of arena
     arena_radius_cm: float
     # frame rate for your tracking coordinates

@@ -6,6 +6,8 @@
 Welcome to opynfield's documentation!
 =====================================
 
+**opynfield** is a Python package to analyze data from open field exploration experiments. It is compatible with data from many commonly used tracking programs.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

@@ -7,16 +7,22 @@ import numpy as np
 import xlrd
 
 
-def read_etho_v1(groups_with_file_type: list[str], verbose: bool, sample_freq: int, time_bin_size: int,
-                 all_tracks: list[Track]) -> list[Track]:
+def read_etho_v1(
+    groups_with_file_type: list[str],
+    verbose: bool,
+    sample_freq: int,
+    time_bin_size: int,
+    all_tracks: list[Track],
+) -> list[Track]:
     for etho_group in groups_with_file_type:
         if verbose:
-            print(f'Running Ethovision V1 Tracker Files For Group: {etho_group}')
-    title1 = 'Select all .xls v1 files for this experiment'
+            print(f"Running Ethovision V1 Tracker Files For Group: {etho_group}")
+    title1 = "Select all .xls v1 files for this experiment"
     # select excel files for all groups
     # noinspection PyArgumentList
-    all_group_data_files = filedialog.askopenfilenames(filetypes=[("Excel Files", "*.xls *.xlsx")], title=title1,
-                                                       multiple=True)
+    all_group_data_files = filedialog.askopenfilenames(
+        filetypes=[("Excel Files", "*.xls *.xlsx")], title=title1, multiple=True
+    )
     etho_tracks = list()
     for file_num in range(len(all_group_data_files)):
         file = all_group_data_files[file_num]
@@ -25,10 +31,10 @@ def read_etho_v1(groups_with_file_type: list[str], verbose: bool, sample_freq: i
         wb = xl.load_workbook(file)
         # read in each file and sheet's data
         for sheet in wb:
-            header_lines = int(sheet['B1'].value)
+            header_lines = int(sheet["B1"].value)
             # track info
-            group = sheet['B35'].value
-            arena = sheet['B6'].value
+            group = sheet["B35"].value
+            arena = sheet["B6"].value
             parts = arena.split()
             sheet_num = int(parts[1])  # sheet num indicated which arena it came from
             if verbose:
@@ -41,8 +47,15 @@ def read_etho_v1(groups_with_file_type: list[str], verbose: bool, sample_freq: i
             if y_col[38] is None:
                 print(f"No data in file {file_num + 1} sheet {sheet_num}")
             else:
-                track = Track(group, x_col.values, y_col.values, time_col.values, 'Ethovision Excel Version 1',
-                              [sheet_num], False)
+                track = Track(
+                    group,
+                    x_col.values,
+                    y_col.values,
+                    time_col.values,
+                    "Ethovision Excel Version 1",
+                    [sheet_num],
+                    False,
+                )
                 # put track coordinates through standardization procedures (for single track)
                 track.etho_v1_numeric(verbose)
                 track.etho_v1_subsample(sample_freq, time_bin_size, verbose)
@@ -51,7 +64,9 @@ def read_etho_v1(groups_with_file_type: list[str], verbose: bool, sample_freq: i
     # group tracks by arena and get their center points
     tracks_by_arena = sort_tracks_by_arena(etho_tracks)
     combined_coords_by_arena = combine_arena_coords(tracks_by_arena)
-    center_points_by_area = extract_arena_center_point(combined_coords_by_arena, verbose)
+    center_points_by_area = extract_arena_center_point(
+        combined_coords_by_arena, verbose
+    )
     for track in etho_tracks:
         # put track coordinates through standardization procedures (given the arena)
         track.etho_v1_convert_to_center(center_points_by_area, verbose)
@@ -60,16 +75,22 @@ def read_etho_v1(groups_with_file_type: list[str], verbose: bool, sample_freq: i
     return all_tracks
 
 
-def read_etho_v2(groups_with_file_type: list[str], verbose: bool, sample_freq: int, time_bin_size: int,
-                 all_tracks: list[Track]) -> list[Track]:
+def read_etho_v2(
+    groups_with_file_type: list[str],
+    verbose: bool,
+    sample_freq: int,
+    time_bin_size: int,
+    all_tracks: list[Track],
+) -> list[Track]:
     for etho_group in groups_with_file_type:
         if verbose:
-            print(f'Running Ethovision V2 Tracker Files For Group: {etho_group}')
-    title1 = 'Select all .xls v2 files for this experiment'
+            print(f"Running Ethovision V2 Tracker Files For Group: {etho_group}")
+    title1 = "Select all .xls v2 files for this experiment"
     # select excel files for all groups
     # noinspection PyArgumentList
-    all_group_data_files = filedialog.askopenfilenames(filetypes=[("Excel Files", "*.xls *.xlsx")], title=title1,
-                                                       multiple=True)
+    all_group_data_files = filedialog.askopenfilenames(
+        filetypes=[("Excel Files", "*.xls *.xlsx")], title=title1, multiple=True
+    )
     etho_tracks = list()
     for file_num in range(len(all_group_data_files)):
         file = all_group_data_files[file_num]
@@ -79,7 +100,7 @@ def read_etho_v2(groups_with_file_type: list[str], verbose: bool, sample_freq: i
         # read in each file and sheet's data
         for sheet in wb:
             header_lines = 28
-            print('Warning, make sure this file has 28 header lines')
+            print("Warning, make sure this file has 28 header lines")
             # track info
             group = sheet[25, 1].value
             arena = sheet[10, 1].value
@@ -95,10 +116,18 @@ def read_etho_v2(groups_with_file_type: list[str], verbose: bool, sample_freq: i
                 t.append(sheet[i, 0].value)
                 x.append(sheet[i, 1].value)
                 y.append(sheet[i, 2].value)
-            time_col = np.array(t[header_lines:sheet.nrows])
-            x_col = np.array(x[header_lines:sheet.nrows])
-            y_col = np.array(y[header_lines:sheet.nrows])
-            track = Track(group, x_col, y_col, time_col, 'Ethovision Excel Version 2', [sheet_num], False)
+            time_col = np.array(t[header_lines : sheet.nrows])
+            x_col = np.array(x[header_lines : sheet.nrows])
+            y_col = np.array(y[header_lines : sheet.nrows])
+            track = Track(
+                group,
+                x_col,
+                y_col,
+                time_col,
+                "Ethovision Excel Version 2",
+                [sheet_num],
+                False,
+            )
             # put track coordinates through standardization procedures (for single track)
             track.etho_v2_numeric(verbose)
             track.etho_v2_subsample(sample_freq, time_bin_size, verbose)
@@ -107,7 +136,9 @@ def read_etho_v2(groups_with_file_type: list[str], verbose: bool, sample_freq: i
     # group tracks by arena and get their center points
     tracks_by_arena = sort_tracks_by_arena(etho_tracks)
     combined_coords_by_arena = combine_arena_coords(tracks_by_arena)
-    center_points_by_area = extract_arena_center_point(combined_coords_by_arena, verbose)
+    center_points_by_area = extract_arena_center_point(
+        combined_coords_by_arena, verbose
+    )
     for track in etho_tracks:
         # put track coordinates through standardization procedures (given the arena)
         track.etho_v2_convert_to_center(center_points_by_area, verbose)
@@ -116,36 +147,42 @@ def read_etho_v2(groups_with_file_type: list[str], verbose: bool, sample_freq: i
     return all_tracks
 
 
-def read_etho_txt(groups_with_file_type: list[str], verbose: bool, sample_freq: int, time_bin_size: int,
-                  all_tracks: list[Track]) -> list[Track]:
+def read_etho_txt(
+    groups_with_file_type: list[str],
+    verbose: bool,
+    sample_freq: int,
+    time_bin_size: int,
+    all_tracks: list[Track],
+) -> list[Track]:
     for etho_group in groups_with_file_type:
         if verbose:
-            print(f'Running Ethovision Text Tracker Files For Group: {etho_group}')
-    title1 = 'Select all .txt files for this experiment'
+            print(f"Running Ethovision Text Tracker Files For Group: {etho_group}")
+    title1 = "Select all .txt files for this experiment"
     # select text files for all groups
     # noinspection PyArgumentList
-    all_group_data_files = filedialog.askopenfilenames(filetypes=[("Text Files", "*.txt")], title=title1,
-                                                       multiple=True)
+    all_group_data_files = filedialog.askopenfilenames(
+        filetypes=[("Text Files", "*.txt")], title=title1, multiple=True
+    )
     etho_tracks = list()
     # need to force column names since data is saved in txt format
-    labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
+    labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
 
     # read in each file's data
     for file_num in range(len(all_group_data_files)):
         file = all_group_data_files[file_num]
         if verbose:
             print(f"Running File {file_num + 1} Out Of {len(all_group_data_files)}")
-        df = pd.read_csv(file, encoding='UTF-16', names=labels, sep=',')
+        df = pd.read_csv(file, encoding="UTF-16", names=labels, sep=",")
         # track info
-        header_lines = df['B'][0]  # should be 38
-        arena = df['B'][5]
+        header_lines = df["B"][0]  # should be 38
+        arena = df["B"][5]
         parts = arena.split()
         sheet_num = int(parts[1])  # sheet num indicates which arena it came from
-        group = df['B'][34]
+        group = df["B"][34]
         # track data
-        t = df['B'][header_lines:].values
-        x = df['C'][header_lines:].values
-        y = df['D'][header_lines:].values
+        t = df["B"][header_lines:].values
+        x = df["C"][header_lines:].values
+        y = df["D"][header_lines:].values
         # convert to float
         for c in range(len(t)):
             try:
@@ -154,7 +191,7 @@ def read_etho_txt(groups_with_file_type: list[str], verbose: bool, sample_freq: 
                 y[c] = float(y[c])
             except ValueError:
                 pass  # nans and blank lines at end of file
-        track = Track(group, x, y, t, 'Ethovision Text', [sheet_num], False)
+        track = Track(group, x, y, t, "Ethovision Text", [sheet_num], False)
         # put track coordinates through standardization procedures (for single track)
         track.etho_txt_numeric(verbose)
         track.etho_txt_subsample(sample_freq, time_bin_size, verbose)
@@ -163,7 +200,9 @@ def read_etho_txt(groups_with_file_type: list[str], verbose: bool, sample_freq: 
     # group tracks by arena and get their center points
     tracks_by_arena = sort_tracks_by_arena(etho_tracks)
     combined_coords_by_arena = combine_arena_coords(tracks_by_arena)
-    center_points_by_area = extract_arena_center_point(combined_coords_by_arena, verbose)
+    center_points_by_area = extract_arena_center_point(
+        combined_coords_by_arena, verbose
+    )
     for track in etho_tracks:
         # put track coordinates through standardization procedures (given the arena)
         track.etho_txt_convert_to_center(center_points_by_area, verbose)
@@ -172,21 +211,35 @@ def read_etho_txt(groups_with_file_type: list[str], verbose: bool, sample_freq: 
     return all_tracks
 
 
-def read_etho_ml(groups_with_file_type: list[str], verbose: bool, sample_freq: int, time_bin_size: int,
-                 all_tracks: list[Track]) -> list[Track]:
+def read_etho_ml(
+    groups_with_file_type: list[str],
+    verbose: bool,
+    sample_freq: int,
+    time_bin_size: int,
+    all_tracks: list[Track],
+) -> list[Track]:
     for etho_group in groups_with_file_type:
         if verbose:
-            print(f'Running Ethovision ML Tracker Files For Group: {etho_group}')
+            print(f"Running Ethovision ML Tracker Files For Group: {etho_group}")
         title1 = f"Select ML .txt files in folder for {etho_group}"
         # select ML .txt files from ethovision
-        data_files = filedialog.askopenfilenames(filetypes=[("Text Files", "*.txt")], title=title1)
+        data_files = filedialog.askopenfilenames(
+            filetypes=[("Text Files", "*.txt")], title=title1
+        )
         for file_num in range(len(data_files)):
             if verbose:
                 print(f"{etho_group}, File{file_num + 1} Out Of {len(data_files)}")
             # this file type lacks the track info, only contains the track data
-            file_data = pd.read_csv(data_files[file_num], sep='\t', header=None)
-            track = Track(etho_group, file_data[1].values, file_data[2].values, file_data[0].values,
-                          'Ethovision Through MATLAB', [], False)
+            file_data = pd.read_csv(data_files[file_num], sep="\t", header=None)
+            track = Track(
+                etho_group,
+                file_data[1].values,
+                file_data[2].values,
+                file_data[0].values,
+                "Ethovision Through MATLAB",
+                [],
+                False,
+            )
             # put track coordinates through standardization procedures (for single track)
             track.etho_ml_numeric(verbose)
             track.etho_ml_subsample(sample_freq, time_bin_size, verbose)
@@ -200,7 +253,7 @@ def read_etho_ml(groups_with_file_type: list[str], verbose: bool, sample_freq: i
     return all_tracks
 
 
-def sort_tracks_by_arena(list_of_etho_tracks: list[Track]) -> dict[str: list[Track]]:
+def sort_tracks_by_arena(list_of_etho_tracks: list[Track]) -> dict[str, list[Track]]:
     tracks_by_arena = dict()
     for track in list_of_etho_tracks:
         if track.options[0] not in tracks_by_arena:
@@ -212,7 +265,9 @@ def sort_tracks_by_arena(list_of_etho_tracks: list[Track]) -> dict[str: list[Tra
     return tracks_by_arena
 
 
-def combine_arena_coords(tracks_by_arena: dict[str: list[Track]]) -> dict[str: tuple[np.ndarray, np.ndarray]]:
+def combine_arena_coords(
+    tracks_by_arena: dict[str, list[Track]],
+) -> dict[str, tuple[np.ndarray, np.ndarray]]:
     combined_coords_by_arena = dict()
     for arena in tracks_by_arena:
         # the first track initializes the combined coordinates
@@ -227,14 +282,18 @@ def combine_arena_coords(tracks_by_arena: dict[str: list[Track]]) -> dict[str: t
     return combined_coords_by_arena
 
 
-def extract_arena_center_point(combined_coords_by_arena: dict[str: tuple[np.ndarray, np.ndarray]],
-                               verbose: bool) -> dict[str: tuple[float, float]]:
+def extract_arena_center_point(
+    combined_coords_by_arena: dict[str, tuple[np.ndarray, np.ndarray]], verbose: bool
+) -> dict[str, tuple[float, float]]:
     center_points_by_area = dict()
     for arena in combined_coords_by_arena:
         # for each arena, calculate the center point from the combined coordinates of all tracks run in that arena
-        center_point = multi_tracker.calc_center(combined_coords_by_arena[arena][0],
-                                                 combined_coords_by_arena[arena][1], verbose)
+        center_point = multi_tracker.calc_center(
+            combined_coords_by_arena[arena][0],
+            combined_coords_by_arena[arena][1],
+            verbose,
+        )
         if verbose:
-            print(f'Arena {arena} Center Point: {center_point}')
+            print(f"Arena {arena} Center Point: {center_point}")
         center_points_by_area[arena] = center_point
     return center_points_by_area

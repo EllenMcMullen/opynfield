@@ -23,25 +23,56 @@ class Defaults:
     # number of bins to group together in an average
     n_bins_percent_coverage: int = 10
     # measures to time average (not all measures make sense to average (e.g. angular position))
-    time_averaged_measures = ['r', 'activity', 'p_plus_plus', 'p_plus_minus', 'p_plus_zero', 'p_zero_plus',
-                              'p_zero_zero', 'coverage', 'percent_coverage', 'pica', 'pgca', 'p_plus_plus_given_plus',
-                              'p_plus_minus_given_plus', 'p_plus_zero_given_plus', 'p_zero_plus_given_zero',
-                              'p_zero_zero_given_zero', 'p_plus_plus_given_any', 'p_plus_minus_given_any',
-                              'p_plus_zero_given_any', 'p_zero_plus_given_any', 'p_zero_zero_given_any']
-    coverage_averaged_measures = ['activity', 'p_plus_plus', 'p_plus_minus', 'p_plus_zero', 'p_zero_plus',
-                                  'p_zero_zero', 'p_plus_plus_given_plus', 'p_plus_minus_given_plus',
-                                  'p_plus_zero_given_plus', 'p_zero_plus_given_zero', 'p_zero_zero_given_zero',
-                                  'p_plus_plus_given_any', 'p_plus_minus_given_any', 'p_plus_zero_given_any',
-                                  'p_zero_plus_given_any', 'p_zero_zero_given_any']
+    time_averaged_measures = [
+        "r",
+        "activity",
+        "p_plus_plus",
+        "p_plus_minus",
+        "p_plus_zero",
+        "p_zero_plus",
+        "p_zero_zero",
+        "coverage",
+        "percent_coverage",
+        "pica",
+        "pgca",
+        "p_plus_plus_given_plus",
+        "p_plus_minus_given_plus",
+        "p_plus_zero_given_plus",
+        "p_zero_plus_given_zero",
+        "p_zero_zero_given_zero",
+        "p_plus_plus_given_any",
+        "p_plus_minus_given_any",
+        "p_plus_zero_given_any",
+        "p_zero_plus_given_any",
+        "p_zero_zero_given_any",
+    ]
+    coverage_averaged_measures = [
+        "activity",
+        "p_plus_plus",
+        "p_plus_minus",
+        "p_plus_zero",
+        "p_zero_plus",
+        "p_zero_zero",
+        "p_plus_plus_given_plus",
+        "p_plus_minus_given_plus",
+        "p_plus_zero_given_plus",
+        "p_zero_plus_given_zero",
+        "p_zero_zero_given_zero",
+        "p_plus_plus_given_any",
+        "p_plus_minus_given_any",
+        "p_plus_zero_given_any",
+        "p_zero_plus_given_any",
+        "p_zero_zero_given_any",
+    ]
 
     def create_pairs(self):
         test_list = []
-        for x in ['time', 'coverage', 'pica', 'pgca', 'percent_coverage']:
-            if x == 'time':
+        for x in ["time", "coverage", "pica", "pgca", "percent_coverage"]:
+            if x == "time":
                 for y in self.time_averaged_measures:
-                    if y != 'r':
-                        test_list.append(f'{x}_{y}_parameter_')
+                    if y != "r":
+                        test_list.append(f"{x}_{y}_parameter_")
             else:
                 for y in self.coverage_averaged_measures:
-                    test_list.append(f'{x}_{y}_parameter_')
+                    test_list.append(f"{x}_{y}_parameter_")
         return test_list

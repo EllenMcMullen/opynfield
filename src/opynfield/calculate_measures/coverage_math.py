@@ -4,7 +4,7 @@ import numba as nb
 
 def path_coverage(cov_bins: np.ndarray, num_bins: float) -> np.ndarray:
     # convert to int to run the actual coverage function
-    bins = cov_bins.astype('int')
+    bins = cov_bins.astype("int")
     m = int(num_bins)
     return _path_coverage(bins, m)
 
@@ -27,8 +27,7 @@ def _path_coverage(fbl: np.ndarray, num_bins: int) -> np.ndarray:
         # fbl[t] is new bin
         # prev_visits is the un-updated list of number of visits to each bin
         # current_visits is the updated list of number of visits to each bin
-        current_visits = update_visits(fbl[t - 1], fbl[t],
-                                       prev_visits, num_bins)
+        current_visits = update_visits(fbl[t - 1], fbl[t], prev_visits, num_bins)
         # if fly is still in edge, add one to the bin the fly visits next, plus all the bins traversed to get there
         # if fly leaves edge do nothing
         # if fly enters the edge add one to current bin
@@ -56,13 +55,15 @@ def fly_coverage(visits: np.ndarray, m: int) -> np.ndarray:
     # noinspection PyArgumentList
     min_visits = visits.min()
     # fraction of bins that have been visited more than that
-    frac_more_than_min = (visits > min_visits).sum()/m
-    v_new = (min_visits + frac_more_than_min)
+    frac_more_than_min = (visits > min_visits).sum() / m
+    v_new = min_visits + frac_more_than_min
     return v_new
 
 
 @nb.jit(fastmath=True, nopython=True)
-def update_visits(past_fly_bin: int, current_fly_bin: int, past_visits: np.ndarray, m: int) -> np.ndarray:
+def update_visits(
+    past_fly_bin: int, current_fly_bin: int, past_visits: np.ndarray, m: int
+) -> np.ndarray:
     if current_fly_bin == -1 or past_fly_bin == current_fly_bin:
         # the fly left the edge, or did not move, visits did not change
         return past_visits
@@ -74,16 +75,18 @@ def update_visits(past_fly_bin: int, current_fly_bin: int, past_visits: np.ndarr
     # bins between 1 and M
 
     # all other flies have traversed between bins
-    v_new = update_visits_for_steps_between_bins(past_fly_bin, current_fly_bin, past_visits, m)
+    v_new = update_visits_for_steps_between_bins(
+        past_fly_bin, current_fly_bin, past_visits, m
+    )
     return v_new
 
 
 @nb.jit(fastmath=True, nopython=True)
-def update_visits_for_steps_between_bins(past_fly_bin: int, current_fly_bin: int,
-                                         past_visits: np.ndarray, m: int) -> np.ndarray:
+def update_visits_for_steps_between_bins(
+    past_fly_bin: int, current_fly_bin: int, past_visits: np.ndarray, m: int
+) -> np.ndarray:
     # figure out what direction the fly is moving, and how many steps
-    step_direction, steps_taken = sign_to_step(past_fly_bin, current_fly_bin,
-                                               m)
+    step_direction, steps_taken = sign_to_step(past_fly_bin, current_fly_bin, m)
     # step direction (-1 = clockwise, 1 = counterclockwise), steps taken = # taken
 
     # figure out what bins were traversed (list of bin numbers)
@@ -95,7 +98,9 @@ def update_visits_for_steps_between_bins(past_fly_bin: int, current_fly_bin: int
 
 
 @nb.jit(fastmath=True, nopython=True)
-def sign_to_step(past_fly_bin: int, current_fly_bin: int, num_bins: int) -> tuple[int, int]:
+def sign_to_step(
+    past_fly_bin: int, current_fly_bin: int, num_bins: int
+) -> tuple[int, int]:
     # figure out which way the fly is moving
     simple_step_number = abs(past_fly_bin - current_fly_bin)
     complement_step_number = num_bins - simple_step_number
@@ -121,8 +126,14 @@ def sign_to_step(past_fly_bin: int, current_fly_bin: int, num_bins: int) -> tupl
 
 @nb.jit(fastmath=True, nopython=True)
 def bins_traversed(past_fly_bin, n_steps, step_direction, m):
-    start = past_fly_bin + step_direction  # don't count the bin that was already visited
-    end = past_fly_bin + (step_direction * n_steps) + step_direction  # count up in the right direction
-    visits_added = np.arange(start, end, step_direction) % m  # make it modular if it passes the 0th bin
+    start = (
+        past_fly_bin + step_direction
+    )  # don't count the bin that was already visited
+    end = (
+        past_fly_bin + (step_direction * n_steps) + step_direction
+    )  # count up in the right direction
+    visits_added = (
+        np.arange(start, end, step_direction) % m
+    )  # make it modular if it passes the 0th bin
     # visits added is a list of bin numbers
     return visits_added

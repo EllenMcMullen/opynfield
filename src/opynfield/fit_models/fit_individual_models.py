@@ -7,7 +7,9 @@ import numpy as np
 import warnings
 
 
-def fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: ModelSpecification) -> pd.DataFrame:
+def fit_measure_by_time(
+    group_individual_measure_df: pd.DataFrame, specs: ModelSpecification
+) -> pd.DataFrame:
     # rows are individuals and columns are time points
     # measure to be modeled by time
     params_list = []
@@ -20,15 +22,25 @@ def fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: ModelS
         x = x_filter[~np.isnan(x_filter)]
         y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", message='Covariance')
+            warnings.filterwarnings("ignore", message="Covariance")
             try:
                 # noinspection PyTupleAssignmentBalance
-                params, cv = curve_fit(specs.model.model_function, x, y,
-                                       p0=specs.model.initial_params, bounds=specs.model.bounds,
-                                       **{'maxfev': specs.model.max_eval})
+                params, cv = curve_fit(
+                    specs.model.model_function,
+                    x,
+                    y,
+                    p0=specs.model.initial_params,
+                    bounds=specs.model.bounds,
+                    **{"maxfev": specs.model.max_eval},
+                )
                 params_list.append(pd.DataFrame(params))
             except ValueError:
-                params = pd.DataFrame(np.ones(len(specs.model.initial_params), ) * np.nan)
+                params = pd.DataFrame(
+                    np.ones(
+                        len(specs.model.initial_params),
+                    )
+                    * np.nan
+                )
                 params_list.append(params)
     params_df = pd.concat(params_list, axis=1).T
     # rows are individuals
@@ -36,8 +48,11 @@ def fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: ModelS
     return params_df
 
 
-def fit_measure_by_cov(group_individual_measure_df: pd.DataFrame, group_individual_cov_df: pd.DataFrame,
-                       specs: ModelSpecification) -> pd.DataFrame:
+def fit_measure_by_cov(
+    group_individual_measure_df: pd.DataFrame,
+    group_individual_cov_df: pd.DataFrame,
+    specs: ModelSpecification,
+) -> pd.DataFrame:
     # rows are individuals and columns are time points
     # measure to be modeled by mode
     params_list = []
@@ -50,15 +65,25 @@ def fit_measure_by_cov(group_individual_measure_df: pd.DataFrame, group_individu
         x = x_filter[~np.isnan(x_filter)]
         y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", message='Covariance')
+            warnings.filterwarnings("ignore", message="Covariance")
             try:
                 # noinspection PyTupleAssignmentBalance
-                params, cv = curve_fit(specs.model.model_function, x, y,
-                                       p0=specs.model.initial_params, bounds=specs.model.bounds,
-                                       **{'maxfev': specs.model.max_eval})
+                params, cv = curve_fit(
+                    specs.model.model_function,
+                    x,
+                    y,
+                    p0=specs.model.initial_params,
+                    bounds=specs.model.bounds,
+                    **{"maxfev": specs.model.max_eval},
+                )
                 params_list.append(pd.DataFrame(params))
             except ValueError:
-                params = pd.DataFrame(np.ones(len(specs.model.initial_params), ) * np.nan)
+                params = pd.DataFrame(
+                    np.ones(
+                        len(specs.model.initial_params),
+                    )
+                    * np.nan
+                )
                 params_list.append(params)
     params_df = pd.concat(params_list, axis=1).T
     # rows are individuals
@@ -66,62 +91,105 @@ def fit_measure_by_cov(group_individual_measure_df: pd.DataFrame, group_individu
     return params_df
 
 
-def fit_by_time(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], time_averaged_measures: list[str],
-                model_params: dict[str, dict[str, ModelSpecification]], group: str) -> dict[str, pd.DataFrame]:
-    print(f'Fitting Models To Tracks From Group {group} by time')
+def fit_by_time(
+    individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+    time_averaged_measures: list[str],
+    model_params: dict[str, dict[str, ModelSpecification]],
+    group: str,
+) -> dict[str, pd.DataFrame]:
+    print(f"Fitting Models To Tracks From Group {group} by time")
     time_measures = {}
     for measure in time_averaged_measures:
-        if measure != 'r':
-            specs = model_params['time'][measure]
-            m_params = fit_measure_by_time(individual_measures_dfs[group][measure], specs)
+        if measure != "r":
+            specs = model_params["time"][measure]
+            m_params = fit_measure_by_time(
+                individual_measures_dfs[group][measure], specs
+            )
             time_measures[measure] = m_params
     # dict key is measure
     # result is a df with rows as individuals and columns as parameters
     return time_measures
 
 
-def fit_by_cov_measure(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
-                       coverage_averaged_measures: list[str], model_params: dict[str, dict[str, ModelSpecification]],
-                       mode: str, group: str) -> dict[str, pd.DataFrame]:
-    print(f'Fitting Models To Tracks From Group {group} by {mode}')
+def fit_by_cov_measure(
+    individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+    coverage_averaged_measures: list[str],
+    model_params: dict[str, dict[str, ModelSpecification]],
+    mode: str,
+    group: str,
+) -> dict[str, pd.DataFrame]:
+    print(f"Fitting Models To Tracks From Group {group} by {mode}")
     cov_measures = {}
     for measure in coverage_averaged_measures:
         specs = model_params[mode][measure]
-        m_params = fit_measure_by_cov(individual_measures_dfs[group][measure],
-                                      individual_measures_dfs[group][mode], specs)
+        m_params = fit_measure_by_cov(
+            individual_measures_dfs[group][measure],
+            individual_measures_dfs[group][mode],
+            specs,
+        )
         cov_measures[measure] = m_params
     # dict key is measure
     # result is a df with rows as individuals and columns as parameters
     return cov_measures
 
 
-def fit_all(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], defaults: Defaults,
-            model_params: dict[str, dict[str, ModelSpecification]]) -> dict[str, dict[str, dict[str, pd.DataFrame]]]:
+def fit_all(
+    individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+    defaults: Defaults,
+    model_params: dict[str, dict[str, ModelSpecification]],
+) -> dict[str, dict[str, dict[str, pd.DataFrame]]]:
     # dict[group] is a dict 2
     # dict 2[measure] is a df with rows as individuals and columns as time points
     # returns a dict of [group] -> dict[x-axis] -> dict[measure] -> df
     fits = {}
     for group in individual_measures_dfs:
-        fits_group = {'time': fit_by_time(individual_measures_dfs, defaults.time_averaged_measures, model_params,
-                                          group),
-                      'coverage': fit_by_cov_measure(individual_measures_dfs, defaults.coverage_averaged_measures,
-                                                     model_params, 'coverage', group),
-                      'pica': fit_by_cov_measure(individual_measures_dfs, defaults.coverage_averaged_measures,
-                                                 model_params, 'pica', group),
-                      'pgca': fit_by_cov_measure(individual_measures_dfs, defaults.coverage_averaged_measures,
-                                                 model_params, 'pgca', group),
-                      'percent_coverage': fit_by_cov_measure(individual_measures_dfs,
-                                                             defaults.coverage_averaged_measures, model_params,
-                                                             'percent_coverage', group)
-                      }
+        fits_group = {
+            "time": fit_by_time(
+                individual_measures_dfs,
+                defaults.time_averaged_measures,
+                model_params,
+                group,
+            ),
+            "coverage": fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "coverage",
+                group,
+            ),
+            "pica": fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "pica",
+                group,
+            ),
+            "pgca": fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "pgca",
+                group,
+            ),
+            "percent_coverage": fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "percent_coverage",
+                group,
+            ),
+        }
         fits[group] = fits_group
     return fits
 
 
-def find_fit_bounds(fits: dict[str, dict[str, dict[str, pd.DataFrame]]],
-                    user_inputs: UserInput) -> tuple[dict[str, dict[str, dict[str, pd.DataFrame]]],
-                                                     dict[str, dict[str, dict[str, pd.DataFrame]]],
-                                                     dict[str, dict[str, dict[str, pd.DataFrame]]]]:
+def find_fit_bounds(
+    fits: dict[str, dict[str, dict[str, pd.DataFrame]]], user_inputs: UserInput
+) -> tuple[
+    dict[str, dict[str, dict[str, pd.DataFrame]]],
+    dict[str, dict[str, dict[str, pd.DataFrame]]],
+    dict[str, dict[str, dict[str, pd.DataFrame]]],
+]:
     # dict of[group] -> dict of [x-axis] -> dict[measure] -> df
     upper_group_x_measure_dict = {}
     lower_group_x_measure_dict = {}
@@ -158,11 +226,20 @@ def find_fit_bounds(fits: dict[str, dict[str, dict[str, pd.DataFrame]]],
         upper_group_x_measure_dict[group] = upper_x_measure_dict
         lower_group_x_measure_dict[group] = lower_x_measure_dict
         mean_group_x_measure_dict[group] = mean_x_measure_dict
-    return upper_group_x_measure_dict, lower_group_x_measure_dict, mean_group_x_measure_dict
+    return (
+        upper_group_x_measure_dict,
+        lower_group_x_measure_dict,
+        mean_group_x_measure_dict,
+    )
 
 
-def re_fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: ModelSpecification,
-                           uppers: pd.DataFrame, lowers: pd.DataFrame, initials: pd.DataFrame) -> pd.DataFrame:
+def re_fit_measure_by_time(
+    group_individual_measure_df: pd.DataFrame,
+    specs: ModelSpecification,
+    uppers: pd.DataFrame,
+    lowers: pd.DataFrame,
+    initials: pd.DataFrame,
+) -> pd.DataFrame:
     # rows are individuals and columns are time points
     # measure to be modeled by time
     params_list = []
@@ -175,15 +252,25 @@ def re_fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: Mod
         x = x_filter[~np.isnan(x_filter)]
         y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", message='Covariance')
+            warnings.filterwarnings("ignore", message="Covariance")
             try:
                 # noinspection PyTupleAssignmentBalance
-                params, cv = curve_fit(specs.model.model_function, x, y,
-                                       p0=initials.values, bounds=(lowers.values, uppers.values),
-                                       **{'maxfev': specs.model.max_eval})
+                params, cv = curve_fit(
+                    specs.model.model_function,
+                    x,
+                    y,
+                    p0=initials.values,
+                    bounds=(lowers.values, uppers.values),
+                    **{"maxfev": specs.model.max_eval},
+                )
                 params_list.append(pd.DataFrame(params))
             except ValueError:
-                params = pd.DataFrame(np.ones(len(specs.model.initial_params), ) * np.nan)
+                params = pd.DataFrame(
+                    np.ones(
+                        len(specs.model.initial_params),
+                    )
+                    * np.nan
+                )
                 params_list.append(params)
     params_df = pd.concat(params_list, axis=1).T
     # rows are individuals
@@ -191,26 +278,41 @@ def re_fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: Mod
     return params_df
 
 
-def re_fit_by_time(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], time_averaged_measures: list[str],
-                   model_params: dict[str, dict[str, ModelSpecification]], upper: dict[str, dict[str, pd.DataFrame]],
-                   lower: dict[str, dict[str, pd.DataFrame]], initial: dict[str, dict[str, pd.DataFrame]], group: str) \
-        -> dict[str, pd.DataFrame]:
-    print(f'Re-Fitting Models To Tracks From Group {group} by time')
+def re_fit_by_time(
+    individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+    time_averaged_measures: list[str],
+    model_params: dict[str, dict[str, ModelSpecification]],
+    upper: dict[str, dict[str, pd.DataFrame]],
+    lower: dict[str, dict[str, pd.DataFrame]],
+    initial: dict[str, dict[str, pd.DataFrame]],
+    group: str,
+) -> dict[str, pd.DataFrame]:
+    print(f"Re-Fitting Models To Tracks From Group {group} by time")
     time_measures = {}
     for measure in time_averaged_measures:
-        if measure != 'r':
-            specs = model_params['time'][measure]
-            m_params = re_fit_measure_by_time(individual_measures_dfs[group][measure], specs,
-                                              upper['time'][measure], lower['time'][measure], initial['time'][measure])
+        if measure != "r":
+            specs = model_params["time"][measure]
+            m_params = re_fit_measure_by_time(
+                individual_measures_dfs[group][measure],
+                specs,
+                upper["time"][measure],
+                lower["time"][measure],
+                initial["time"][measure],
+            )
             time_measures[measure] = m_params
     # dict key is measure
     # result is a dy with rows as individuals and columns as parameters
     return time_measures
 
 
-def re_fit_measure_by_cov_measure(group_individual_measure_df: pd.DataFrame, group_individual_cov_df: pd.DataFrame,
-                                  specs: ModelSpecification, uppers: pd.DataFrame,
-                                  lowers: pd.DataFrame, initials: pd.DataFrame) -> pd.DataFrame:
+def re_fit_measure_by_cov_measure(
+    group_individual_measure_df: pd.DataFrame,
+    group_individual_cov_df: pd.DataFrame,
+    specs: ModelSpecification,
+    uppers: pd.DataFrame,
+    lowers: pd.DataFrame,
+    initials: pd.DataFrame,
+) -> pd.DataFrame:
     # rows are individuals and columns are time points
     # measure to be modeled by time
     params_list = []
@@ -223,14 +325,24 @@ def re_fit_measure_by_cov_measure(group_individual_measure_df: pd.DataFrame, gro
         x = x_filter[~np.isnan(x_filter)]
         y = y_filter[~np.isnan(x_filter)]
         with warnings.catch_warnings():
-            warnings.filterwarnings("ignore", message='Covariance')
+            warnings.filterwarnings("ignore", message="Covariance")
             try:
                 # noinspection PyTupleAssignmentBalance
-                params, cv = curve_fit(specs.model.model_function, x, y,
-                                       p0=initials.values, bounds=(lowers.values, uppers.values),
-                                       **{'maxfev': specs.model.max_eval})
+                params, cv = curve_fit(
+                    specs.model.model_function,
+                    x,
+                    y,
+                    p0=initials.values,
+                    bounds=(lowers.values, uppers.values),
+                    **{"maxfev": specs.model.max_eval},
+                )
             except ValueError:
-                params = np.ones(len(specs.model.initial_params), ) * np.nan
+                params = (
+                    np.ones(
+                        len(specs.model.initial_params),
+                    )
+                    * np.nan
+                )
         params_list.append(pd.DataFrame(params))
     params_df = pd.concat(params_list, axis=1).T
     # rows are individuals
@@ -238,47 +350,94 @@ def re_fit_measure_by_cov_measure(group_individual_measure_df: pd.DataFrame, gro
     return params_df
 
 
-def re_fit_by_cov_measure(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
-                          coverage_averaged_measures: list[str],
-                          model_params: dict[str, dict[str, ModelSpecification]], mode: str,
-                          upper: dict[str, dict[str, pd.DataFrame]], lower: dict[str, dict[str, pd.DataFrame]],
-                          initial: dict[str, dict[str, pd.DataFrame]],
-                          group: str) -> dict[str, pd.DataFrame]:
-    print(f'Re-Fitting Models To Tracks From Group {group} by {mode}')
+def re_fit_by_cov_measure(
+    individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+    coverage_averaged_measures: list[str],
+    model_params: dict[str, dict[str, ModelSpecification]],
+    mode: str,
+    upper: dict[str, dict[str, pd.DataFrame]],
+    lower: dict[str, dict[str, pd.DataFrame]],
+    initial: dict[str, dict[str, pd.DataFrame]],
+    group: str,
+) -> dict[str, pd.DataFrame]:
+    print(f"Re-Fitting Models To Tracks From Group {group} by {mode}")
     cov_measures = {}
     for measure in coverage_averaged_measures:
         specs = model_params[mode][measure]
-        m_params = re_fit_measure_by_cov_measure(individual_measures_dfs[group][measure],
-                                                 individual_measures_dfs[group][mode], specs,
-                                                 upper[mode][measure], lower[mode][measure], initial[mode][measure])
+        m_params = re_fit_measure_by_cov_measure(
+            individual_measures_dfs[group][measure],
+            individual_measures_dfs[group][mode],
+            specs,
+            upper[mode][measure],
+            lower[mode][measure],
+            initial[mode][measure],
+        )
         cov_measures[measure] = m_params
     # dict key is measure
     # result is a df with rows as individuals and columns as parameters
     return cov_measures
 
 
-def re_fit_all(individual_measures_dfs: dict[str, dict[str, pd.DataFrame]], defaults: Defaults,
-               model_params: dict[str, dict[str, ModelSpecification]],
-               upper: dict[str, dict[str, dict[str, pd.DataFrame]]],
-               lower: dict[str, dict[str, dict[str, pd.DataFrame]]],
-               initial: dict[str, dict[str, dict[str, pd.DataFrame]]]) -> dict[str, dict[str, dict[str, pd.DataFrame]]]:
+def re_fit_all(
+    individual_measures_dfs: dict[str, dict[str, pd.DataFrame]],
+    defaults: Defaults,
+    model_params: dict[str, dict[str, ModelSpecification]],
+    upper: dict[str, dict[str, dict[str, pd.DataFrame]]],
+    lower: dict[str, dict[str, dict[str, pd.DataFrame]]],
+    initial: dict[str, dict[str, dict[str, pd.DataFrame]]],
+) -> dict[str, dict[str, dict[str, pd.DataFrame]]]:
     fits = {}
     for group in individual_measures_dfs:
-        fits_group = {'time': re_fit_by_time(individual_measures_dfs, defaults.time_averaged_measures, model_params,
-                                             upper[group], lower[group], initial[group], group),
-                      'coverage': re_fit_by_cov_measure(individual_measures_dfs, defaults.coverage_averaged_measures,
-                                                        model_params, 'coverage', upper[group], lower[group],
-                                                        initial[group], group),
-                      'pica': re_fit_by_cov_measure(individual_measures_dfs, defaults.coverage_averaged_measures,
-                                                    model_params, 'pica', upper[group], lower[group], initial[group],
-                                                    group),
-                      'pgca': re_fit_by_cov_measure(individual_measures_dfs, defaults.coverage_averaged_measures,
-                                                    model_params, 'pgca', upper[group], lower[group], initial[group],
-                                                    group),
-                      'percent_coverage': re_fit_by_cov_measure(individual_measures_dfs,
-                                                                defaults.coverage_averaged_measures, model_params,
-                                                                'percent_coverage', upper[group], lower[group],
-                                                                initial[group], group)
-                      }
+        fits_group = {
+            "time": re_fit_by_time(
+                individual_measures_dfs,
+                defaults.time_averaged_measures,
+                model_params,
+                upper[group],
+                lower[group],
+                initial[group],
+                group,
+            ),
+            "coverage": re_fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "coverage",
+                upper[group],
+                lower[group],
+                initial[group],
+                group,
+            ),
+            "pica": re_fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "pica",
+                upper[group],
+                lower[group],
+                initial[group],
+                group,
+            ),
+            "pgca": re_fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "pgca",
+                upper[group],
+                lower[group],
+                initial[group],
+                group,
+            ),
+            "percent_coverage": re_fit_by_cov_measure(
+                individual_measures_dfs,
+                defaults.coverage_averaged_measures,
+                model_params,
+                "percent_coverage",
+                upper[group],
+                lower[group],
+                initial[group],
+                group,
+            ),
+        }
         fits[group] = fits_group
     return fits

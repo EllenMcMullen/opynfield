@@ -1,0 +1,8 @@
+sphinx-apidoc -f -o source ../src/opynfield
+
+run this every time i need to update the docs for opynfield
+paths relative to docs folder
+
+then to regenerate the html run:
+
+make html

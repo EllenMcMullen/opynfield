@@ -1,5 +1,6 @@
 from src.opynfield.config.user_input import UserInput
 from src.opynfield.readin.run_all import run_all_track_types
+from src.opynfield.readin.summary_file import summary_file
 from src.opynfield.config.defaults_settings import Defaults
 from src.opynfield.config.cov_asymptote import CoverageAsymptote
 from src.opynfield.calculate_measures.calculate_measures import tracks_to_measures
@@ -56,6 +57,9 @@ def run():
     run_tests(formatted_bounded_fits, test_defaults, user_config)
     # plot individuals with model fits
     plot_settings = PlotSettings(group_colors={'Canton S': 'b', 'Canton S 2': 'r'})
+    # create a track summary document
+    summary_file(tracks_by_groups, test_cov_asymptote, test_defaults, model_params, plot_settings, user_config)
+    # plot individuals with model fits
     plot_all_individuals(individual_measures_dfs, bounded_fits, model_params, test_defaults, plot_settings, user_config)
     # plot individual traces
     plot_traces(tracks_by_groups, plot_settings, user_config)

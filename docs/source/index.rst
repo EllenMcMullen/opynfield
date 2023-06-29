@@ -14,6 +14,7 @@ Welcome to opynfield's documentation!
    
    readme
    modules
+   future_work
 
 
 

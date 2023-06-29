@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import os
-from src.opynfield.config.model_settings import ModelSpecification
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.plot_settings import PlotSettings
-from src.opynfield.config.user_input import UserInput
+from opynfield.config.model_settings import ModelSpecification
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.plot_settings import PlotSettings
+from opynfield.config.user_input import UserInput
 
 
 def generate_view_title(path: str, x_measure: str, y_measure: str, individual_models: bool, group_model: bool,

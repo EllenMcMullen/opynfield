@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import warnings
 from scipy.optimize import curve_fit
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.model_settings import ModelSpecification
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.model_settings import ModelSpecification
 
 
 def group_fit_measure_by_time(group_individual_measure_df: pd.DataFrame, specs: ModelSpecification,

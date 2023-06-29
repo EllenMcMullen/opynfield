@@ -4,11 +4,11 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.model_settings import ModelSpecification
-from src.opynfield.config.plot_settings import PlotSettings
-from src.opynfield.config.user_input import UserInput
-from src.opynfield.calculate_measures.standard_track import StandardTrack
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.model_settings import ModelSpecification
+from opynfield.config.plot_settings import PlotSettings
+from opynfield.config.user_input import UserInput
+from opynfield.calculate_measures.standard_track import StandardTrack
 from itertools import chain, zip_longest
 
 

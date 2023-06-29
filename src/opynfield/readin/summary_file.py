@@ -2,12 +2,12 @@ import sys
 from dataclasses import fields
 from collections import defaultdict
 
-from src.opynfield.calculate_measures.standard_track import StandardTrack
-from src.opynfield.config.cov_asymptote import CoverageAsymptote
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.model_settings import ModelSpecification
-from src.opynfield.config.plot_settings import PlotSettings
-from src.opynfield.config.user_input import UserInput
+from opynfield.calculate_measures.standard_track import StandardTrack
+from opynfield.config.cov_asymptote import CoverageAsymptote
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.model_settings import ModelSpecification
+from opynfield.config.plot_settings import PlotSettings
+from opynfield.config.user_input import UserInput
 
 
 def summarize(tracks_by_group: defaultdict[str: list[StandardTrack]], test_cov_asymptote: CoverageAsymptote,

@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 import numpy as np
 import pandas as pd
 
-from src.opynfield.readin import multi_tracker
+from opynfield.readin import multi_tracker
 
 
 @dataclass

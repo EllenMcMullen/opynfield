@@ -2,10 +2,10 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from src.opynfield.config.model_settings import ModelSpecification
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.plot_settings import PlotSettings
-from src.opynfield.config.user_input import UserInput
+from opynfield.config.model_settings import ModelSpecification
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.plot_settings import PlotSettings
+from opynfield.config.user_input import UserInput
 
 
 def generate_fig_title(path: str, x_measure: str, y_measure: str, model_fit: bool, error: bool, extension: str):

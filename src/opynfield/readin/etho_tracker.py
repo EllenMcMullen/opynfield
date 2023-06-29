@@ -1,8 +1,8 @@
 from tkinter import filedialog
 import openpyxl as xl
 import pandas as pd
-from src.opynfield.readin.track import Track
-from src.opynfield.readin import multi_tracker
+from opynfield.readin.track import Track
+from opynfield.readin import multi_tracker
 import numpy as np
 import xlrd
 

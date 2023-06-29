@@ -3,12 +3,12 @@ import math
 import warnings
 from scipy.optimize import curve_fit
 from collections import defaultdict
-from src.opynfield.config.user_input import UserInput
-from src.opynfield.config.defaults_settings import Defaults
+from opynfield.config.user_input import UserInput
+from opynfield.config.defaults_settings import Defaults
 from opynfield.calculate_measures import coverage_math
 from opynfield.config.cov_asymptote import CoverageAsymptote
-from src.opynfield.readin.track import Track
-from src.opynfield.calculate_measures.standard_track import StandardTrack
+from opynfield.readin.track import Track
+from opynfield.calculate_measures.standard_track import StandardTrack
 
 
 def cartesian_to_polar(x: np.ndarray, y: np.ndarray, verbose: bool) -> tuple[np.ndarray, np.ndarray]:

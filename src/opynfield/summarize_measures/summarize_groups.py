@@ -1,7 +1,7 @@
 import warnings
 import numpy as np
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.user_input import UserInput
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.user_input import UserInput
 import pandas as pd
 import os
 

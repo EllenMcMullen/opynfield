@@ -1,9 +1,9 @@
 import os
 from collections import defaultdict
 import pandas as pd
-from src.opynfield.calculate_measures.standard_track import StandardTrack
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.user_input import UserInput
+from opynfield.calculate_measures.standard_track import StandardTrack
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.user_input import UserInput
 
 
 def individual_measures_to_dfs(tracks_by_groups: defaultdict[str, list[StandardTrack]], defaults: Defaults,

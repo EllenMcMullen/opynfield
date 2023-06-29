@@ -1,21 +1,21 @@
-from src.opynfield.config.user_input import UserInput
-from src.opynfield.readin.run_all import run_all_track_types
-from src.opynfield.readin.summary_file import summary_file
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.cov_asymptote import CoverageAsymptote
-from src.opynfield.calculate_measures.calculate_measures import tracks_to_measures
-from src.opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
-from src.opynfield.summarize_measures.summarize_groups import all_group_averages
-from src.opynfield.config.model_settings import set_up_fits
-from src.opynfield.fit_models.fit_individual_models import fit_all, find_fit_bounds, re_fit_all
-from src.opynfield.fit_models.fit_group_models import group_fit_all
-from src.opynfield.stat_test.stat_test import format_params, format_group_params, run_tests
+from opynfield.config.user_input import UserInput
+from opynfield.readin.run_all import run_all_track_types
+from opynfield.readin.summary_file import summary_file
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.cov_asymptote import CoverageAsymptote
+from opynfield.calculate_measures.calculate_measures import tracks_to_measures
+from opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
+from opynfield.summarize_measures.summarize_groups import all_group_averages
+from opynfield.config.model_settings import set_up_fits
+from opynfield.fit_models.fit_individual_models import fit_all, find_fit_bounds, re_fit_all
+from opynfield.fit_models.fit_group_models import group_fit_all
+from opynfield.stat_test.stat_test import format_params, format_group_params, run_tests
 from copy import deepcopy
-from src.opynfield.plotting.plot_individuals import plot_all_individuals, plot_traces
-from src.opynfield.config.plot_settings import PlotSettings
-from src.opynfield.plotting.plot_solo_groups import plot_all_solo_groups
-from src.opynfield.plotting.plot_solo_groups_with_individuals import plot_components_of_solo_groups
-from src.opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
+from opynfield.plotting.plot_individuals import plot_all_individuals, plot_traces
+from opynfield.config.plot_settings import PlotSettings
+from opynfield.plotting.plot_solo_groups import plot_all_solo_groups
+from opynfield.plotting.plot_solo_groups_with_individuals import plot_components_of_solo_groups
+from opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
 
 
 def run():

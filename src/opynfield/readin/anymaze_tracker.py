@@ -1,9 +1,9 @@
-from src.opynfield.readin.track import Track
+from opynfield.readin.track import Track
 from tkinter import filedialog
 import pandas as pd
 import numpy as np
 import datetime
-from src.opynfield.readin import multi_tracker
+from opynfield.readin import multi_tracker
 
 
 def read_anymaze_center(groups_with_file_type: list[str], verbose: bool, arena_radius_cm: float,

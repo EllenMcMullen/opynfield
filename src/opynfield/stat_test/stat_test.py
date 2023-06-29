@@ -1,6 +1,6 @@
 import pandas as pd
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.user_input import UserInput
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.user_input import UserInput
 import os
 from copy import deepcopy
 from statsmodels.multivariate.manova import MANOVA

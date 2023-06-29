@@ -1,8 +1,8 @@
 import pandas as pd
-from src.opynfield.config.model_settings import ModelSpecification
-from src.opynfield.config.defaults_settings import Defaults
-from src.opynfield.config.plot_settings import PlotSettings
-from src.opynfield.config.user_input import UserInput
+from opynfield.config.model_settings import ModelSpecification
+from opynfield.config.defaults_settings import Defaults
+from opynfield.config.plot_settings import PlotSettings
+from opynfield.config.user_input import UserInput
 import matplotlib.pyplot as plt
 import numpy as np
 from itertools import chain, zip_longest

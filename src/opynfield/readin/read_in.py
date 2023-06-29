@@ -1,8 +1,8 @@
-from src.opynfield.readin import buridian_tracker
-from src.opynfield.readin import etho_tracker
-from src.opynfield.readin import anymaze_tracker
+from opynfield.readin import buridian_tracker
+from opynfield.readin import etho_tracker
+from opynfield.readin import anymaze_tracker
 
-from src.opynfield.readin.track import Track
+from opynfield.readin.track import Track
 
 
 def read_track_types(file_type: str, groups_with_file_type: list[str], verbose: bool, arena_radius_cm: float,

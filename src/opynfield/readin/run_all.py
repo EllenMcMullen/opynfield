@@ -1,11 +1,11 @@
-import src.opynfield.readin.track
-from src.opynfield.readin import read_in
+import opynfield.readin.track
+from opynfield.readin import read_in
 import numpy as np
 
 
 def run_all_track_types(groups_and_types: dict[str: list[str]], verbose: bool, arena_radius_cm: float,
                         running_window_length: int, window_step_size: int, sample_freq: int, time_bin_size: int,
-                        trim: int) -> list[src.opynfield.readin.track.Track]:
+                        trim: int) -> list[opynfield.readin.track.Track]:
     file_types_included = groups_to_types(groups_and_types)  # what file types to run
     print(file_types_included)
     groups_by_filetype = types_to_groups(file_types_included, groups_and_types)

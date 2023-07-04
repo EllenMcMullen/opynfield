@@ -3,6 +3,21 @@ from dataclasses import dataclass
 
 @dataclass
 class Defaults:
+    """This dataclass defines many default values that are used across the package.
+
+    Attributes:
+        node_size (float): the angle that (when combined with a radial bound) defines a bin for coverage calculations, defaults to 0.1
+        save_group_csvs (bool): whether to save a separate .csv file of the component measures for each group, defaults to True
+        save_all_group_csvs (bool): whether to save a combined .csv file of the component measures of each group, defaults to True
+        save_group_model_csvs (bool): whether to save a separate .csv file of the model parameters for each group, defaults to True
+        save_all_group_model_csvs (bool): whether to save a combined .csv file of the model parameters of each group, defaults to True
+        n_points_coverage (int): the number of points to group together in an average for the coverage domain, defaults to 36
+        n_points_pica (int): the number of points to group together in an average for the pica domain, defaults to 36
+        n_points_pgca (int): the number of points to group together in an average for the pgca domain, defaults to 36
+        n_bins_percent_coverage (int): the number of points to group together in an average for the percent coverage domain, defaults to 10
+        time_averaged_measures (list[str]): which measures should be averaged in the time domain, defaults to ["r", "activity", "p_plus_plus", "p_plus_minus", "p_plus_zero", "p_zero_plus", "p_zero_zero", "coverage", "percent_coverage", "pica", "pgca", "p_plus_plus_given_plus", "p_plus_minus_given_plus", "p_plus_zero_given_plus", "p_zero_plus_given_zero", "p_zero_zero_given_zero", "p_plus_plus_given_any", "p_plus_minus_given_any", "p_plus_zero_given_any", "p_zero_plus_given_any", "p_zero_zero_given_any"]
+        coverage_averaged_measures (list[str]): which measures should be averages in the coverage, percent coverage, pica, and pgca domains, defaults to ["activity", "p_plus_plus", "p_plus_minus", "p_plus_zero", "p_zero_plus", "p_zero_zero", "p_plus_plus_given_plus", "p_plus_minus_given_plus", "p_plus_zero_given_plus", "p_zero_plus_given_zero", "p_zero_zero_given_zero", "p_plus_plus_given_any", "p_plus_minus_given_any", "p_plus_zero_given_any", "p_zero_plus_given_any", "p_zero_zero_given_any"]
+    """
     # what angle should we use to create the bins for coverage (degrees)
     node_size: float = 0.1
     # should we save out a csv for each group's component measures?
@@ -44,7 +59,7 @@ class Defaults:
         "p_plus_minus_given_any",
         "p_plus_zero_given_any",
         "p_zero_plus_given_any",
-        "p_zero_zero_given_any",
+        "p_zero_zero_given_any"
     ]
     coverage_averaged_measures = [
         "activity",
@@ -62,10 +77,15 @@ class Defaults:
         "p_plus_minus_given_any",
         "p_plus_zero_given_any",
         "p_zero_plus_given_any",
-        "p_zero_zero_given_any",
+        "p_zero_zero_given_any"
     ]
 
     def create_pairs(self):
+        """Create a list of strings that indicate which measure combinations should be modeled and tested
+
+        :return: list of strings that indicate xy pairs
+        :rtype: list[str]
+        """
         test_list = []
         for x in ["time", "coverage", "pica", "pgca", "percent_coverage"]:
             if x == "time":

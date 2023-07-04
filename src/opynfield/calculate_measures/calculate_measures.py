@@ -14,6 +14,20 @@ from opynfield.calculate_measures.standard_track import StandardTrack
 def cartesian_to_polar(
     x: np.ndarray, y: np.ndarray, verbose: bool
 ) -> tuple[np.ndarray, np.ndarray]:
+    """ This function converts an animal's tracking coordinates from cartesian to polar coordinates.
+    It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param x: the x coordinates of a :class:`opynfield.readin.track.Track` object
+    :type x: np.ndarray
+    :param y: the y coordinates of a :class:`opynfield.readin.track.Track` object
+    :type y: np.ndarray
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: a tuple of the r and theta coordinates of the :class:`opynfield.readin.track.Track`
+    :rtype: tuple[np.ndarray, np.ndarray]
+    """
+
     # initialize results
     radius = np.zeros(shape=x.shape)
     angle = np.zeros(shape=x.shape)
@@ -32,6 +46,19 @@ def cartesian_to_polar(
 
 
 def step_distance(x: np.ndarray, y: np.ndarray, verbose: bool) -> np.ndarray:
+    """This function calculates the distance between each consecutive pair of tracking coordinates of an animal.
+    It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param x: the x coordinates of a :class:`opynfield.readin.track.Track` object
+    :type x: np.ndarray
+    :param y: the y coordinates of a :class:`opynfield.readin.track.Track` object
+    :type y: np.ndarray
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the distance stepped between tracking points (also called 'activity')
+    :rtype: np.ndarray
+    """
     # initialize results
     act = np.zeros(shape=x.shape)
     # for each point
@@ -48,6 +75,20 @@ def step_distance(x: np.ndarray, y: np.ndarray, verbose: bool) -> np.ndarray:
 
 
 def turning_angle(x: np.ndarray, y: np.ndarray, verbose: bool) -> np.ndarray:
+    """This function calculates the angle that the animal turned between two consecutive steps,
+    using the law of cosines. It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param x: the x coordinates of a :class:`opynfield.readin.track.Track` object
+    :type x: np.ndarray
+    :param y: the y coordinates of a :class:`opynfield.readin.track.Track` object
+    :type y: np.ndarray
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the magnitude of the angle (in degrees) from a straight heading that the animal turned between
+        each consecutive set of steps.
+    :rtype: np.ndarray
+    """
     # initialize results
     turn_ang = np.zeros(shape=x.shape)
     # for each point
@@ -98,6 +139,29 @@ def motion_probabilities(
     edge_rad: float,
     verbose: bool,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """This function calculates P++, P+-, P+0, P0+, and P00 (collectively 'motion probabilities')
+    from an animal's track trajectory. See motion probability types for more information. It is one step in the track
+    standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param radius: the radial position of the animal at each tracking point
+    :type radius: np.ndarray
+    :param act: the length of the step taken by the animal between two points
+    :type act: np.ndarray
+    :param turn_angle: the angle the animal turned at each point between two steps
+    :type turn_angle: np.ndarray
+    :param inactivity_threshold: to account for body wobble, how small of a step length do we consider to be
+        negligible and set to zero - sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type inactivity_threshold: np.ndarray
+    :param edge_rad: to consider the motion probabilities only near the edge of the arena, at what radius do we consider
+        the animal to be in the edge region - sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type edge_rad: np.ndarray
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: tuple of the raw data for motion probabilities (P++, P+-, P+0, P0+, P00) - 1 where the action occurred and
+        0 elsewhere
+    :rtype: tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]
+    """
     # initialize results
     ppp = np.zeros(shape=radius.shape)
     ppm = np.zeros(shape=radius.shape)
@@ -146,6 +210,25 @@ def locate_bin(
     edge_rad: float,
     verbose: bool,
 ) -> tuple[np.ndarray, float]:
+    """This function assigns a bin number to each tracking point of an animal to facilitate the calculation of coverage.
+    It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param radius: the radial position of the animal at each tracking point
+    :type radius: np.ndarray
+    :param theta_angle: the angular position of the animal at each tracking point
+    :type theta_angle: np.ndarray
+    :param node_size: the angle that (when combined with ``edge_rad``) defines a bin - sourced from
+        :class:`opynfield.config.user_input.UserInput`
+    :type node_size: float
+    :param edge_rad: at what radius do we consider the animal to be in the edge region, when combined with ``node_size``
+        this defines a bin - sourced from :class:`opynfield.config.user_input.UserInput`
+    :type edge_rad: float
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: tuple of the bin assignment array and the total number of bins used to make the assignment
+    :rtype: tuple[np.ndarray, float]
+    """
     # initialize bins as -1 (an invalid bin number)
     bins = np.ones(shape=radius.shape) * -1
 
@@ -165,6 +248,20 @@ def locate_bin(
 def calculate_coverage(
     cov_bins: np.ndarray, num_bins: float, verbose: bool
 ) -> np.ndarray:
+    """This function is calls functions from the coverage_math module to calculate the animal's coverage over time.
+    See coverage types for comparison of (raw) coverage to other coverage measures.
+    It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param cov_bins: which bin the animal is located in at each tracking point
+    :type cov_bins: np.ndarray
+    :param num_bins: the total number of bins the arena edge region is divided into
+    :type num_bins: float
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the coverage of the animal at each tracking point
+    :rtype: np.ndarray
+    """
     # locate_bin has already worried about if the animal is in edge or not, this is just looking at visits and cov
     cov = coverage_math.path_coverage(cov_bins, num_bins)
     if verbose:
@@ -173,6 +270,18 @@ def calculate_coverage(
 
 
 def calculate_percent_coverage(cov: np.ndarray, verbose: bool) -> np.ndarray:
+    """This function normalizes an animal's coverage by the maximum coverage the animal reaches to get its percent
+    coverage. See coverage types for comparison of percent coverage to other coverage measures.
+    It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param cov: the coverage of the animal at each tracking point
+    :type cov: np.ndarray
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the percent coverage (normalized coverage) of the animal at each tracking point
+    :rtype: np.ndarray
+    """
     highest_cov = max(cov)
     perc_cov = cov / highest_cov
     if verbose:
@@ -183,6 +292,21 @@ def calculate_percent_coverage(cov: np.ndarray, verbose: bool) -> np.ndarray:
 def calculate_pica(
     cov: np.ndarray, asymptote_info: CoverageAsymptote, verbose: bool
 ) -> tuple[np.ndarray, float]:
+    """This function normalizes an animal's coverage by its predicted coverage asymptote from the time vs coverage
+    model. See coverage types for comparison of PICA to other coverage measures.
+    It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param cov: the coverage of the animal at each tracking point
+    :type cov: np.ndarray
+    :param asymptote_info: a custom dataclass that includes information needed to calculate the animal's
+        coverage asymptote
+    :type asymptote_info: CoverageAsymptote
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the PICA (Percent of Individual Coverage Asymptote) of the animal at each tracking point
+    :rtype: np.ndarray
+    """
     # format the input data to the fit
     x2 = np.arange(len(cov))
     x1 = np.array(x2)
@@ -190,11 +314,12 @@ def calculate_pica(
     y = y1[~np.isnan(y1)]
     x = x1[~np.isnan(y1)]
     # fit a model to the coverage data
+    # noinspection PyTupleAssignmentBalance
     params, cv = curve_fit(
         asymptote_info.f_name,
         x,
         y,
-        asymptote_info.initial_parameters,  # noqa
+        p0=asymptote_info.initial_parameters,
         bounds=asymptote_info.parameter_bounds,
         **{"maxfev": asymptote_info.max_f_eval}
     )
@@ -209,7 +334,18 @@ def calculate_pica(
 
 def calculate_group_coverage_asymptote(
     group_tracks: list[StandardTrack], asymptote_info: CoverageAsymptote
-):
+) -> float:
+    """This function calculates the coverage asymptote of a group based on the aggregated data from all
+    individuals in the group.
+
+    :param group_tracks: a list of all standardized tracks belonging to the same analysis group
+    :type group_tracks: list[StandardTrack]
+    :param asymptote_info: a custom dataclass that includes information needed to calculate the group's
+        coverage asymptote
+    :type asymptote_info: CoverageAsymptote
+    :return: the group's coverage asymptote to be used in calculating the PGCA of individuals in that group
+    :rtype: float
+    """
     group_coverage = list()
     group_time = list()
     for track_g in group_tracks:
@@ -220,11 +356,12 @@ def calculate_group_coverage_asymptote(
     y1 = np.array(group_coverage)
     y = y1[~np.isnan(y1)]
     x = x1[~np.isnan(y1)]
+    # noinspection PyTupleAssignmentBalance
     params, cv = curve_fit(
         asymptote_info.f_name,
         x,
         y,
-        asymptote_info.initial_parameters,  # noqa
+        asymptote_info.initial_parameters,
         bounds=asymptote_info.parameter_bounds,
         **{"maxfev": asymptote_info.max_f_eval}
     )
@@ -234,6 +371,21 @@ def calculate_group_coverage_asymptote(
 
 
 def calculate_pgca(s_track: StandardTrack, asymptote_g: float, verbose: bool):
+    """This function normalizes an animal's coverage by its group's predicted coverage asymptote from the time vs
+    coverage model. It also sets the group asymptote as an attribute of the track.
+    This must occur after all tracks are standardized and group coverage asymptotes are calculated.
+    See coverage types for comparison of PGCA to other coverage measures.
+
+    :param s_track: a standardized track
+    :type s_track: StandardTrack
+    :param asymptote_g: the group coverage asymptote for the group to which the s_track belongs
+        coverage asymptote
+    :type asymptote_g: float
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the PGCA (Percent of Group Coverage Asymptote) of the animal at each tracking point
+    :rtype: np.ndarray
+    """
     track_pgca = s_track.coverage / asymptote_g
     s_track.set_pgca(track_pgca, asymptote_g)
     if verbose:
@@ -253,8 +405,28 @@ def motion_probabilities_given_previous(
     np.ndarray,
     np.ndarray,
     np.ndarray,
-    np.ndarray,
+    np.ndarray
 ]:
+    """This function calculates P++Given+, P+-Given+, P+0Given+, P0+Given0, P00Given0, P++GivenAny, P+-GivenAny,
+    P+0GivenAny, P0+GivenAny, and P00GivenAny (collectively 'motion probabilities given previous'). See motion
+    probability types for more information. It is one step in the track standardization procedure orchestrated
+    by :func:`opynfield.calculate_measures.calculate_measures.tracks_to_measures`
+
+    :param ppp: the raw P++ values from :func:`opynfield.calculate_measures.calculate_measures.motion_probabilities`
+    :type ppp: np.ndarray
+    :param ppm: the raw P+- values from :func:`opynfield.calculate_measures.calculate_measures.motion_probabilities`
+    :type ppm: np.ndarray
+    :param ppz: the raw P+0 values from :func:`opynfield.calculate_measures.calculate_measures.motion_probabilities`
+    :type ppz: np.ndarray
+    :param pzp: the raw P0+ values from :func:`opynfield.calculate_measures.calculate_measures.motion_probabilities`
+    :type pzp: np.ndarray
+    :param pzz: the raw P00 values from :func:`opynfield.calculate_measures.calculate_measures.motion_probabilities`
+    :type pzz: np.ndarray
+    :return: the motion probabilities given previous - 1 where the action occurred, 0 where it
+        could have occurred but didn't, and np.nan elsewhere.
+    :rtype: tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray,
+        np.ndarray, np.ndarray]
+    """
     # take the 'raw' motion probs (zero everywhere but one where mp occurred)
     # convert to given plus, given zero, and given any formats
     # np.nans everywhere, 1 where mp occurred, 0 where mp could have occurred
@@ -314,6 +486,21 @@ def tracks_to_measures(
     default_settings: Defaults,
     coverage_settings: CoverageAsymptote,
 ) -> tuple[list[StandardTrack], defaultdict[str, list[StandardTrack]]]:
+    """This function runs the entire standardization procedure to transform a Track to a StandardTrack. It runs the
+    procedure for a list of all tracks in the analysis.
+
+    :param all_tracks: list of all the tracks read in for analysis
+    :type all_tracks: list[Track]
+    :param user_config: a custom dataclass that contains user inputs for analysis
+    :type user_config: UserInput
+    :param default_settings: a custom dataclass that contains default settings for analysis
+    :type default_settings: Defaults
+    :param coverage_settings: a custom class that contains settings for the calculation of coverage asymptotes
+    :type coverage_settings: CoverageAsymptote
+    :return: tuple of  a list of all standardized tracks and a dictionary of group names to a list of all standardized
+        tracks belonging to that group
+    :rtype: tuple[list[StandardTrack], defaultdict[str, list[StandardTrack]]]
+    """
     tracks_by_group = defaultdict(list)
     all_standard_tracks = list()
     for track in all_tracks:

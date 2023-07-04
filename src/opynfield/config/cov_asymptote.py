@@ -4,6 +4,19 @@ from typing import Callable
 
 
 def exponential(x, a, b, c):
+    """ 
+
+    :param x:
+    :type x:
+    :param a:
+    :type a:
+    :param b:
+    :type b:
+    :param c:
+    :type c:
+    :return:
+    :rtype:
+    """
     # exponential decay
     y = a * np.exp(b * x) + c
     # c is asymptote and positive

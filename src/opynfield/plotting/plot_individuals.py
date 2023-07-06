@@ -15,15 +15,22 @@ from itertools import chain, zip_longest
 def generate_fig_title(
     path: str, i: int, x_measure: str, y_measure: str, model_fit: bool, extension: str
 ):
-    """This function generates a figure title to save the 
+    """This function generates a figure title to save the figure from the component parts
 
-    :param path:
-    :param i:
-    :param x_measure:
-    :param y_measure:
-    :param model_fit:
-    :param extension:
-    :return:
+    :param path: path to the plot folder
+    :type path: str
+    :param i: which individual in the group is being plotted
+    :type i: int
+    :param x_measure: the x-axis of the plot
+    :type x_measure: str
+    :param y_measure: the y-axis of the plot
+    :type y_measure: str
+    :param model_fit: whether the plot includes the model fit
+    :type model_fit: bool
+    :param extension: what file extension / format to save the plot in
+    :type extension: str
+    :return: the path that the plot should be saved in
+    :rtype: str
     """
     path = path + f"individual_{i}_{x_measure}_vs_{y_measure}"
     if model_fit:
@@ -42,6 +49,25 @@ def plot_time_measure(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function plots an individual's data for a time vs y-measure relationship
+
+    :param group: the group name
+    :type group: str
+    :param i: the individual number within its group
+    :type i: int
+    :param measure: the y-measure
+    :type measure: str
+    :param measure_data: the y-measure data
+    :type measure_data: pd.DataFrame
+    :param model_params: the model parameters to use, indexed by group and y-measure
+    :type model_params: pd.DataFrame
+    :param model_info: the model settings to use
+    :type model_info: ModelSpecification
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     # create figure and axes objects for the plot
     fig, ax = plt.subplots()
     # define the x and y to be plotted
@@ -99,11 +125,30 @@ def plot_time_measure(
 
 
 def truncate(n, decimals=0):
+    """This function trims the exact parameter fit value to a set number of decimal places for display on a plot
+
+    :param n: the parameter
+    :type n: float
+    :param decimals: the number of decimal places to trim to
+    :type decimals: int
+    :return: the trimmed parameter value
+    :rtype: float
+    """
     multiplier = 10**decimals
     return int(n * multiplier) / multiplier
 
 
 def generate_individual_equation_str(params, display_parts):
+    """This function generates the equation of the best fit model from the model display parts and the truncated
+    parameter values
+
+    :param params: the parameter fits
+    :type params: list[float]
+    :param display_parts: the display parts from the model information
+    :type display_parts: list[str]
+    :return: the full equation string
+    :rtype: str
+    """
     equation_parts = list(display_parts)
     string_params = [str(truncate(x, 4)) for x in params]
     parts = [
@@ -125,6 +170,29 @@ def plot_cmeasure_measure(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function plots an individual's data for a coverage-measure vs y-measure relationship
+
+    :param x_measure: the coverage measure name
+    :type x_measure: str
+    :param group: the group name
+    :type group: str
+    :param i: the individual number within its group
+    :type i: int
+    :param measure: the y-measure
+    :type measure: str
+    :param measure_data_x: the coverage-measure data
+    :type measure_data_x: pd.DataFrame
+    :param measure_data_y: the y-measure data
+    :type measure_data_y: pd.DataFrame
+    :param model_params: the model parameters to use, indexed by group and y-measure
+    :type model_params: pd.DataFrame
+    :param model_info: the model settings to use
+    :type model_info: ModelSpecification
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     # create figure and axes objects for the plot
     fig, ax = plt.subplots()
     # define the x and y to be plotted
@@ -192,6 +260,23 @@ def plot_all_individuals_by_time(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function coordinates plotting all the individuals in a group for a time vs y-measure relationship
+
+    :param group: the group name
+    :type group: str
+    :param group_measures: the y-measure data use, indexed by y-measure
+    :type group_measures: dict[str, pd.DataFrame]
+    :param group_model_params: the model parameters to use, indexed by y-measure
+    :type group_model_params: dict[str, pd.DataFrame]
+    :param model_info: the model settings to use, indexed by the y-measure
+    :type model_info: dict[str, ModelSpecification]
+    :param defaults: the default settings to use
+    :type defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     for measure in defaults.time_averaged_measures:
         if measure != "r":
             for i in range(group_measures[measure].shape[0]):
@@ -218,6 +303,25 @@ def plot_all_individuals_by_cmeasure(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function coordinates plotting all the individuals in a group for a coverage-measure vs y-measure relationship
+
+    :param x_measure: the coverage measure name
+    :type x_measure: str
+    :param group: the group name
+    :type group: str
+    :param group_measures: the y-measure data use, indexed by y-measure
+    :type group_measures: dict[str, pd.DataFrame]
+    :param group_model_params: the model parameters to use, indexed by y-measure
+    :type group_model_params: dict[str, pd.DataFrame]
+    :param model_info: the model settings to use, indexed by the y-measure
+    :type model_info: dict[str, ModelSpecification]
+    :param defaults: the default settings to use
+    :type defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     for measure in defaults.coverage_averaged_measures:
         for i in range(group_measures[measure].shape[0]):
             plot_cmeasure_measure(
@@ -244,6 +348,21 @@ def plot_all_individuals(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function coordinates the plotting of all the x-measure vs y-measure relationships from all individuals from all groups
+
+    :param measures: the y-measure data indexed by group and y-measure name
+    :type measures: dict[str, dict[str, pd.DataFrame]]
+    :param model_params: the model fit parameters indexed by group, x-measure, and y-measure
+    :type model_params: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param model_info: the model settings to use, indexed by x-measure and y-measure
+    :type model_info: dict[str, dict[str, ModelSpecification]]
+    :param defaults: the default settings to use
+    :type defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     for group in measures:
         # plot all individuals by time
         print(f"Plotting Individuals From Group {group} by time")
@@ -279,6 +398,19 @@ def plot_individual_trace(
     plot_settings: PlotSettings,
     user_input: UserInput,
 ):
+    """This function plots the trace (tracking trajectory) of an individual
+
+    :param track: the track whose trace you are plotting
+    :type track: StandardTrack
+    :param i: the individual number within the tracks group
+    :type i: int
+    :param group: the group name to which the track belongs
+    :type group: str
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_input: the user inputs to use
+    :type user_input: UserInput
+    """
     # create figure and axes objects for the plot
     fig, ax = plt.subplots()
     # define the x and y to be plotted
@@ -329,6 +461,15 @@ def plot_traces(
     plot_settings: PlotSettings,
     user_input: UserInput,
 ):
+    """This function coordinated plotting the traces of all individual tracks in all groups
+
+    :param tracks_by_groups: a dictionary of all the individuals to plot, indexed by the group to which they belong
+    :type tracks_by_groups: defaultdict[str, list[StandardTrack]]
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_input: the user inputs to use
+    :type user_input: UserInput
+    """
     for group in tracks_by_groups:
         for i, track in enumerate(tracks_by_groups[group]):
             plot_individual_trace(track, i, group, plot_settings, user_input)

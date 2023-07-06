@@ -27,6 +27,7 @@ from opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
 
 
 def run():
+    """This function coordinates running a full analysis on test data"""
     # create your user config settings
     user_config = UserInput(
         {"Canton S": ["Buridian Tracker"], "Canton S 2": ["Buridian Tracker"]},

@@ -17,6 +17,25 @@ def generate_view_title(
     group_error: bool,
     extension: str,
 ):
+    """This function generates the title to save a plot as from the component parts
+
+    :param path: the path to the result plot folder
+    :type path: str
+    :param x_measure: the x-measure of the plot
+    :type x_measure: str
+    :param y_measure: the y-measure of the plot
+    :type y_measure: str
+    :param individual_models: whether the models of the individuals that make up the group are plotted
+    :type individual_models: bool
+    :param group_model: whether the model of the group average is plotted
+    :type group_model: bool
+    :param group_error: whether the error of the group average is plotted
+    :type group_error: bool
+    :param extension: the file extension / format to save the plot in
+    :type extension: str
+    :return: the path to save the plot at
+    :rtype: str
+    """
     path = path + f"{x_measure}_vs_{y_measure}"
     parts = list()
     if individual_models:
@@ -43,6 +62,32 @@ def plot_group_individual_comparison_cmeasure(
     plot_settings: PlotSettings,
     user_inputs: UserInput,
 ):
+    """This function plots a group's coverage-measure vs y-measure average and all the component individual
+    coverage-measure vs y-measure relationships
+
+    :param group: the group name
+    :type group: str
+    :param x_measure: the x-measure in the plot
+    :type x_measure: str
+    :param y_measure: the y-measure in the plot
+    :type y_measure: str
+    :param individuals_x: the coverage data from the component individuals
+    :type individuals_x: pd.DataFrame
+    :param individuals_y: the y-measure data from the component individuals
+    :type individuals_y: pd.DataFrame
+    :param individuals_params: the parameters for the individual model fits
+    :type individuals_params: pd.DataFrame
+    :param group_ys_df: the group average (and error) data
+    :type group_ys_df: pd.DataFrame
+    :param group_params: the group average model fit parameters
+    :type group_params: pd.DataFrame
+    :param model_spec: the model settings to use
+    :type model_spec: ModelSpecification
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_inputs: the user inputs to use
+    :type user_inputs: UserInput
+    """
     # create figure and axes objects for the plot
     fig, ax = plt.subplots()
 
@@ -139,6 +184,30 @@ def plot_group_individual_comparison_time(
     plot_settings: PlotSettings,
     user_inputs: UserInput,
 ):
+    """This function plots a group's coverage-measure vs y-measure average and all the component individual
+    coverage-measure vs y-measure relationships
+
+    :param group: the group name
+    :type group: str
+    :param x_measure: the x-measure in the plot
+    :type x_measure: str
+    :param y_measure: the y-measure in the plot
+    :type y_measure: str
+    :param individuals_y: the y-measure data from the component individuals
+    :type individuals_y: pd.DataFrame
+    :param individuals_params: the parameters for the individual model fits
+    :type individuals_params: pd.DataFrame
+    :param group_y: the group average (and error) data
+    :type group_y: pd.DataFrame
+    :param group_params: the group average model fit parameters
+    :type group_params: pd.DataFrame
+    :param model_spec: the model settings to use
+    :type model_spec: ModelSpecification
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_inputs: the user inputs to use
+    :type user_inputs: UserInput
+    """
     # create figure and axes objects for the plot
     fig, ax = plt.subplots()
 
@@ -231,6 +300,26 @@ def plot_components_of_solo_groups(
     plot_settings: PlotSettings,
     user_inputs: UserInput,
 ):
+    """This function coordinates the plotting of all the groups x-measure vs y-measure averages with the component
+    individuals x-measure vs y-measure relationships
+
+    :param individuals: the component individual y-measure data, indexed by group and y-measure
+    :type individuals: dict[str, dict[str, pd.DataFrame]]
+    :param individual_fits: the component individual model fit parameters, indexed by group, x-measure, and y-measure
+    :type individual_fits: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param groups: the group average data, indexed by group (and y-measure for time)
+    :type groups:  dict[str, dict]
+    :param group_fits: the group average model fits, indexed by group, x-measure, and y-measure
+    :type group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param model_specs: the model settings to use, indexed by x-measure and y-measure
+    :type model_specs: dict[str, dict[str, ModelSpecification]]
+    :param defaults: the default settings to use
+    :type defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_inputs: the user inputs to use
+    :type user_inputs: UserInput
+    """
     # groups is x_measure -> group -> y_measure -> averages and sems for time
     # groups is x_measure -> group -> averages and sems by name for cmeasure
     # individuals is group -> measure -> df with rows are individuals and columns are 'time' points

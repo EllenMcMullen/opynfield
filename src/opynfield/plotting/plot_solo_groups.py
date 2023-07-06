@@ -10,11 +10,30 @@ import os
 
 
 def truncate(n, decimals=0):
+    """This function trims the exact parameter fit value to a set number of decimal places for display on a plot
+
+    :param n: the parameter
+    :type n: float
+    :param decimals: the number of decimal places to trim to
+    :type decimals: int
+    :return: the trimmed parameter value
+    :rtype: float
+    """
     multiplier = 10**decimals
     return int(n * multiplier) / multiplier
 
 
 def generate_group_equation_str(fit_params, display_parts):
+    """This function generates the equation of the best fit model from the model display parts and the truncated
+    parameter values
+
+    :param fit_params: the parameter fits
+    :type fit_params: list[float]
+    :param display_parts: the display parts from the model information
+    :type display_parts: list[str]
+    :return: the full equation string
+    :rtype: str
+    """
     equation_parts = list(display_parts)
     string_params = [str(truncate(x, 4)) for x in fit_params]
     parts = [
@@ -32,6 +51,22 @@ def generate_fig_title(
     error: bool,
     extension: str,
 ):
+    """This function generates a figure title to save a single group plot at, based on the component parts
+
+    :param path: the path to the results plot folder
+    :type path: str
+    :param x_measure: the x-measure of the plot
+    :type x_measure: str
+    :param y_measure: the y-measure of the plot
+    :type y_measure: str
+    :param model_fit: whether the plot includes the model fit
+    :type model_fit: bool
+    :param error: whether the plot includes the group average error bars
+    :type error: bool
+    :param extension: the file extension / format to save the plot in
+    :return: the path to save the plot at
+    :rtype: str
+    """
     path = path + f"{x_measure}_vs_{y_measure}"
     if model_fit:
         path = path + "_with_model"
@@ -52,6 +87,23 @@ def plot_solo_group_measure_by_time(
     group: str,
     user_config: UserInput,
 ):
+    """This function plots a single group's average time vs y-measure relationship
+
+    :param measure_by_time: the y-measure data (and error) for the group
+    :type measure_by_time: pd.DataFrame
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param model_specs: the model settings to use
+    :type model_specs: ModelSpecification
+    :param group_fits: the y-fit data from the model fits
+    :type group_fits: pd.DataFrame
+    :param measure: the y-measure to plot
+    :type measure: str
+    :param group: the whose data you are plotting
+    :type group: str
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     # create figure and axes objects for the plot
     fig, ax = plt.subplots()
     # define the x and y to be plotted
@@ -130,6 +182,23 @@ def plot_solo_group_by_time(
     group: str,
     user_config: UserInput,
 ):
+    """This function coordinates the plotting of all time vs y-measure relationships for a single group
+
+    :param by_time: the y-measure data (and error) of the group, indexed by y-measure
+    :type by_time: dict[str, pd.DataFrame]
+    :param defaults: the default settings to use
+    :type defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param model_params: the model settings to use, indexed by y-measure
+    :type model_params: dict[str, ModelSpecification]
+    :param group_fits: the y-fit data from the model fit parameters, indexed by y-measure
+    :type group_fits: dict[str, pd.DataFrame]
+    :param group: the group to plot
+    :param group: str
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     for measure in defaults.time_averaged_measures:
         if measure != "r":
             plot_solo_group_measure_by_time(
@@ -154,6 +223,26 @@ def plot_solo_group_by_cmeasure(
     group: str,
     user_config: UserInput,
 ):
+    """This function plots a single group's average coverage-measure vs y-measure relationship for each coverage
+    averaged y-measure
+
+    :param by_coverage: the x-measure data (and error) and the y-measure data (and error) for the group
+    :type by_coverage: pd.DataFrame
+    :param defaults: the default settings to use
+    :type defaults: Defaults
+    :param cmeasure: the coverage measure being used as x-axis
+    :type cmeasure: str
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param model_params: the model settings to use, indexed by y-measure
+    :type model_params: dict[str, ModelSpecification]
+    :param group_fits: the y-fit data from the model fits, indexed by y-measure
+    :type group_fits: dict[str, pd.DataFrame]
+    :param group: the whose data you are plotting
+    :type group: str
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     for measure in defaults.coverage_averaged_measures:
         # create figure and axes objects for the plot
         fig, ax = plt.subplots()
@@ -238,6 +327,21 @@ def plot_all_solo_groups(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function coordinates the plotting of all the x-measure vs y-measure relationships for each group
+
+    :param group_averages: the group averages to plot, indexed by x-measure, then group (then y-measure)
+    :type group_averages: dict[str, dict]
+    :param group_fits: the y-fit values (based on the model fit parameters) indexed by group, time, and y-measure
+    :type group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param model_params: the model settings to use, indexed by x-measure and y-measure
+    :type model_params: dict[str, dict[str, ModelSpecification]]
+    :param test_defaults: the default settings to use
+    :type test_defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     for group in group_averages["time"]:
         print(f"Plotting Group {group} by time")
         plot_solo_group_by_time(

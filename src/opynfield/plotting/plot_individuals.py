@@ -15,6 +15,16 @@ from itertools import chain, zip_longest
 def generate_fig_title(
     path: str, i: int, x_measure: str, y_measure: str, model_fit: bool, extension: str
 ):
+    """This function generates a figure title to save the 
+
+    :param path:
+    :param i:
+    :param x_measure:
+    :param y_measure:
+    :param model_fit:
+    :param extension:
+    :return:
+    """
     path = path + f"individual_{i}_{x_measure}_vs_{y_measure}"
     if model_fit:
         path = path + "_with_model"

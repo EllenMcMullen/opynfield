@@ -13,6 +13,21 @@ def group_fit_measure_by_time(
     lowers: pd.DataFrame,
     initials: pd.DataFrame,
 ) -> pd.DataFrame:
+    """This function fits the model for a single time vs y-measure relationship
+
+    :param group_individual_measure_df: dataframe that includes the needed data
+    :type group_individual_measure_df: pd.DataFrame
+    :param specs: the model settings for this relationship
+    :type specs: ModelSpecification
+    :param uppers: the upper bounds for this relationship
+    :type uppers: pd.DataFrame
+    :param lowers: the lower bounds for this relationship
+    :type lowers: pd.DataFrame
+    :param initials: the p0 for this relationship
+    :type initials: pd.DataFrame
+    :return: the parameter fits for this relationship
+    :rtype: pd.DataFrame
+    """
     # rows are individuals and columns are time points
     # measure to be modeled by time
     # need to combine the coordinates from all the individuals to get 'group' coordinates
@@ -51,6 +66,23 @@ def group_fit_measure_by_cov_measure(
     lowers: pd.DataFrame,
     initials: pd.DataFrame,
 ) -> pd.DataFrame:
+    """This function fits the model for a single coverage-measure vs y-measure relationship
+
+    :param group_individual_measure_df: dataframe that includes the needed y data
+    :type group_individual_measure_df: pd.DataFrame
+    :param group_individual_cov_df: the dataframe that includes the needed coverage data
+    :type group_individual_cov_df: pd.DataFrame
+    :param specs: the model settings for this relationship
+    :type specs: ModelSpecification
+    :param uppers: the upper bounds for this relationship
+    :type uppers: pd.DataFrame
+    :param lowers: the lower bounds for this relationship
+    :type lowers: pd.DataFrame
+    :param initials: the p0 for this relationship
+    :type initials: pd.DataFrame
+    :return: the parameter fits for this relationship
+    :rtype: pd.DataFrame
+    """
     # rows are individuals and columns are time points
     # measure to be modeled by time
     # need to combine the coordinates from all the individuals to get 'group' coordinates
@@ -89,6 +121,25 @@ def group_fit_by_time(
     initial: dict[str, dict[str, pd.DataFrame]],
     group: str,
 ) -> dict[str, pd.DataFrame]:
+    """This function coordinates fitting all the models for time vs y-measures within a group
+
+    :param individual_measures_dfs: dictionary that contains y-measure data indexed by groups and measure name
+    :type individual_measures_dfs: dict[str, dict[str, pd.DataFrame]]
+    :param time_averaged_measures: list of all y measures to model
+    :type time_averaged_measures: list[str]
+    :param model_params: dictionary that contains model settings indexed by groups and measure name
+    :type model_params: dict[str, dict[str, ModelSpecification]]
+    :param upper: dictionary that contains upper parameter bounds indexed by groups and measure name
+    :type upper: dict[str, dict[str, pd.DataFrame]]
+    :param lower: dictionary that contains lower parameter bounds indexed by groups and measure name
+    :type lower: dict[str, dict[str, pd.DataFrame]]
+    :param initial: dictionary that contains p0 indexed by groups and measure name
+    :type initial: dict[str, dict[str, pd.DataFrame]]
+    :param group: what group to model
+    :type group: str
+    :return: a dictionary of the parameter fits by measure name for this group
+    :rtype: dict[str, pd.DataFrame]
+    """
     print(f"Fitting Models To Entire Group {group} by time")
     time_measures = {}
     for measure in time_averaged_measures:
@@ -117,6 +168,27 @@ def group_fit_by_cov_measure(
     initial: dict[str, dict[str, pd.DataFrame]],
     group: str,
 ) -> dict[str, pd.DataFrame]:
+    """This function coordinates fitting all the models for time vs y-measures within a group
+
+    :param individual_measures_dfs: dictionary that contains y-measure data indexed by groups and measure name
+    :type individual_measures_dfs: dict[str, dict[str, pd.DataFrame]]
+    :param coverage_averaged_measures: list of all y measures to model
+    :type coverage_averaged_measures: list[str]
+    :param model_params: dictionary that contains model settings indexed by groups and measure name
+    :type model_params: dict[str, dict[str, ModelSpecification]]
+    :param mode: which coverage measure to use as the x-measure
+    :type mode: str
+    :param upper: dictionary that contains upper parameter bounds indexed by groups and measure name
+    :type upper: dict[str, dict[str, pd.DataFrame]]
+    :param lower: dictionary that contains lower parameter bounds indexed by groups and measure name
+    :type lower: dict[str, dict[str, pd.DataFrame]]
+    :param initial: dictionary that contains p0 indexed by groups and measure name
+    :type initial: dict[str, dict[str, pd.DataFrame]]
+    :param group: what group to model
+    :type group: str
+    :return: a dictionary of the parameter fits by measure name for this group
+    :rtype: dict[str, pd.DataFrame]
+    """
     print(f"Fitting Models To Entire Group {group} by {mode}")
     cov_measures = {}
     for measure in coverage_averaged_measures:
@@ -143,6 +215,23 @@ def group_fit_all(
     lower: dict[str, dict[str, dict[str, pd.DataFrame]]],
     initial: dict[str, dict[str, dict[str, pd.DataFrame]]],
 ) -> dict[str, dict[str, dict[str, pd.DataFrame]]]:
+    """This function coordinates fitting all the models for time vs y-measures within a group
+
+    :param individual_measures_dfs: dictionary that contains y-measure data indexed by groups and measure name
+    :type individual_measures_dfs: dict[str, dict[str, pd.DataFrame]]
+    :param defaults: what default settings to use
+    :type defaults: Defaults
+    :param model_params: dictionary that contains model settings indexed by groups and measure name
+    :type model_params: dict[str, dict[str, ModelSpecification]]
+    :param upper: dictionary that contains upper parameter bounds indexed by groups and measure name
+    :type upper: dict[str, dict[str, pd.DataFrame]]
+    :param lower: dictionary that contains lower parameter bounds indexed by groups and measure name
+    :type lower: dict[str, dict[str, pd.DataFrame]]
+    :param initial: dictionary that contains p0 indexed by groups and measure name
+    :type initial: dict[str, dict[str, pd.DataFrame]]
+    :return: a dictionary of the parameter fits by measure name for this group
+    :rtype: dict[str, pd.DataFrame]
+    """
     fits = {}
     for group in individual_measures_dfs:
         fits_group = {

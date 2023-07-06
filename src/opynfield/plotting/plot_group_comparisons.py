@@ -15,7 +15,24 @@ def generate_fig_title(
     model_fit: bool,
     error: bool,
     extension: str,
-):
+) -> str:
+    """This function generates a figure title to save the figure in from the component parts
+
+    :param path: path to the plot folder
+    :type path: str
+    :param x_measure: the x-axis of the plot
+    :type x_measure: str
+    :param y_measure: the y-axis of the plot
+    :type y_measure: str
+    :param model_fit: whether the plot includes a model fit
+    :type model_fit: bool
+    :param error: whether the plot includes error bars
+    :type error: bool
+    :param extension: what file extension / format to save the plot in
+    :type extension: str
+    :return: the path to save the plot in
+    :rtype: str
+    """
     path = path + f"{x_measure}_vs_{y_measure}"
     if model_fit:
         path = path + "_with_model"
@@ -36,6 +53,23 @@ def plot_time_comparison(
     plot_settings: PlotSettings,
     user_inputs: UserInput,
 ):
+    """This function plots all the group averages against each other for a time vs y-measure relationship
+
+    :param x_measure: the x-measure (time)
+    :type x_measure: str
+    :param y_measure: the y-measure
+    :type y_measure: str
+    :param time_averages: the averages to use to plot, indexed by group and y-measure
+    :type time_averages: dict[str, dict[str, pd.DataFrame]]
+    :param fits: the model parameters to use, indexed by group and y-measure
+    :type fits: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param specs: the model settings to use
+    :type specs: ModelSpecification
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_inputs: the user inputs to use
+    :type user_inputs: UserInput
+    """
     # time_averages -> group -> y_measure -> df with averages and sems
     # fits -> group -> x_measure -> y_measure -> df with parameters
 
@@ -133,6 +167,23 @@ def plot_cmeasure_comparison(
     plot_settings: PlotSettings,
     user_input: UserInput,
 ):
+    """This function plots all the group averages against each other for a coverage-measure vs y-measure relationship
+
+    :param x_measure: the coverage-measure
+    :type x_measure: str
+    :param y_measure: the y-measure
+    :type y_measure: str
+    :param cmeasure_averages: the averages to use to plot, indexed by group and y-measure
+    :type cmeasure_averages: dict[str, dict[str, pd.DataFrame]]
+    :param group_fits: the model parameters to use, indexed by group and y-measure
+    :type group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param specs: the model settings to use
+    :type specs: ModelSpecification
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_input: the user inputs to use
+    :type user_input: UserInput
+    """
     # cmeasure_averages -> group -> df with averages and sems by name
     # fits -> group -> x_measure -> y_measure -> df with parameters
 
@@ -228,6 +279,21 @@ def plot_all_group_comparisons(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function coordinates the plotting of all the x-measure (both time and coverage-measure) vs y-measure relationships
+
+    :param group_averages: the group average data to use, indexed by group and then x measure
+    :type group_averages: dict[str, dict]
+    :param group_fits: the model parameter fits to use, indexed by group, x-measure, and y-measure
+    :type group_fits: dict[str, dict[str, dict[str, pd.DataFrame]]]
+    :param model_params: the model settings to use, indexed by x measure and y measure
+    :type model_params: dict[str, dict[str, ModelSpecification]]
+    :param test_defaults: the default settings to use
+    :type test_defaults: Defaults
+    :param plot_settings: the plot settings to use
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs to use
+    :type user_config: UserInput
+    """
     # do time plots
     print("Plotting Group Comparisons by time")
     for y_measure in test_defaults.time_averaged_measures:

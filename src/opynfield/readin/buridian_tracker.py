@@ -14,6 +14,28 @@ def read_buridian(
     time_bin_size: int,
     all_tracks: list[Track],
 ) -> list[Track]:
+    """This function reads in all the tracks from the Buridian tracker format. The function extracts the x, y, and t
+    information and smooths, centers, and converts the units of the track.
+
+    :param groups_with_file_type: which groups have tracks recorded in this type
+    :type groups_with_file_type: list[str]
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :param arena_radius_cm: the radius of the arena in which the track was recorded, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type arena_radius_cm: float
+    :param running_window_length: a smoothing function parameter set to match ethovision, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type running_window_length: int
+    :param window_step_size: a smoothing function parameter set to match ethovision, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type window_step_size: int
+    :param sample_freq: the frame rate that the track was recorded with, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type sample_freq: int
+    :param time_bin_size: how many seconds should be aggregated together, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type time_bin_size: int
+    :param all_tracks: a list with all the Track objects from previously read-in datatypes
+    :type all_tracks: list[Track]
+    :return: a Track object with a consistent format for x y and t tracking points
+    :rtype: list[Track]
+    """
     for buridian_group in groups_with_file_type:
         if verbose:
             print(f"Running Buridian Tracker Files For Group: {buridian_group}")
@@ -57,6 +79,15 @@ def read_buridian(
 
 
 def get_meta_info(file: str, arena_radius_cm: float) -> pd.Series:
+    """This function extracts center point information from the arena in which the animal was recorded
+
+    :param file: the path to the metadata file for this track
+    :type file: str
+    :param arena_radius_cm: the radius of the arena in which the track was recorded, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type arena_radius_cm: float
+    :return: the x and y coordinates of the center point in cm and the radius of the arena in pixels
+    :rtype: pd.Series
+    """
     doc = md.parse(file)  # creates the document object from the metadata file
 
     # pulls the arena radius from the metadata

@@ -6,6 +6,18 @@ import warnings
 
 
 def running_line(y_array: np.ndarray, n: int, dn: int) -> np.ndarray:
+    """This function smooths the tracking data in the same way that ethovision automatically smooths tracking data in
+    order to minimize the impact of body wobble
+
+    :param y_array: the input coordinates
+    :type y_array: np.ndarray
+    :param n: the running window length
+    :type n: int
+    :param dn: the window step size
+    :type dn: int
+    :return: the smoothed coordinates
+    :rtype: np.ndarray
+    """
     # based on the MATLAB runline function
     # y is the input coordinate
     # n is the length of the running window in samples
@@ -57,6 +69,17 @@ def running_line(y_array: np.ndarray, n: int, dn: int) -> np.ndarray:
 
 
 def subsample(coord, sample_freq: int, sample_interval: int) -> np.ndarray:
+    """This function sub-samples the recorded coordinates to the desired data density
+
+    :param coord: the full-density coordinates
+    :type coord: np.ndarray
+    :param sample_freq: the sampling frequency with which the data was recorded
+    :type sample_freq: int
+    :param sample_interval: the desired density
+    :type sample_interval: int
+    :return: the sub-sampled coordinates
+    :rtype: np.ndarray
+    """
     # sample freq is in Hz (samples per second)
     # sample_interval is time (number of seconds you want between points)
     num_pts_per_int = int(sample_interval / (1 / sample_freq))
@@ -67,6 +90,15 @@ def subsample(coord, sample_freq: int, sample_interval: int) -> np.ndarray:
 
 
 def fill_missing_data(coord: np.ndarray, time: np.ndarray) -> np.ndarray:
+    """This function identified missing data points and interpolated the animals position at that point
+
+    :param coord: the coordinates
+    :type coord: np.ndarray
+    :param time: the time coordinate
+    :type time: np.ndarray
+    :return: the interpolated coordinates
+    :rtype: np.ndarray
+    """
     # takes in either the x or y coordinate and time
     # interpolates missing values where the fly was not tracked
     time_orig = time
@@ -89,6 +121,16 @@ def fill_missing_data(coord: np.ndarray, time: np.ndarray) -> np.ndarray:
 def calc_center(
     combined_x: np.ndarray, combined_y: np.ndarray, verbose: bool, trim: int = 0
 ) -> tuple[float, float]:
+    """This function estimates the center point of an arena from tracking coordinates
+
+    :param combined_x: the x coordinates to estimate from
+    :param combined_y: the y coordinates the estimate from
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :param trim: how many points are recorded before the animal enters the arena (maximum of all animals in this track type)
+    :type trim: int, defaults to 0
+    :return: the center point of the arena
+    :rtype: tuple[float, float]
+    """
     # this is a rough calculation of the center point
     # would be better to calculate a minimum enclosing circle and compare rough to precise calc
     x_cen_rough = np.nanmin(combined_x[trim:]) + (

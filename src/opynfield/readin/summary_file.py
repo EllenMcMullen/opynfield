@@ -18,6 +18,22 @@ def summarize(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function summarizes information about the kinds of tracks read in after the read-in process is complete. It
+    generates a text file of information about the tracks and parameters used on them
+
+    :param tracks_by_group: the tracks to summarize
+    :type tracks_by_group: defaultdict[str, list[StandardTrack]]
+    :param test_cov_asymptote: the coverage asymptote information that was used
+    :type test_cov_asymptote: CoverageAsymptote
+    :param user_defaults: the default settings that were used
+    :type user_defaults: Defaults
+    :param model_settings: the model settings that were used
+    :type model_settings: dict[str, dict[str, ModelSpecification]]
+    :param plot_settings: the plot settings that were used
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs that were used
+    :type user_config: UserInput
+    """
     print("Tracks Run")
     print("__________")
     print("\n")
@@ -69,6 +85,21 @@ def summary_file(
     plot_settings: PlotSettings,
     user_config: UserInput,
 ):
+    """This function calls the summary information function and creates the text file output
+
+    :param tracks_by_group: the tracks to summarize
+    :type tracks_by_group: defaultdict[str, list[StandardTrack]]
+    :param test_cov_asymptote: the coverage asymptote information that was used
+    :type test_cov_asymptote: CoverageAsymptote
+    :param user_defaults: the default settings that were used
+    :type user_defaults: Defaults
+    :param model_settings: the model settings that were used
+    :type model_settings: dict[str, dict[str, ModelSpecification]]
+    :param plot_settings: the plot settings that were used
+    :type plot_settings: PlotSettings
+    :param user_config: the user inputs that were used
+    :type user_config: UserInput
+    """
     print("Formatting Summary File")
     # set up the output file
     summary_file_path = user_config.result_path + "/summary.txt"

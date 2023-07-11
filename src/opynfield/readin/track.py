@@ -8,6 +8,53 @@ from opynfield.readin import multi_tracker
 
 @dataclass
 class Track:
+    """This dataclass aggregates information from a single track once the coordinates are standardized, but before other
+    measures are calculated
+
+    Attributes:
+        group (str): the group to which the track belongs
+        x (np.ndarray): the x coordinates of the track
+        y (np.ndarray): the y coordinates of the track
+        t (np.ndarray): the time coordinates of the track
+        track_type (str): the recording type of the track
+        options (list): additional information depending on the track type
+        standardized (bool): has the track finished its standardization process?
+
+    Methods:
+        buri_convert_units
+        buri_convert_to_center
+        buri_running_line
+        buri_subsample
+        buri_fill_missing
+        etho_v1_numeric
+        etho_v1_subsample
+        etho_v1_fill_missing
+        etho_v1_convert_to_center
+        etho_v2_numeric
+        etho_v2_subsample
+        etho_v2_fill_missing
+        etho_v2_convert_to_center
+        etho_txt_numeric
+        etho_txt_subsample
+        etho_txt_fill_missing
+        etho_txt_convert_to_center
+        etho_ml_numeric
+        etho_ml_subsample
+        etho_ml_fill_missing
+        etho_ml_convert_to_center
+        anymaze_center_numeric
+        anymaze_center_running_line
+        anymaze_center_subsample
+        anymaze_center_fill_missing
+        anymaze_center_convert_to_center
+        anymaze_center_convert_units
+        anymaze_head_numeric
+        anymaze_head_running_line
+        anymaze_head_subsample
+        anymaze_head_fill_missing
+        anymaze_head_convert_to_center
+        anymaze_head_convert_units
+    """
     # dataclass for standardized track after data is read in and wrangled
     group: str  # can change to enum
     x: np.ndarray = field(repr=False)  # x coordinate
@@ -23,6 +70,7 @@ class Track:
     def buri_convert_units(
         self, arena_radius_cm: float, arena_radius_px: int, verbose: bool
     ):
+        """Converts the units of the track"""
         assert self.track_type == "Buridian Tracker"
         self.x = self.x * (
             arena_radius_cm / arena_radius_px
@@ -37,6 +85,7 @@ class Track:
     def buri_convert_to_center(
         self, center_point_x: float, center_point_y: float, verbose: bool
     ):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "Buridian Tracker"
         # subtract the center point so that the track coordinate system will be centered at (0,0)
         self.x = self.x - center_point_x
@@ -47,6 +96,7 @@ class Track:
     def buri_running_line(
         self, running_window_length: int, window_step_size: int, verbose: bool
     ):
+        """Smooths the coordinates using the running line formula"""
         assert self.track_type == "Buridian Tracker"
         # smooth the coordinates using the same function used in ethovision tracks
         self.x = multi_tracker.running_line(
@@ -59,6 +109,7 @@ class Track:
             print("Buri Track Smoothed")
 
     def buri_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "Buridian Tracker"
         # subsample the coordinates to the desired sampling frequency
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
@@ -68,6 +119,7 @@ class Track:
             print("Buri Track Subsampled")
 
     def buri_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "Buridian Tracker"
         # fill missing data using linear extrapolation
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
@@ -76,6 +128,7 @@ class Track:
             print("Buri Track Missing Values Filled")
 
     def etho_v1_numeric(self, verbose: bool):
+        """Changes datatype to numeric"""
         assert self.track_type == "Ethovision Excel Version 1"
         # in v1 the values are stored as floats but there are string '-' for missing values that we set to nan
         for i in range(len(self.x)):
@@ -90,6 +143,7 @@ class Track:
             print("Etho V1 Track Converted To Numeric")
 
     def etho_v1_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "Ethovision Excel Version 1"
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
         self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
@@ -98,6 +152,7 @@ class Track:
             print("Etho V1 Track Subsampled")
 
     def etho_v1_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "Ethovision Excel Version 1"
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
         self.y = multi_tracker.fill_missing_data(self.y, self.t)
@@ -107,6 +162,7 @@ class Track:
     def etho_v1_convert_to_center(
         self, center_points_by_area: dict[str, tuple[float, float]], verbose: bool
     ):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "Ethovision Excel Version 1"
         self.x = (
             self.x - center_points_by_area[self.options[0]][0]
@@ -118,6 +174,7 @@ class Track:
             print("Etho V1 Track Centered")
 
     def etho_v2_numeric(self, verbose):
+        """Changes datatype to numeric"""
         # in v1 the values are stored as number strings, so we try to convert to float
         # but there are string '-' for missing values that won't convert to float that we set to nan
         for i in range(len(self.x)):
@@ -136,6 +193,7 @@ class Track:
             print("Etho V2 Track Converted To Numeric")
 
     def etho_v2_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "Ethovision Excel Version 2"
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
         self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
@@ -144,6 +202,7 @@ class Track:
             print("Etho V2 Track Subsampled")
 
     def etho_v2_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "Ethovision Excel Version 2"
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
         self.y = multi_tracker.fill_missing_data(self.y, self.t)
@@ -153,6 +212,7 @@ class Track:
     def etho_v2_convert_to_center(
         self, center_points_by_area: dict[str, tuple[float, float]], verbose: bool
     ):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "Ethovision Excel Version 2"
         self.x = (
             self.x - center_points_by_area[self.options][0]
@@ -164,6 +224,7 @@ class Track:
             print("Etho V2 Track Centered")
 
     def etho_txt_numeric(self, verbose: bool):
+        """Changes datatype to numeric"""
         self.x = pd.to_numeric(self.x, errors="coerce")
         self.y = pd.to_numeric(self.y, errors="coerce")
         self.t = pd.to_numeric(self.t, errors="coerce")
@@ -171,6 +232,7 @@ class Track:
             print("Etho Text Track Converted To Numeric")
 
     def etho_txt_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "Ethovision Text"
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
         self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
@@ -179,6 +241,7 @@ class Track:
             print("Etho Text Track Subsampled")
 
     def etho_txt_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "Ethovision Text"
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
         self.y = multi_tracker.fill_missing_data(self.y, self.t)
@@ -188,6 +251,7 @@ class Track:
     def etho_txt_convert_to_center(
         self, center_points_by_area: dict[str, tuple[float, float]], verbose: bool
     ):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "Ethovision Text"
         self.x = (
             self.x - center_points_by_area[self.options][0]
@@ -199,6 +263,7 @@ class Track:
             print("Etho Text Track Centered")
 
     def etho_ml_numeric(self, verbose: bool):
+        """Changes datatype to numeric"""
         assert self.track_type == "Ethovision Through MATLAB"
         for i in range(len(self.x)):
             if type(self.x[i]) != np.float64:
@@ -212,6 +277,7 @@ class Track:
             print("Etho ML Track Converted To Numeric")
 
     def etho_ml_subsample(self, sample_freq: int, time_bin_size: int, verbose: bool):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "Ethovision Through MATLAB"
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
         self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
@@ -220,6 +286,7 @@ class Track:
             print("Etho ML Track Subsampled")
 
     def etho_ml_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "Ethovision Through MATLAB"
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
         self.y = multi_tracker.fill_missing_data(self.y, self.t)
@@ -229,6 +296,7 @@ class Track:
     def etho_ml_convert_to_center(
         self, track_center: tuple[float, float], verbose: bool
     ):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "Ethovision Through MATLAB"
         self.x = self.x - track_center[0]  # x coordinate of the track's center point
         self.y = self.y - track_center[1]  # x coordinate of the track's center point
@@ -236,6 +304,7 @@ class Track:
             print("Etho ML Track Centered")
 
     def anymaze_center_numeric(self, verbose: bool):
+        """Changes datatype to numeric"""
         assert self.track_type == "AnyMaze Center"
         self.x = pd.to_numeric(self.x, errors="coerce")
         self.y = pd.to_numeric(self.y, errors="coerce")
@@ -245,6 +314,7 @@ class Track:
     def anymaze_center_running_line(
         self, running_window_length: int, window_step_size: int, verbose: bool
     ):
+        """Smooths the coordinates using the running line formula"""
         assert self.track_type == "AnyMaze Center"
         # smooth the coordinates using the same function used in ethovision tracks
         self.x = multi_tracker.running_line(
@@ -259,6 +329,7 @@ class Track:
     def anymaze_center_subsample(
         self, sample_freq: int, time_bin_size: int, verbose: bool
     ):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "AnyMaze Center"
         # subsample the coordinates to the desired sampling frequency
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
@@ -268,6 +339,7 @@ class Track:
             print("AnyMaze Center Point Track Subsampled")
 
     def anymaze_center_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "AnyMaze Center"
         # fill missing data using linear extrapolation
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
@@ -276,6 +348,7 @@ class Track:
             print("AnyMaze Center Point Track Missing Values Filled")
 
     def anymaze_center_convert_to_center(self, track_center, verbose):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "AnyMaze Center"
         # these are all in pixels
         self.x = self.x - track_center[0]
@@ -284,6 +357,7 @@ class Track:
             print("AnyMaze Center Point Units Centered")
 
     def anymaze_center_convert_units(self, arena_radius_cm, trim):
+        """Converts the units of the track"""
         assert self.track_type == "AnyMaze Center"
         # find the radius in pixels
         arena_radius_px_x = (np.nanmax(self.x[trim:]) - np.nanmin(self.x[trim:])) / 2
@@ -294,15 +368,17 @@ class Track:
         self.y = self.y * (arena_radius_cm / arena_radius_px)
 
     def anymaze_head_numeric(self, verbose: bool):
+        """Changes datatype to numeric"""
         assert self.track_type == "AnyMaze Head"
         self.x = pd.to_numeric(self.x, errors="coerce")
         self.y = pd.to_numeric(self.y, errors="coerce")
         if verbose:
-            print("Anymaze Center Point Track Converted To Numeric")
+            print("Anymaze Head Point Track Converted To Numeric")
 
     def anymaze_head_running_line(
         self, running_window_length: int, window_step_size: int, verbose: bool
     ):
+        """Smooths the coordinates using the running line formula"""
         assert self.track_type == "AnyMaze Head"
         # smooth the coordinates using the same function used in ethovision tracks
         self.x = multi_tracker.running_line(
@@ -312,36 +388,40 @@ class Track:
             self.y, running_window_length, window_step_size
         )
         if verbose:
-            print("AnyMaze Center Point Track Smoothed")
+            print("AnyMaze Head Point Track Smoothed")
 
     def anymaze_head_subsample(
         self, sample_freq: int, time_bin_size: int, verbose: bool
     ):
+        """Sub-samples the coordinates to the desired density"""
         assert self.track_type == "AnyMaze Head"
         # subsample the coordinates to the desired sampling frequency
         self.x = multi_tracker.subsample(self.x, sample_freq, time_bin_size)
         self.y = multi_tracker.subsample(self.y, sample_freq, time_bin_size)
         self.t = multi_tracker.subsample(self.t, sample_freq, time_bin_size)
         if verbose:
-            print("AnyMaze Center Point Track Subsampled")
+            print("AnyMaze Head Point Track Subsampled")
 
     def anymaze_head_fill_missing(self, verbose: bool):
+        """Fills in the missing coordinates"""
         assert self.track_type == "AnyMaze Head"
         # fill missing data using linear extrapolation
         self.x = multi_tracker.fill_missing_data(self.x, self.t)
         self.y = multi_tracker.fill_missing_data(self.y, self.t)
         if verbose:
-            print("AnyMaze Center Point Track Missing Values Filled")
+            print("AnyMaze Head Point Track Missing Values Filled")
 
     def anymaze_head_convert_to_center(self, track_center, verbose):
+        """Centers the coordinates based on the arena center point"""
         assert self.track_type == "AnyMaze Head"
         # these are all in pixels
         self.x = self.x - track_center[0]
         self.y = self.y - track_center[1]
         if verbose:
-            print("AnyMaze Center Point Units Centered")
+            print("AnyMaze Head Point Units Centered")
 
     def anymaze_head_convert_units(self, arena_radius_cm, trim):
+        """Converts the units of the track"""
         assert self.track_type == "AnyMaze Head"
         # find the radius in pixels
         arena_radius_px_x = (np.nanmax(self.x[trim:]) - np.nanmin(self.x[trim:])) / 2

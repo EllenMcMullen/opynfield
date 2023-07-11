@@ -14,6 +14,22 @@ def read_etho_v1(
     time_bin_size: int,
     all_tracks: list[Track],
 ) -> list[Track]:
+    """This function reads in all the tracks from the Ethovision Version 1 tracker format. The function extracts the x,
+    y, and t information and smooths, centers, and converts the units of the track.
+
+    :param groups_with_file_type: which groups have tracks recorded in this type
+    :type groups_with_file_type: list[str]
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :param sample_freq: the frame rate that the track was recorded with, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type sample_freq: int
+    :param time_bin_size: how many seconds should be aggregated together, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type time_bin_size: int
+    :param all_tracks: a list with all the Track objects from previously read-in datatypes
+    :type all_tracks: list[Track]
+    :return: a Track object with a consistent format for x y and t tracking points
+    :rtype: list[Track]
+    """
     for etho_group in groups_with_file_type:
         if verbose:
             print(f"Running Ethovision V1 Tracker Files For Group: {etho_group}")
@@ -82,6 +98,22 @@ def read_etho_v2(
     time_bin_size: int,
     all_tracks: list[Track],
 ) -> list[Track]:
+    """This function reads in all the tracks from the Ethovision Version 2 tracker format. The function extracts the x,
+    y, and t information and smooths, centers, and converts the units of the track.
+
+    :param groups_with_file_type: which groups have tracks recorded in this type
+    :type groups_with_file_type: list[str]
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :param sample_freq: the frame rate that the track was recorded with, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type sample_freq: int
+    :param time_bin_size: how many seconds should be aggregated together, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type time_bin_size: int
+    :param all_tracks: a list with all the Track objects from previously read-in datatypes
+    :type all_tracks: list[Track]
+    :return: a Track object with a consistent format for x y and t tracking points
+    :rtype: list[Track]
+    """
     for etho_group in groups_with_file_type:
         if verbose:
             print(f"Running Ethovision V2 Tracker Files For Group: {etho_group}")
@@ -116,9 +148,9 @@ def read_etho_v2(
                 t.append(sheet[i, 0].value)
                 x.append(sheet[i, 1].value)
                 y.append(sheet[i, 2].value)
-            time_col = np.array(t[header_lines : sheet.nrows])
-            x_col = np.array(x[header_lines : sheet.nrows])
-            y_col = np.array(y[header_lines : sheet.nrows])
+            time_col = np.array(t[header_lines:sheet.nrows])
+            x_col = np.array(x[header_lines:sheet.nrows])
+            y_col = np.array(y[header_lines:sheet.nrows])
             track = Track(
                 group,
                 x_col,
@@ -154,6 +186,22 @@ def read_etho_txt(
     time_bin_size: int,
     all_tracks: list[Track],
 ) -> list[Track]:
+    """This function reads in all the tracks from the Ethovision Text Version tracker format. The function extracts the
+    x, y, and t information and smooths, centers, and converts the units of the track.
+
+    :param groups_with_file_type: which groups have tracks recorded in this type
+    :type groups_with_file_type: list[str]
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :param sample_freq: the frame rate that the track was recorded with, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type sample_freq: int
+    :param time_bin_size: how many seconds should be aggregated together, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type time_bin_size: int
+    :param all_tracks: a list with all the Track objects from previously read-in datatypes
+    :type all_tracks: list[Track]
+    :return: a Track object with a consistent format for x y and t tracking points
+    :rtype: list[Track]
+    """
     for etho_group in groups_with_file_type:
         if verbose:
             print(f"Running Ethovision Text Tracker Files For Group: {etho_group}")
@@ -218,6 +266,22 @@ def read_etho_ml(
     time_bin_size: int,
     all_tracks: list[Track],
 ) -> list[Track]:
+    """This function reads in all the tracks from the Ethovision TextML Version tracker format. The function extracts
+    the x, y, and t information and smooths, centers, and converts the units of the track.
+
+    :param groups_with_file_type: which groups have tracks recorded in this type
+    :type groups_with_file_type: list[str]
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :param sample_freq: the frame rate that the track was recorded with, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type sample_freq: int
+    :param time_bin_size: how many seconds should be aggregated together, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type time_bin_size: int
+    :param all_tracks: a list with all the Track objects from previously read-in datatypes
+    :type all_tracks: list[Track]
+    :return: a Track object with a consistent format for x y and t tracking points
+    :rtype: list[Track]
+    """
     for etho_group in groups_with_file_type:
         if verbose:
             print(f"Running Ethovision ML Tracker Files For Group: {etho_group}")
@@ -254,6 +318,13 @@ def read_etho_ml(
 
 
 def sort_tracks_by_arena(list_of_etho_tracks: list[Track]) -> dict[str, list[Track]]:
+    """This function creates a dictionary of Track objects indexed by which ethovision arena they were recorded in
+
+    :param list_of_etho_tracks: the Tracks to sort by arena
+    :type list_of_etho_tracks: list[Track]
+    :return: the dictionary of tracks by arena
+    :rtype: dict[str, list[Track]]
+    """
     tracks_by_arena = dict()
     for track in list_of_etho_tracks:
         if track.options[0] not in tracks_by_arena:
@@ -268,6 +339,14 @@ def sort_tracks_by_arena(list_of_etho_tracks: list[Track]) -> dict[str, list[Tra
 def combine_arena_coords(
     tracks_by_arena: dict[str, list[Track]],
 ) -> dict[str, tuple[np.ndarray, np.ndarray]]:
+    """This function combines the coordinates of all the tracks that were recorded in the same arena so that the arena
+    center point can be estimated
+
+    :param tracks_by_arena: the dict of tracks recorded in each arena
+    :type tracks_by_arena: dict[str, list[Track]]
+    :return: the combined x and y coordinates, indexed by arena
+    :rtype: dict[str, tuple[np.ndarray, np.ndarray]]
+    """
     combined_coords_by_arena = dict()
     for arena in tracks_by_arena:
         # the first track initializes the combined coordinates
@@ -285,6 +364,15 @@ def combine_arena_coords(
 def extract_arena_center_point(
     combined_coords_by_arena: dict[str, tuple[np.ndarray, np.ndarray]], verbose: bool
 ) -> dict[str, tuple[float, float]]:
+    """This function estimates the center point of the arena that tracks were recorded in
+
+    :param combined_coords_by_arena: the combined x and y coordinates, indexed by arena
+    :type combined_coords_by_arena: dict[str, tuple[np.ndarray, np.ndarray]]
+    :param verbose: display progress update, sourced from :class:`opynfield.config.user_input.UserInput` object
+    :type verbose: bool
+    :return: the center points of the arenas, indexed by arena name
+    :rtype: dict[str, tuple[float, float]]
+    """
     center_points_by_area = dict()
     for arena in combined_coords_by_arena:
         # for each arena, calculate the center point from the combined coordinates of all tracks run in that arena

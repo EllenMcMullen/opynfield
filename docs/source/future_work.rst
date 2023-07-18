@@ -8,6 +8,8 @@ Features I am currently working on:
 *   Create an 'other' input format (.csv of time and x and y coordinates) for non-standard or uncommon data sources
 *   Change the method of specifying the model settings to make it easier to use non-default values
 *   Create more gradations in the ''verbose'' setting so that users can choose which types of progress updates they want to see
+*   Allow for tracks with different settings to be read in at the same time
+*   Allow users to specify which motion probability type and which coverage measure they would like to use rather than computing them all
 
 Backend checks I am working on:
 

@@ -83,10 +83,10 @@ class CoverageAsymptote:
     )  # what sign is the asymptote calculated with (based on bounds & initial params)
     initial_parameters: tuple[float] = (
         -0.01,
-        -0.01,
+        -0.01
     )  # parameters to start model with
     parameter_bounds: tuple[list[int], list[int]] = (
         [-10, -10],
-        [0, 0],
+        [0, 0]
     )  # bounds on the parameters
     max_f_eval: int = 4000  # increase if you run into runtime errors

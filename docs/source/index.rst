@@ -13,12 +13,12 @@ Welcome to opynfield's documentation!
    :caption: Contents:
    
    readme
+   tutorial.ipynb
    modules
    coverage_types
    motion_probability_types
    user_input_information
    output_interpretation
-   tutorial
    future_work
 
 

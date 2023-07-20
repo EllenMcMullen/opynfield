@@ -12,7 +12,6 @@ Welcome to opynfield's documentation!
    :maxdepth: 1
    :caption: Contents:
    
-   readme
    tutorial.ipynb
    modules
    coverage_types

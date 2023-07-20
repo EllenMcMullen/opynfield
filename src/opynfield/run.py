@@ -4,9 +4,7 @@ from opynfield.readin.summary_file import summary_file
 from opynfield.config.defaults_settings import Defaults
 from opynfield.config.cov_asymptote import CoverageAsymptote
 from opynfield.calculate_measures.calculate_measures import tracks_to_measures
-from opynfield.summarize_measures.summarize_individuals import (
-    individual_measures_to_dfs,
-)
+from opynfield.summarize_measures.summarize_individuals import individual_measures_to_dfs
 from opynfield.summarize_measures.summarize_groups import all_group_averages
 from opynfield.config.model_settings import set_up_fits
 from opynfield.fit_models.fit_individual_models import (

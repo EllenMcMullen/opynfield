@@ -22,7 +22,10 @@ from opynfield.plotting.plot_solo_groups_with_individuals import (
     plot_components_of_solo_groups,
 )
 from opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
+import os
 
+curr_dir = os.chdir(os.getcwd())
+path_dir = curr_dir + '/TestRunResults2'
 
 
 def run():
@@ -37,7 +40,7 @@ def run():
         1,
         0.001,
         True,
-        "./TestRunResults",
+        path_dir,
     )
     user_config.prep_directory()
     # read in the data

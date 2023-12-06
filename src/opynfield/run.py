@@ -24,6 +24,7 @@ from opynfield.plotting.plot_solo_groups_with_individuals import (
 from opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
 
 
+
 def run():
     """This function coordinates running a full analysis on test data"""
     # create your user config settings
@@ -36,7 +37,7 @@ def run():
         1,
         0.001,
         True,
-        "/Users/ellenmcmullen/Desktop/TestRunResults",
+        "~/TestRunResults",
     )
     user_config.prep_directory()
     # read in the data

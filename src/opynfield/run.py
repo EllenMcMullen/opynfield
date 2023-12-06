@@ -24,7 +24,7 @@ from opynfield.plotting.plot_solo_groups_with_individuals import (
 from opynfield.plotting.plot_group_comparisons import plot_all_group_comparisons
 import os
 
-curr_dir = os.chdir(os.getcwd())
+curr_dir = os.getcwd()
 path_dir = curr_dir + '/TestRunResults2'
 
 

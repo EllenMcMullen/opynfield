@@ -437,7 +437,7 @@ def plot_individual_trace(
     ax.set_ylabel("Y Coordinate (cm)")
     fig.suptitle(f"Individual {i} From Group {group} Track Trace")
     norm = matplotlib.colors.Normalize(vmin=t_scaled[0], vmax=t_scaled[-1])
-    fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap))
+    fig.colorbar(matplotlib.cm.ScalarMappable(norm=norm, cmap=cmap), ax=plt.gca())
     if plot_settings.display_individual_figures:
         # show the figure
         fig.show()

@@ -37,7 +37,7 @@ def run():
         1,
         0.001,
         True,
-        "~/TestRunResults",
+        "./TestRunResults",
     )
     user_config.prep_directory()
     # read in the data

@@ -133,7 +133,7 @@ def read_anymaze_head(
                 print(f"{anymaze_group}, File{file_num + 1} Out Of {len(data_files)}")
             # read in each file's data
             file_data = pd.read_csv(data_files[file_num], sep=",", lineterminator="\n")
-            file_data = file_data[:-1]
+            #file_data = file_data[:-1]
             track = Track(
                 anymaze_group,
                 file_data["Head position X"].to_numpy(),

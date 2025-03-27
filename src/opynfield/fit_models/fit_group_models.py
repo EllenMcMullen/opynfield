@@ -47,14 +47,23 @@ def group_fit_measure_by_time(
     with warnings.catch_warnings():
         warnings.filterwarnings("ignore", message="Covariance")
         # noinspection PyTupleAssignmentBalance
-        params, cv = curve_fit(
-            specs.model.model_function,
-            x,
-            y,
-            p0=initials.values,
-            bounds=(lowers.values, uppers.values),
-            **{"maxfev": specs.model.max_eval},
-        )
+        try:
+        	params, cv = curve_fit(
+           	 specs.model.model_function,
+            	x,
+            	y,
+            	p0=initials.values,
+            	bounds=(lowers.values, uppers.values),
+            	**{"maxfev": specs.model.max_eval},
+        	)
+        except ValueError:
+        	params, cv = curve_fit(
+           	 specs.model.model_function,
+            	x,
+            	y,
+            	p0=initials.values,
+            	**{"maxfev": specs.model.max_eval},
+        	)
     return pd.DataFrame(params)
 
 

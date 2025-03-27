@@ -56,7 +56,7 @@ def read_anymaze_center(
             if verbose:
                 print(f"{anymaze_group}, File{file_num + 1} Out Of {len(data_files)}")
             # read in each file's data
-            file_data = pd.read_csv(data_files[file_num], sep=",", lineterminator="\n")
+            file_data = pd.read_csv(data_files[file_num], sep=",")#, lineterminator="\n")
             #file_data = file_data[:-1]
             track = Track(
                 anymaze_group,
@@ -132,7 +132,7 @@ def read_anymaze_head(
             if verbose:
                 print(f"{anymaze_group}, File{file_num + 1} Out Of {len(data_files)}")
             # read in each file's data
-            file_data = pd.read_csv(data_files[file_num], sep=",", lineterminator="\n")
+            file_data = pd.read_csv(data_files[file_num], sep=",")#, lineterminator="\n")
             #file_data = file_data[:-1]
             track = Track(
                 anymaze_group,

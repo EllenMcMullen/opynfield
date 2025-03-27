@@ -78,6 +78,7 @@ def read_anymaze_center(
             track_center = multi_tracker.calc_center(track.x, track.y, verbose, trim)
             track.anymaze_center_convert_to_center(track_center, verbose)
             track.anymaze_center_convert_units(arena_radius_cm, trim)
+            track.standardized = True
             all_tracks.append(track)
     return all_tracks
 
@@ -154,6 +155,7 @@ def read_anymaze_head(
             track_center = multi_tracker.calc_center(track.x, track.y, verbose, trim)
             track.anymaze_head_convert_to_center(track_center, verbose)
             track.anymaze_head_convert_units(arena_radius_cm, trim)
+            track.standardized = True
             all_tracks.append(track)
     return all_tracks
 

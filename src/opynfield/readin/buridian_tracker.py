@@ -52,7 +52,7 @@ def read_buridian(
             if verbose:
                 print(f"{buridian_group}, File {file_num + 1} Out Of {len(data_files)}")
             # read in each file's data
-            file_data = pd.read_csv(data_files[file_num], sep="\t", lineterminator="\r")
+            file_data = pd.read_csv(data_files[file_num], sep="\t", lineterminator="\n")
             file_data = file_data.iloc[0:-2]
             file_meta = meta_files[file_num]  # match the data and metadata
             xypx = get_meta_info(

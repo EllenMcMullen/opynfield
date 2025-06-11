@@ -87,7 +87,7 @@ class Defaults:
         :rtype: list[str]
         """
         test_list = []
-        for x in ["time", "coverage", "pica", "pgca", "percent_coverage"]:
+        for x in ["time", "coverage", "percent_coverage", "pica", "pgca"]:
             if x == "time":
                 for y in self.time_averaged_measures:
                     if y != "r":

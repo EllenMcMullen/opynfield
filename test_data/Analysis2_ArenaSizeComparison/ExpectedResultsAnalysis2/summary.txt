@@ -1,0 +1,1491 @@
+Tracks Run
+__________
+
+
+N Per Group
+5.0: 136
+8.4: 275
+
+
+
+
+Run Parameters
+______________
+
+
+Coverage Asymptote Settings:
+f_name: <function fixed_exponential at 0x10df74c20>
+asymptote_param: 0
+asymptote_sign: -1
+initial_parameters: (-0.01, -0.01)
+parameter_bounds: ([-10, -10], [0, 0])
+max_f_eval: 4000
+
+
+Default Settings:
+node_size: 0.1
+save_group_csvs: True
+save_all_group_csvs: True
+save_group_model_csvs: True
+save_all_group_model_csvs: True
+n_points_coverage: 36
+n_points_pica: 36
+n_points_pgca: 36
+n_bins_percent_coverage: 10
+
+
+Model Settings:
+('time', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'coverage'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'percent_coverage'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'pica'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'pgca'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_plus_given_plus'):
+initial_params: (1, -0.1, -10)
+bounds: ((0, -10, -100), (10, 0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_minus_given_plus'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_zero_given_plus'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_zero_plus_given_zero'):
+initial_params: (1, -0.1, -10)
+bounds: ((0, -10, -100), (10, 0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_zero_zero_given_zero'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+
+
+Plot Settings:
+group_colors: {'5.0': 'b', '8.4': 'r'}
+marker_size: 2
+marker_color: b
+individual_model_fit: True
+fit_color: k
+alpha: 0.3
+group_error_bars: True
+error_color: b
+n_between_error: 1
+group_model_fit: True
+equation: True
+display_individual_figures: False
+save_individual_figures: True
+display_solo_group_figures: False
+save_solo_group_figures: True
+save_combined_view_figures: True
+fig_extension: .svg
+colormap_name: gist_rainbow
+edge_color: k
+error_width: 0.5
+save_group__comparison_figures: True
+
+
+User Input Settings:
+groups_and_types: {'5.0': ['Ethovision Through MATLAB']}
+groups_to_paths: {'5.0': '5.0'}
+arena_radius_cm: 2.5
+sample_freq: 30
+edge_dist_cm: 0.5952380952380952
+time_bin_size: 1
+inactivity_threshold: 0.001
+verbose: True
+result_path: /Users/ellenmcmullen/Desktop/opynfield_v3_analysis_files/Analysis2/ExpectedResultsAnalysis2
+running_window_length: 5
+window_step_size: 1
+trim: 0
+bound_level: 2
+Tracks Run
+__________
+
+
+N Per Group
+5.0: 136
+8.4: 275
+
+
+
+
+Run Parameters
+______________
+
+
+Coverage Asymptote Settings:
+f_name: <function fixed_exponential at 0x10df74c20>
+asymptote_param: 0
+asymptote_sign: -1
+initial_parameters: (-0.01, -0.01)
+parameter_bounds: ([-10, -10], [0, 0])
+max_f_eval: 4000
+
+
+Default Settings:
+node_size: 0.1
+save_group_csvs: True
+save_all_group_csvs: True
+save_group_model_csvs: True
+save_all_group_model_csvs: True
+n_points_coverage: 36
+n_points_pica: 36
+n_points_pgca: 36
+n_bins_percent_coverage: 10
+
+
+Model Settings:
+('time', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'coverage'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'percent_coverage'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'pica'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'pgca'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_plus_given_plus'):
+initial_params: (1, -0.1, -10)
+bounds: ((0, -10, -100), (10, 0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_minus_given_plus'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_zero_given_plus'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_zero_plus_given_zero'):
+initial_params: (1, -0.1, -10)
+bounds: ((0, -10, -100), (10, 0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_zero_zero_given_zero'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+
+
+Plot Settings:
+group_colors: {'5.0': 'b', '8.4': 'r'}
+marker_size: 2
+marker_color: b
+individual_model_fit: True
+fit_color: k
+alpha: 0.3
+group_error_bars: True
+error_color: b
+n_between_error: 1
+group_model_fit: True
+equation: True
+display_individual_figures: False
+save_individual_figures: True
+display_solo_group_figures: False
+save_solo_group_figures: True
+save_combined_view_figures: True
+fig_extension: .svg
+colormap_name: gist_rainbow
+edge_color: k
+error_width: 0.5
+save_group__comparison_figures: True
+
+
+User Input Settings:
+groups_and_types: {'8.4': ['Ethovision Through MATLAB']}
+groups_to_paths: {'8.4': '8.4'}
+arena_radius_cm: 4.2
+sample_freq: 30
+edge_dist_cm: 1
+time_bin_size: 1
+inactivity_threshold: 0.001
+verbose: True
+result_path: /Users/ellenmcmullen/Desktop/opynfield_v3_analysis_files/Analysis2/ExpectedResultsAnalysis2
+running_window_length: 5
+window_step_size: 1
+trim: 0
+bound_level: 2
+Tracks Run
+__________
+
+
+N Per Group
+5.0: 136
+8.4: 275
+
+
+
+
+Run Parameters
+______________
+
+
+Coverage Asymptote Settings:
+f_name: <function fixed_exponential at 0x10df74c20>
+asymptote_param: 0
+asymptote_sign: -1
+initial_parameters: (-0.01, -0.01)
+parameter_bounds: ([-10, -10], [0, 0])
+max_f_eval: 4000
+
+
+Default Settings:
+node_size: 0.1
+save_group_csvs: True
+save_all_group_csvs: True
+save_group_model_csvs: True
+save_all_group_model_csvs: True
+n_points_coverage: 36
+n_points_pica: 36
+n_points_pgca: 36
+n_bins_percent_coverage: 10
+
+
+Model Settings:
+('time', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'coverage'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'percent_coverage'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'pica'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'pgca'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('time', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('time', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('coverage', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('coverage', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pica', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pica', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_plus_given_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero_given_plus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus_given_zero'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero_given_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('pgca', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 4000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('pgca', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 4000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'activity'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_minus'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_zero_plus'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_zero_zero'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_plus_given_plus'):
+initial_params: (1, -0.1, -10)
+bounds: ((0, -10, -100), (10, 0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_minus_given_plus'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_zero_given_plus'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_zero_plus_given_zero'):
+initial_params: (1, -0.1, -10)
+bounds: ((0, -10, -100), (10, 0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_zero_zero_given_zero'):
+initial_params: (1, 0.1, -10)
+bounds: ((0, 0, -100), (10, 10, 0))
+max_eval: 10000
+display_parts: ('y = ', ' / (1 + np.exp(-', ' * (x + ', ')))')
+('percent_coverage', 'p_plus_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_plus_minus_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_plus_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+('percent_coverage', 'p_zero_plus_given_any'):
+initial_params: (0.1, -0.1, 0.01)
+bounds: ((0, -10, 0), (10, 0, 10))
+max_eval: 10000
+display_parts: ('y = ', ' * e ^ (', ' * x) + ')
+('percent_coverage', 'p_zero_zero_given_any'):
+initial_params: (-0.1, -0.1)
+bounds: ((-10, -10), (0, 0))
+max_eval: 10000
+display_parts: ('y = ', ' * (e ^ (', ' * x) - 1)')
+
+
+Plot Settings:
+group_colors: {'5.0': 'b', '8.4': 'r'}
+marker_size: 2
+marker_color: b
+individual_model_fit: True
+fit_color: k
+alpha: 0.3
+group_error_bars: True
+error_color: b
+n_between_error: 1
+group_model_fit: True
+equation: True
+display_individual_figures: False
+save_individual_figures: True
+display_solo_group_figures: False
+save_solo_group_figures: True
+save_combined_view_figures: True
+fig_extension: .svg
+colormap_name: gist_rainbow
+edge_color: k
+error_width: 0.5
+save_group__comparison_figures: True
+
+
+User Input Settings:
+groups_and_types: {'5.0': ['Ethovision Through MATLAB'], '8.4': ['Ethovision Through MATLAB']}
+groups_to_paths: {'5.0': '5.0', '8.4': '8.4'}
+arena_radius_cm: 9999
+sample_freq: 30
+edge_dist_cm: 1
+time_bin_size: 1
+inactivity_threshold: 0.001
+verbose: True
+result_path: /Users/ellenmcmullen/Desktop/opynfield_v3_analysis_files/Analysis2/ExpectedResultsAnalysis2
+running_window_length: 5
+window_step_size: 1
+trim: 0
+bound_level: 2

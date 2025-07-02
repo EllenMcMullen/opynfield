@@ -1,0 +1,511 @@
+---
+title: "Analysis4TwoWayANOVA"
+author: "Ellen McMullen"
+date: "2025-06-17"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(tidy.opts=list(width.cutoff=60),tidy=TRUE)
+```
+
+Load packages:
+```{r}
+library(stringr)
+library(multcomp)
+```
+
+Read in data:
+```{r}
+all_params = read.csv(
+  '../ExpectedResultsAnalysis4/Individuals/CombinedGroups/Models/CombinedGroups_IndividualModels.csv')
+```
+
+Split the group names (consisting of the genotype and age labels) into two factors
+```{r}
+all_params[c('genotype', 'age')] = str_split_fixed(all_params$group, ' ', 2)
+```
+
+Two-Way MANOVA (Full Test):
+```{r}
+# manova
+two_way_manova =  manova(cbind(time_activity_parameter_0,
+                               time_activity_parameter_1,
+                               time_activity_parameter_2,
+                               time_coverage_parameter_0,
+                               time_coverage_parameter_1,
+                               time_p_plus_plus_given_plus_parameter_0,
+                               time_p_plus_plus_given_plus_parameter_1,
+                               time_p_plus_minus_given_plus_parameter_0,
+                               time_p_plus_minus_given_plus_parameter_1,
+                               time_p_plus_zero_given_plus_parameter_0,
+                               time_p_plus_zero_given_plus_parameter_1,
+                               time_p_zero_plus_given_zero_parameter_0,
+                               time_p_zero_plus_given_zero_parameter_1,
+                               time_p_zero_zero_given_zero_parameter_0,
+                               time_p_zero_zero_given_zero_parameter_1,
+                               percent_coverage_activity_parameter_0,
+                               percent_coverage_activity_parameter_1,
+                               percent_coverage_activity_parameter_2,
+                               percent_coverage_p_plus_plus_given_plus_parameter_0,
+                               percent_coverage_p_plus_plus_given_plus_parameter_1,
+                               percent_coverage_p_plus_minus_given_plus_parameter_0,
+                               percent_coverage_p_plus_minus_given_plus_parameter_1,
+                               percent_coverage_p_plus_zero_given_plus_parameter_0,
+                               percent_coverage_p_plus_zero_given_plus_parameter_1,
+                               percent_coverage_p_zero_plus_given_zero_parameter_0,
+                               percent_coverage_p_zero_plus_given_zero_parameter_1,
+                               percent_coverage_p_zero_zero_given_zero_parameter_0,
+                               percent_coverage_p_zero_zero_given_zero_parameter_1)
+                         ~ genotype*age,
+                         data = all_params)
+summary(two_way_manova)
+```
+
+Now for each relationship of interest, we want to run the MANOVA sub-test:
+```{r}
+subtest1 =  manova(cbind(time_activity_parameter_0,
+                         time_activity_parameter_1,
+                         time_activity_parameter_2)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest1)
+```
+
+
+
+Since the MANOVA sub-test is significant, we want to run follow-up ANOVAs on each parameter
+```{r}
+# time vs activity A
+mod1 =  aov(time_activity_parameter_0 ~ genotype*age, data = all_params)
+summary(mod1)
+# time vs activity B
+mod2 =  aov(time_activity_parameter_1 ~ genotype*age, data = all_params)
+summary(mod2)
+# time vs activity C
+mod3 =  aov(time_activity_parameter_2 ~ genotype*age, data = all_params)
+summary(mod3)
+```
+We also want to run a Tukey's HSD test as a post-hoc to detect which groups are different from one another, and the direction of the difference.
+
+```{r}
+# time vs activity A post hoc
+ph1 = TukeyHSD(aov(time_activity_parameter_0 ~ age+genotype, data = all_params),
+               which = "age")
+ph1
+ph2 = TukeyHSD(aov(time_activity_parameter_0 ~ age+genotype, data = all_params),
+               which = "genotype")
+ph2
+# time vs activity B post hoc
+ph3 = TukeyHSD(aov(time_activity_parameter_1 ~ age+genotype, data = all_params),
+               which = "age")
+ph3
+ph4 = TukeyHSD(aov(time_activity_parameter_1 ~ age+genotype, data = all_params),
+               which = "genotype")
+ph4
+# time vs activity C post hoc
+ph5 = TukeyHSD(aov(time_activity_parameter_2 ~ age+genotype, data = all_params),
+               which = "age")
+ph5
+ph6 = TukeyHSD(aov(time_activity_parameter_2 ~ age+genotype, data = all_params),
+               which = "genotype")
+ph6
+```
+
+
+Repeat for other relationships:
+```{r}
+subtest2 =  manova(cbind(time_coverage_parameter_0,
+                         time_coverage_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest2)
+
+# time vs coverage A
+mod4 =  aov(time_coverage_parameter_0 ~ genotype*age, data = all_params)
+summary(mod4)
+# time vs coverage B
+mod5 =  aov(time_coverage_parameter_1 ~ genotype*age, data = all_params)
+summary(mod5)
+
+# time vs coverage A post hoc
+ph7 = TukeyHSD(aov(time_coverage_parameter_0 ~ age+genotype, data = all_params),
+               which = "age")
+ph7
+ph8 = TukeyHSD(aov(time_coverage_parameter_0 ~ age+genotype, data = all_params),
+               which = "genotype")
+ph8
+# time vs coverage B post hoc
+ph9 = TukeyHSD(aov(time_coverage_parameter_1 ~ age+genotype, data = all_params),
+               which = "age")
+ph9
+ph10 = TukeyHSD(aov(time_coverage_parameter_1 ~ age+genotype, data = all_params),
+               which = "genotype")
+ph10
+```
+
+```{r}
+subtest3 =  manova(cbind(time_p_plus_plus_given_plus_parameter_0,
+                         time_p_plus_plus_given_plus_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest3)
+
+# time vs p++ A
+mod6 =  aov(time_p_plus_plus_given_plus_parameter_0 ~ genotype*age,
+            data = all_params)
+summary(mod6)
+# time vs p++ B
+mod7 =  aov(time_p_plus_plus_given_plus_parameter_1 ~ genotype*age,
+            data = all_params)
+summary(mod7)
+
+# time vs p++ A post hoc
+ph11 = TukeyHSD(aov(time_p_plus_plus_given_plus_parameter_0 ~ age+genotype,
+                    data = all_params), which = "age")
+ph11
+ph12 = TukeyHSD(aov(time_p_plus_plus_given_plus_parameter_0 ~ age+genotype,
+                    data = all_params), which = "genotype")
+ph12
+# time vs p++ B post hoc
+ph13 = TukeyHSD(aov(time_p_plus_plus_given_plus_parameter_1 ~ age+genotype,
+                    data = all_params), which = "age")
+ph13
+ph14 = TukeyHSD(aov(time_p_plus_plus_given_plus_parameter_1 ~ age+genotype,
+                    data = all_params), which = "genotype")
+ph14
+```
+
+```{r}
+subtest4 =  manova(cbind(time_p_plus_minus_given_plus_parameter_0,
+                         time_p_plus_minus_given_plus_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest4)
+
+# time vs p+- A
+mod8 =  aov(time_p_plus_minus_given_plus_parameter_0 ~ genotype*age,
+            data = all_params)
+summary(mod8)
+# time vs p+- B
+mod9 =  aov(time_p_plus_minus_given_plus_parameter_1 ~ genotype*age,
+            data = all_params)
+summary(mod9)
+
+# time vs p+- A post hoc
+ph15 = TukeyHSD(aov(time_p_plus_minus_given_plus_parameter_0 ~ age+genotype,
+                    data = all_params), which = "age")
+ph15
+ph16 = TukeyHSD(aov(time_p_plus_minus_given_plus_parameter_0 ~ age+genotype,
+                    data = all_params), which = "genotype")
+ph16
+# time vs p+- B post hoc
+ph17 = TukeyHSD(aov(time_p_plus_minus_given_plus_parameter_1 ~ age+genotype,
+                    data = all_params), which = "age")
+ph17
+ph18 = TukeyHSD(aov(time_p_plus_minus_given_plus_parameter_1 ~ age+genotype,
+                    data = all_params), which = "genotype")
+ph18
+```
+
+```{r}
+subtest5 =  manova(cbind(time_p_plus_zero_given_plus_parameter_0,
+                         time_p_plus_zero_given_plus_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest5)
+
+# time vs p+0 A
+mod10 =  aov(time_p_plus_zero_given_plus_parameter_0 ~ genotype*age,
+             data = all_params)
+summary(mod10)
+# time vs p+0 B
+mod11 =  aov(time_p_plus_zero_given_plus_parameter_1 ~ genotype*age,
+             data = all_params)
+summary(mod11)
+
+# time vs p+0 A post hoc
+ph19 = TukeyHSD(aov(time_p_plus_zero_given_plus_parameter_0 ~ age+genotype,
+                    data = all_params), which = "age")
+ph19
+ph20 = TukeyHSD(aov(time_p_plus_zero_given_plus_parameter_0 ~ age+genotype,
+                    data = all_params), which = "genotype")
+ph20
+# time vs p+0 B post hoc
+ph21 = TukeyHSD(aov(time_p_plus_zero_given_plus_parameter_1 ~ age+genotype,
+                    data = all_params), which = "age")
+ph21
+ph22 = TukeyHSD(aov(time_p_plus_zero_given_plus_parameter_1 ~ age+genotype,
+                    data = all_params), which = "genotype")
+ph22
+```
+
+```{r}
+subtest6 =  manova(cbind(time_p_zero_plus_given_zero_parameter_0,
+                         time_p_zero_plus_given_zero_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest6)
+
+# time vs p0+ A
+mod12 =  aov(time_p_zero_plus_given_zero_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod12)
+# time vs p0+ B
+mod13 =  aov(time_p_zero_plus_given_zero_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod13)
+
+# time vs p0+ A post hoc
+ph23 = TukeyHSD(aov(time_p_zero_plus_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph23
+ph24 = TukeyHSD(aov(time_p_zero_plus_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph24
+# time vs p0+ B post hoc
+ph25 = TukeyHSD(aov(time_p_zero_plus_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph25
+ph26 = TukeyHSD(aov(time_p_zero_plus_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph26
+```
+
+```{r}
+subtest7 =  manova(cbind(time_p_zero_zero_given_zero_parameter_0,
+                         time_p_zero_zero_given_zero_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest7)
+
+# time vs p00 A
+mod14 =  aov(time_p_zero_zero_given_zero_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod14)
+# time vs p00 B
+mod15 =  aov(time_p_zero_zero_given_zero_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod15)
+
+# time vs p00 A post hoc
+ph27 = TukeyHSD(aov(time_p_zero_zero_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph27
+ph28 = TukeyHSD(aov(time_p_zero_zero_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph28
+# time vs p00 B post hoc
+ph29 = TukeyHSD(aov(time_p_zero_zero_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph29
+ph30 = TukeyHSD(aov(time_p_zero_zero_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph30
+```
+
+```{r}
+subtest8 =  manova(cbind(percent_coverage_activity_parameter_0,
+                         percent_coverage_activity_parameter_1,
+                         percent_coverage_activity_parameter_2)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest8)
+
+# percent_coverage vs activity A
+mod16 =  aov(percent_coverage_activity_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod16)
+# percent_coverage vs activity B
+mod17 =  aov(percent_coverage_activity_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod17)
+# percent_coverage vs activity C
+mod18 =  aov(percent_coverage_activity_parameter_2 ~ genotype*age,
+             data = all_params)
+summary(mod18)
+
+# percent_coverage vs activity A post hoc
+ph31 = TukeyHSD(aov(percent_coverage_activity_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph31
+ph32 = TukeyHSD(aov(percent_coverage_activity_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph32
+# percent_coverage vs activity B post hoc
+ph33 = TukeyHSD(aov(percent_coverage_activity_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph33
+ph34 = TukeyHSD(aov(percent_coverage_activity_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph34
+# percent_coverage vs activity C post hoc
+ph35 = TukeyHSD(aov(percent_coverage_activity_parameter_2 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph35
+ph36 = TukeyHSD(aov(percent_coverage_activity_parameter_2 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph36
+```
+
+```{r}
+subtest9 =  manova(cbind(percent_coverage_p_plus_plus_given_plus_parameter_0,
+                         percent_coverage_p_plus_plus_given_plus_parameter_1)
+                   ~ genotype*age,
+                   data = all_params)
+summary(subtest9)
+
+# percent_coverage vs p++ A
+mod19 =  aov(percent_coverage_p_plus_plus_given_plus_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod19)
+# percent_coverage vs p++ B
+mod20 =  aov(percent_coverage_p_plus_plus_given_plus_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod20)
+
+# percent_coverage vs p++ A post hoc
+ph37 = TukeyHSD(aov(percent_coverage_p_plus_plus_given_plus_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph37
+ph38 = TukeyHSD(aov(percent_coverage_p_plus_plus_given_plus_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph38
+# percent_coverage vs p++ B post hoc
+ph39 = TukeyHSD(aov(percent_coverage_p_plus_plus_given_plus_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph39
+ph40 = TukeyHSD(aov(percent_coverage_p_plus_plus_given_plus_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph40
+```
+
+```{r}
+subtest10 =  manova(cbind(percent_coverage_p_plus_minus_given_plus_parameter_0,
+                          percent_coverage_p_plus_minus_given_plus_parameter_1)
+                    ~ genotype*age,
+                    data = all_params)
+summary(subtest10)
+
+# percent_coverage vs p+- A
+mod21 =  aov(percent_coverage_p_plus_minus_given_plus_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod21)
+# percent_coverage vs p+- B
+mod22 =  aov(percent_coverage_p_plus_minus_given_plus_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod22)
+
+# percent_coverage vs p+- A post hoc
+ph41 = TukeyHSD(aov(percent_coverage_p_plus_minus_given_plus_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph41
+ph42 = TukeyHSD(aov(percent_coverage_p_plus_minus_given_plus_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph42
+# percent_coverage vs p+- B post hoc
+ph43 = TukeyHSD(aov(percent_coverage_p_plus_minus_given_plus_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph43
+ph44 = TukeyHSD(aov(percent_coverage_p_plus_minus_given_plus_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph44
+```
+
+```{r}
+subtest11 =  manova(cbind(percent_coverage_p_plus_zero_given_plus_parameter_0,
+                          percent_coverage_p_plus_zero_given_plus_parameter_1)
+                    ~ genotype*age,
+                    data = all_params)
+summary(subtest11)
+
+# percent_coverage vs p+0 A
+mod23 =  aov(percent_coverage_p_plus_zero_given_plus_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod23)
+# percent_coverage vs p+0 B
+mod24 =  aov(percent_coverage_p_plus_zero_given_plus_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod24)
+
+# percent_coverage vs p+0 A post hoc
+ph45 = TukeyHSD(aov(percent_coverage_p_plus_zero_given_plus_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph45
+ph46 = TukeyHSD(aov(percent_coverage_p_plus_zero_given_plus_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph46
+# percent_coverage vs p+0 B post hoc
+ph47 = TukeyHSD(aov(percent_coverage_p_plus_zero_given_plus_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph47
+ph48 = TukeyHSD(aov(percent_coverage_p_plus_zero_given_plus_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph48
+```
+
+```{r}
+subtest12 =  manova(cbind(percent_coverage_p_zero_plus_given_zero_parameter_0,
+                          percent_coverage_p_zero_plus_given_zero_parameter_1)
+                    ~ genotype*age,
+                    data = all_params)
+summary(subtest12)
+
+# percent_coverage vs p0+ A
+mod25 =  aov(percent_coverage_p_zero_plus_given_zero_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod25)
+# percent_coverage vs p0+ B
+mod26 =  aov(percent_coverage_p_zero_plus_given_zero_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod26)
+
+# percent_coverage vs p0+ A post hoc
+ph49 = TukeyHSD(aov(percent_coverage_p_zero_plus_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph49
+ph50 = TukeyHSD(aov(percent_coverage_p_zero_plus_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph50
+# percent_coverage vs p0+ B post hoc
+ph51 = TukeyHSD(aov(percent_coverage_p_zero_plus_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph51
+ph52 = TukeyHSD(aov(percent_coverage_p_zero_plus_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph52
+```
+
+```{r}
+subtest13 =  manova(cbind(percent_coverage_p_zero_zero_given_zero_parameter_0,
+                          percent_coverage_p_zero_zero_given_zero_parameter_1)
+                    ~ genotype*age,
+                    data = all_params)
+summary(subtest13)
+
+# percent_coverage vs p00 A
+mod27 =  aov(percent_coverage_p_zero_zero_given_zero_parameter_0 ~ genotype*age, 
+             data = all_params)
+summary(mod27)
+# percent_coverage vs p00 B
+mod28 =  aov(percent_coverage_p_zero_zero_given_zero_parameter_1 ~ genotype*age, 
+             data = all_params)
+summary(mod28)
+
+# percent_coverage vs p00 A post hoc
+ph53 = TukeyHSD(aov(percent_coverage_p_zero_zero_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph53
+ph54 = TukeyHSD(aov(percent_coverage_p_zero_zero_given_zero_parameter_0 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph54
+# percent_coverage vs p00 B post hoc
+ph55 = TukeyHSD(aov(percent_coverage_p_zero_zero_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "age")
+ph55
+ph56 = TukeyHSD(aov(percent_coverage_p_zero_zero_given_zero_parameter_1 ~ age+genotype, 
+                    data = all_params), which = "genotype")
+ph56
+```
+

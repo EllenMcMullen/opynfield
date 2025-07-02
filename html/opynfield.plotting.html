@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>opynfield.plotting package &#8212; opynfield 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="opynfield.readin package" href="opynfield.readin.html" />
+    <link rel="prev" title="opynfield.fit_models package" href="opynfield.fit_models.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opynfield.readin.html" title="opynfield.readin package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opynfield.fit_models.html" title="opynfield.fit_models package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opynfield 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >opynfield</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="opynfield.html" accesskey="U">opynfield package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">opynfield.plotting package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="opynfield-plotting-package">
+<h1>opynfield.plotting package<a class="headerlink" href="#opynfield-plotting-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-opynfield.plotting.plot_group_comparisons">
+<span id="opynfield-plotting-plot-group-comparisons-module"></span><h2>opynfield.plotting.plot_group_comparisons module<a class="headerlink" href="#module-opynfield.plotting.plot_group_comparisons" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_group_comparisons.generate_fig_title">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_group_comparisons.</span></span><span class="sig-name descname"><span class="pre">generate_fig_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#opynfield.plotting.plot_group_comparisons.generate_fig_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a figure title to save the figure in from the component parts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – path to the plot folder</p></li>
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-axis of the plot</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-axis of the plot</p></li>
+<li><p><strong>model_fit</strong> (<em>bool</em>) – whether the plot includes a model fit</p></li>
+<li><p><strong>error</strong> (<em>bool</em>) – whether the plot includes error bars</p></li>
+<li><p><strong>extension</strong> (<em>str</em>) – what file extension / format to save the plot in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the path to save the plot in</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_group_comparisons.plot_all_group_comparisons">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_group_comparisons.</span></span><span class="sig-name descname"><span class="pre">plot_all_group_comparisons</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_averages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_group_comparisons.plot_all_group_comparisons" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates the plotting of all the x-measure (both time and coverage-measure) vs y-measure relationships</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_averages</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>]</em>) – the group average data to use, indexed by group and then x measure</p></li>
+<li><p><strong>group_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the model parameter fits to use, indexed by group, x-measure, and y-measure</p></li>
+<li><p><strong>model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em><em>]</em>) – the model settings to use, indexed by x measure and y measure</p></li>
+<li><p><strong>test_defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_group_comparisons.plot_cmeasure_comparison">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_group_comparisons.</span></span><span class="sig-name descname"><span class="pre">plot_cmeasure_comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmeasure_averages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_group_comparisons.plot_cmeasure_comparison" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots all the group averages against each other for a coverage-measure vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_measure</strong> (<em>str</em>) – the coverage-measure</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-measure</p></li>
+<li><p><strong>cmeasure_averages</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em>) – the averages to use to plot, indexed by group and y-measure</p></li>
+<li><p><strong>group_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the model parameters to use, indexed by group and y-measure</p></li>
+<li><p><strong>specs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_input</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_group_comparisons.plot_time_comparison">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_group_comparisons.</span></span><span class="sig-name descname"><span class="pre">plot_time_comparison</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_averages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_group_comparisons.plot_time_comparison" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots all the group averages against each other for a time vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-measure (time)</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-measure</p></li>
+<li><p><strong>time_averages</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em>) – the averages to use to plot, indexed by group and y-measure</p></li>
+<li><p><strong>fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the model parameters to use, indexed by group and y-measure</p></li>
+<li><p><strong>specs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_inputs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.plotting.plot_individuals">
+<span id="opynfield-plotting-plot-individuals-module"></span><h2>opynfield.plotting.plot_individuals module<a class="headerlink" href="#module-opynfield.plotting.plot_individuals" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.generate_fig_title">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">generate_fig_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.generate_fig_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a figure title to save the figure from the component parts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – path to the plot folder</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – which individual in the group is being plotted</p></li>
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-axis of the plot</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-axis of the plot</p></li>
+<li><p><strong>model_fit</strong> (<em>bool</em>) – whether the plot includes the model fit</p></li>
+<li><p><strong>extension</strong> (<em>str</em>) – what file extension / format to save the plot in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the path that the plot should be saved in</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.generate_individual_equation_str">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">generate_individual_equation_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_parts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.generate_individual_equation_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates the equation of the best fit model from the model display parts and the truncated
+parameter values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – the parameter fits</p></li>
+<li><p><strong>display_parts</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – the display parts from the model information</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the full equation string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_all_individuals">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_all_individuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_all_individuals" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates the plotting of all the x-measure vs y-measure relationships from all individuals from all groups</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measures</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em>) – the y-measure data indexed by group and y-measure name</p></li>
+<li><p><strong>model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the model fit parameters indexed by group, x-measure, and y-measure</p></li>
+<li><p><strong>model_info</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em><em>]</em>) – the model settings to use, indexed by x-measure and y-measure</p></li>
+<li><p><strong>defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_all_individuals_by_cmeasure">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_all_individuals_by_cmeasure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_measures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_all_individuals_by_cmeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates plotting all the individuals in a group for a coverage-measure vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_measure</strong> (<em>str</em>) – the coverage measure name</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – the group name</p></li>
+<li><p><strong>group_measures</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the y-measure data use, indexed by y-measure</p></li>
+<li><p><strong>group_model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the model parameters to use, indexed by y-measure</p></li>
+<li><p><strong>model_info</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em>) – the model settings to use, indexed by the y-measure</p></li>
+<li><p><strong>defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_all_individuals_by_time">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_all_individuals_by_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_measures</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_all_individuals_by_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates plotting all the individuals in a group for a time vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<em>str</em>) – the group name</p></li>
+<li><p><strong>group_measures</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the y-measure data use, indexed by y-measure</p></li>
+<li><p><strong>group_model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the model parameters to use, indexed by y-measure</p></li>
+<li><p><strong>model_info</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em>) – the model settings to use, indexed by the y-measure</p></li>
+<li><p><strong>defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_cmeasure_measure">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_cmeasure_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure_data_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure_data_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_cmeasure_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots an individual’s data for a coverage-measure vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_measure</strong> (<em>str</em>) – the coverage measure name</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – the group name</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – the individual number within its group</p></li>
+<li><p><strong>measure</strong> (<em>str</em>) – the y-measure</p></li>
+<li><p><strong>measure_data_x</strong> (<em>pd.DataFrame</em>) – the coverage-measure data</p></li>
+<li><p><strong>measure_data_y</strong> (<em>pd.DataFrame</em>) – the y-measure data</p></li>
+<li><p><strong>model_params</strong> (<em>pd.DataFrame</em>) – the model parameters to use, indexed by group and y-measure</p></li>
+<li><p><strong>model_info</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_individual_trace">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_individual_trace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_individual_trace" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots the trace (tracking trajectory) of an individual</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>track</strong> (<a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a>) – the track whose trace you are plotting</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – the individual number within the tracks group</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – the group name to which the track belongs</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_input</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_time_measure">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_time_measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_time_measure" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots an individual’s data for a time vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<em>str</em>) – the group name</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – the individual number within its group</p></li>
+<li><p><strong>measure</strong> (<em>str</em>) – the y-measure</p></li>
+<li><p><strong>measure_data</strong> (<em>pd.DataFrame</em>) – the y-measure data</p></li>
+<li><p><strong>model_params</strong> (<em>pd.DataFrame</em>) – the model parameters to use, indexed by group and y-measure</p></li>
+<li><p><strong>model_info</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.plot_traces">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_traces</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracks_by_groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.defaultdict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.plot_traces" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinated plotting the traces of all individual tracks in all groups</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tracks_by_groups</strong> (<em>defaultdict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a><em>]</em><em>]</em>) – a dictionary of all the individuals to plot, indexed by the group to which they belong</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_input</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_individuals.truncate">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_individuals.</span></span><span class="sig-name descname"><span class="pre">truncate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_individuals.truncate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function trims the exact parameter fit value to a set number of decimal places for display on a plot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>float</em>) – the parameter</p></li>
+<li><p><strong>decimals</strong> (<em>int</em>) – the number of decimal places to trim to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the trimmed parameter value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.plotting.plot_solo_groups">
+<span id="opynfield-plotting-plot-solo-groups-module"></span><h2>opynfield.plotting.plot_solo_groups module<a class="headerlink" href="#module-opynfield.plotting.plot_solo_groups" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.generate_fig_title">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">generate_fig_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.generate_fig_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates a figure title to save a single group plot at, based on the component parts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – the path to the results plot folder</p></li>
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-measure of the plot</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-measure of the plot</p></li>
+<li><p><strong>model_fit</strong> (<em>bool</em>) – whether the plot includes the model fit</p></li>
+<li><p><strong>error</strong> (<em>bool</em>) – whether the plot includes the group average error bars</p></li>
+<li><p><strong>extension</strong> – the file extension / format to save the plot in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the path to save the plot at</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.generate_group_equation_str">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">generate_group_equation_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_parts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.generate_group_equation_str" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates the equation of the best fit model from the model display parts and the truncated
+parameter values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fit_params</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – the parameter fits</p></li>
+<li><p><strong>display_parts</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – the display parts from the model information</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the full equation string</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.plot_all_solo_groups">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">plot_all_solo_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_averages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.plot_all_solo_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates the plotting of all the x-measure vs y-measure relationships for each group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_averages</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>]</em>) – the group averages to plot, indexed by x-measure, then group (then y-measure)</p></li>
+<li><p><strong>group_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the y-fit values (based on the model fit parameters) indexed by group, time, and y-measure</p></li>
+<li><p><strong>model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em><em>]</em>) – the model settings to use, indexed by x-measure and y-measure</p></li>
+<li><p><strong>test_defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.plot_solo_group_by_cmeasure">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">plot_solo_group_by_cmeasure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by_coverage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmeasure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.plot_solo_group_by_cmeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots a single group’s average coverage-measure vs y-measure relationship for each coverage
+averaged y-measure</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>by_coverage</strong> (<em>pd.DataFrame</em>) – the x-measure data (and error) and the y-measure data (and error) for the group</p></li>
+<li><p><strong>defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>cmeasure</strong> (<em>str</em>) – the coverage measure being used as x-axis</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em>) – the model settings to use, indexed by y-measure</p></li>
+<li><p><strong>group_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the y-fit data from the model fits, indexed by y-measure</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – the whose data you are plotting</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.plot_solo_group_by_time">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">plot_solo_group_by_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.plot_solo_group_by_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates the plotting of all time vs y-measure relationships for a single group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>by_time</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the y-measure data (and error) of the group, indexed by y-measure</p></li>
+<li><p><strong>defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>model_params</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em>) – the model settings to use, indexed by y-measure</p></li>
+<li><p><strong>group_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em>) – the y-fit data from the model fit parameters, indexed by y-measure</p></li>
+<li><p><strong>group</strong> – the group to plot</p></li>
+<li><p><strong>group</strong> – str</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.plot_solo_group_measure_by_time">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">plot_solo_group_measure_by_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measure_by_time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.plot_solo_group_measure_by_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots a single group’s average time vs y-measure relationship</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measure_by_time</strong> (<em>pd.DataFrame</em>) – the y-measure data (and error) for the group</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>model_specs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>group_fits</strong> (<em>pd.DataFrame</em>) – the y-fit data from the model fits</p></li>
+<li><p><strong>measure</strong> (<em>str</em>) – the y-measure to plot</p></li>
+<li><p><strong>group</strong> (<em>str</em>) – the whose data you are plotting</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups.truncate">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups.</span></span><span class="sig-name descname"><span class="pre">truncate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decimals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups.truncate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function trims the exact parameter fit value to a set number of decimal places for display on a plot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> (<em>float</em>) – the parameter</p></li>
+<li><p><strong>decimals</strong> (<em>int</em>) – the number of decimal places to trim to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the trimmed parameter value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.plotting.plot_solo_groups_with_individuals">
+<span id="opynfield-plotting-plot-solo-groups-with-individuals-module"></span><h2>opynfield.plotting.plot_solo_groups_with_individuals module<a class="headerlink" href="#module-opynfield.plotting.plot_solo_groups_with_individuals" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups_with_individuals.generate_view_title">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups_with_individuals.</span></span><span class="sig-name descname"><span class="pre">generate_view_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individual_models</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups_with_individuals.generate_view_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function generates the title to save a plot as from the component parts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – the path to the result plot folder</p></li>
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-measure of the plot</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-measure of the plot</p></li>
+<li><p><strong>individual_models</strong> (<em>bool</em>) – whether the models of the individuals that make up the group are plotted</p></li>
+<li><p><strong>group_model</strong> (<em>bool</em>) – whether the model of the group average is plotted</p></li>
+<li><p><strong>group_error</strong> (<em>bool</em>) – whether the error of the group average is plotted</p></li>
+<li><p><strong>extension</strong> (<em>str</em>) – the file extension / format to save the plot in</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the path to save the plot at</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups_with_individuals.plot_components_of_solo_groups">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups_with_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_components_of_solo_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">individuals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individual_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_fits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups_with_individuals.plot_components_of_solo_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates the plotting of all the groups x-measure vs y-measure averages with the component
+individuals x-measure vs y-measure relationships</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>individuals</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em>) – the component individual y-measure data, indexed by group and y-measure</p></li>
+<li><p><strong>individual_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the component individual model fit parameters, indexed by group, x-measure, and y-measure</p></li>
+<li><p><strong>groups</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>]</em>) – the group average data, indexed by group (and y-measure for time)</p></li>
+<li><p><strong>group_fits</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><em>pd.DataFrame</em><em>]</em><em>]</em><em>]</em>) – the group average model fits, indexed by group, x-measure, and y-measure</p></li>
+<li><p><strong>model_specs</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em><em>]</em>) – the model settings to use, indexed by x-measure and y-measure</p></li>
+<li><p><strong>defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_inputs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups_with_individuals.plot_group_individual_comparison_cmeasure">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups_with_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_group_individual_comparison_cmeasure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individuals_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individuals_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individuals_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_ys_df</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups_with_individuals.plot_group_individual_comparison_cmeasure" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots a group’s coverage-measure vs y-measure average and all the component individual
+coverage-measure vs y-measure relationships</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<em>str</em>) – the group name</p></li>
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-measure in the plot</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-measure in the plot</p></li>
+<li><p><strong>individuals_x</strong> (<em>pd.DataFrame</em>) – the coverage data from the component individuals</p></li>
+<li><p><strong>individuals_y</strong> (<em>pd.DataFrame</em>) – the y-measure data from the component individuals</p></li>
+<li><p><strong>individuals_params</strong> (<em>pd.DataFrame</em>) – the parameters for the individual model fits</p></li>
+<li><p><strong>group_ys_df</strong> (<em>pd.DataFrame</em>) – the group average (and error) data</p></li>
+<li><p><strong>group_params</strong> (<em>pd.DataFrame</em>) – the group average model fit parameters</p></li>
+<li><p><strong>model_spec</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_inputs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.plotting.plot_solo_groups_with_individuals.plot_group_individual_comparison_time">
+<span class="sig-prename descclassname"><span class="pre">opynfield.plotting.plot_solo_groups_with_individuals.</span></span><span class="sig-name descname"><span class="pre">plot_group_individual_comparison_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_measure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individuals_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">individuals_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.plotting.plot_solo_groups_with_individuals.plot_group_individual_comparison_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function plots a group’s coverage-measure vs y-measure average and all the component individual
+coverage-measure vs y-measure relationships</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group</strong> (<em>str</em>) – the group name</p></li>
+<li><p><strong>x_measure</strong> (<em>str</em>) – the x-measure in the plot</p></li>
+<li><p><strong>y_measure</strong> (<em>str</em>) – the y-measure in the plot</p></li>
+<li><p><strong>individuals_y</strong> (<em>pd.DataFrame</em>) – the y-measure data from the component individuals</p></li>
+<li><p><strong>individuals_params</strong> (<em>pd.DataFrame</em>) – the parameters for the individual model fits</p></li>
+<li><p><strong>group_y</strong> (<em>pd.DataFrame</em>) – the group average (and error) data</p></li>
+<li><p><strong>group_params</strong> (<em>pd.DataFrame</em>) – the group average model fit parameters</p></li>
+<li><p><strong>model_spec</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a>) – the model settings to use</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings to use</p></li>
+<li><p><strong>user_inputs</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs to use</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.plotting">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opynfield.plotting" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">opynfield.plotting package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opynfield.plotting.plot_group_comparisons">opynfield.plotting.plot_group_comparisons module</a></li>
+<li><a class="reference internal" href="#module-opynfield.plotting.plot_individuals">opynfield.plotting.plot_individuals module</a></li>
+<li><a class="reference internal" href="#module-opynfield.plotting.plot_solo_groups">opynfield.plotting.plot_solo_groups module</a></li>
+<li><a class="reference internal" href="#module-opynfield.plotting.plot_solo_groups_with_individuals">opynfield.plotting.plot_solo_groups_with_individuals module</a></li>
+<li><a class="reference internal" href="#module-opynfield.plotting">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="opynfield.fit_models.html"
+                          title="previous chapter">opynfield.fit_models package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="opynfield.readin.html"
+                          title="next chapter">opynfield.readin package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/opynfield.plotting.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opynfield.readin.html" title="opynfield.readin package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opynfield.fit_models.html" title="opynfield.fit_models package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opynfield 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >opynfield</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="opynfield.html" >opynfield package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">opynfield.plotting package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Ellen McMullen.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

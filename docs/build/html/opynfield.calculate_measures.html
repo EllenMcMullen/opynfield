@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>opynfield.calculate_measures package &#8212; opynfield 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="opynfield.config package" href="opynfield.config.html" />
+    <link rel="prev" title="opynfield package" href="opynfield.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opynfield.config.html" title="opynfield.config package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opynfield.html" title="opynfield package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opynfield 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >opynfield</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="opynfield.html" accesskey="U">opynfield package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">opynfield.calculate_measures package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="opynfield-calculate-measures-package">
+<h1>opynfield.calculate_measures package<a class="headerlink" href="#opynfield-calculate-measures-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-opynfield.calculate_measures.calculate_measures">
+<span id="opynfield-calculate-measures-calculate-measures-module"></span><h2>opynfield.calculate_measures.calculate_measures module<a class="headerlink" href="#module-opynfield.calculate_measures.calculate_measures" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.calculate_coverage">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">calculate_coverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cov_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.calculate_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is calls functions from the coverage_math module to calculate the animal’s coverage over time.
+See coverage types for comparison of (raw) coverage to other coverage measures.
+It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cov_bins</strong> (<em>np.ndarray</em>) – which bin the animal is located in at each tracking point</p></li>
+<li><p><strong>num_bins</strong> (<em>float</em>) – the total number of bins the arena edge region is divided into</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the coverage of the animal at each tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.calculate_group_coverage_asymptote">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">calculate_group_coverage_asymptote</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asymptote_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><span class="pre">opynfield.config.cov_asymptote.CoverageAsymptote</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.calculate_group_coverage_asymptote" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the coverage asymptote of a group based on the aggregated data from all
+individuals in the group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>group_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a><em>]</em>) – a list of all standardized tracks belonging to the same analysis group</p></li>
+<li><p><strong>asymptote_info</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><em>CoverageAsymptote</em></a>) – a custom dataclass that includes information needed to calculate the group’s
+coverage asymptote</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the group’s coverage asymptote to be used in calculating the PGCA of individuals in that group</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.calculate_percent_coverage">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">calculate_percent_coverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cov</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.calculate_percent_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function normalizes an animal’s coverage by the maximum coverage the animal reaches to get its percent
+coverage. See coverage types for comparison of percent coverage to other coverage measures.
+It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cov</strong> (<em>np.ndarray</em>) – the coverage of the animal at each tracking point</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the percent coverage (normalized coverage) of the animal at each tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.calculate_pgca">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">calculate_pgca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s_track</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">asymptote_g</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.calculate_pgca" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function normalizes an animal’s coverage by its group’s predicted coverage asymptote from the time vs
+coverage model. It also sets the group asymptote as an attribute of the track.
+This must occur after all tracks are standardized and group coverage asymptotes are calculated.
+See coverage types for comparison of PGCA to other coverage measures.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s_track</strong> (<a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a>) – a standardized track</p></li>
+<li><p><strong>asymptote_g</strong> (<em>float</em>) – the group coverage asymptote for the group to which the s_track belongs
+coverage asymptote</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the PGCA (Percent of Group Coverage Asymptote) of the animal at each tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.calculate_pica">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">calculate_pica</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cov</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">asymptote_info</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><span class="pre">opynfield.config.cov_asymptote.CoverageAsymptote</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.calculate_pica" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function normalizes an animal’s coverage by its predicted coverage asymptote from the time vs coverage
+model. See coverage types for comparison of PICA to other coverage measures.
+It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cov</strong> (<em>np.ndarray</em>) – the coverage of the animal at each tracking point</p></li>
+<li><p><strong>asymptote_info</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><em>CoverageAsymptote</em></a>) – a custom dataclass that includes information needed to calculate the animal’s
+coverage asymptote</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the PICA (Percent of Individual Coverage Asymptote) of the animal at each tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.cartesian_to_polar">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">cartesian_to_polar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.cartesian_to_polar" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function converts an animal’s tracking coordinates from cartesian to polar coordinates.
+It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – the x coordinates of a <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a> object</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – the y coordinates of a <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a> object</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple of the r and theta coordinates of the <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.locate_bin">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">locate_bin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_rad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.locate_bin" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function assigns a bin number to each tracking point of an animal to facilitate the calculation of coverage.
+It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>np.ndarray</em>) – the radial position of the animal at each tracking point</p></li>
+<li><p><strong>theta_angle</strong> (<em>np.ndarray</em>) – the angular position of the animal at each tracking point</p></li>
+<li><p><strong>node_size</strong> (<em>float</em>) – the angle that (when combined with <code class="docutils literal notranslate"><span class="pre">edge_rad</span></code>) defines a bin - sourced from
+<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a></p></li>
+<li><p><strong>edge_rad</strong> (<em>float</em>) – at what radius do we consider the animal to be in the edge region, when combined with <code class="docutils literal notranslate"><span class="pre">node_size</span></code>
+this defines a bin - sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a></p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of the bin assignment array and the total number of bins used to make the assignment</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.ndarray, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.motion_probabilities">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">motion_probabilities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">act</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turn_angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inactivity_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_rad</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates P++, P+-, P+0, P0+, and P00 (collectively ‘motion probabilities’)
+from an animal’s track trajectory. See motion probability types for more information. It is one step in the track
+standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>np.ndarray</em>) – the radial position of the animal at each tracking point</p></li>
+<li><p><strong>act</strong> (<em>np.ndarray</em>) – the length of the step taken by the animal between two points</p></li>
+<li><p><strong>turn_angle</strong> (<em>np.ndarray</em>) – the angle the animal turned at each point between two steps</p></li>
+<li><p><strong>inactivity_threshold</strong> (<em>np.ndarray</em>) – to account for body wobble, how small of a step length do we consider to be
+negligible and set to zero - sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>edge_rad</strong> (<em>np.ndarray</em>) – to consider the motion probabilities only near the edge of the arena, at what radius do we consider
+the animal to be in the edge region - sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of the raw data for motion probabilities (P++, P+-, P+0, P0+, P00) - 1 where the action occurred and
+0 elsewhere</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.motion_probabilities_given_previous">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">motion_probabilities_given_previous</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ppp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ppz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pzp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pzz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities_given_previous" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates P++Given+, P+-Given+, P+0Given+, P0+Given0, P00Given0, P++GivenAny, P+-GivenAny,
+P+0GivenAny, P0+GivenAny, and P00GivenAny (collectively ‘motion probabilities given previous’). See motion
+probability types for more information. It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ppp</strong> (<em>np.ndarray</em>) – the raw P++ values from <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities" title="opynfield.calculate_measures.calculate_measures.motion_probabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.motion_probabilities()</span></code></a></p></li>
+<li><p><strong>ppm</strong> (<em>np.ndarray</em>) – the raw P+- values from <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities" title="opynfield.calculate_measures.calculate_measures.motion_probabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.motion_probabilities()</span></code></a></p></li>
+<li><p><strong>ppz</strong> (<em>np.ndarray</em>) – the raw P+0 values from <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities" title="opynfield.calculate_measures.calculate_measures.motion_probabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.motion_probabilities()</span></code></a></p></li>
+<li><p><strong>pzp</strong> (<em>np.ndarray</em>) – the raw P0+ values from <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities" title="opynfield.calculate_measures.calculate_measures.motion_probabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.motion_probabilities()</span></code></a></p></li>
+<li><p><strong>pzz</strong> (<em>np.ndarray</em>) – the raw P00 values from <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.motion_probabilities" title="opynfield.calculate_measures.calculate_measures.motion_probabilities"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.motion_probabilities()</span></code></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the motion probabilities given previous - 1 where the action occurred, 0 where it
+could have occurred but didn’t, and np.nan elsewhere.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray, np.ndarray,
+np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.step_distance">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">step_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.step_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the distance between each consecutive pair of tracking coordinates of an animal.
+It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – the x coordinates of a <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a> object</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – the y coordinates of a <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a> object</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the distance stepped between tracking points (also called ‘activity’)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.tracks_to_measures">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">tracks_to_measures</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><span class="pre">opynfield.config.cov_asymptote.CoverageAsymptote</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">collections.defaultdict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function runs the entire standardization procedure to transform a Track to a StandardTrack. It runs the
+procedure for a list of all tracks in the analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – list of all the tracks read in for analysis</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – a custom dataclass that contains user inputs for analysis</p></li>
+<li><p><strong>default_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – a custom dataclass that contains default settings for analysis</p></li>
+<li><p><strong>coverage_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><em>CoverageAsymptote</em></a>) – a custom class that contains settings for the calculation of coverage asymptotes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of  a list of all standardized tracks and a dictionary of group names to a list of all standardized
+tracks belonging to that group</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[list[<a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack">StandardTrack</a>], defaultdict[str, list[<a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack">StandardTrack</a>]]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.calculate_measures.turning_angle">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.calculate_measures.</span></span><span class="sig-name descname"><span class="pre">turning_angle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.calculate_measures.turning_angle" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calculates the angle that the animal turned between two consecutive steps,
+using the law of cosines. It is one step in the track standardization procedure orchestrated
+by <a class="reference internal" href="#opynfield.calculate_measures.calculate_measures.tracks_to_measures" title="opynfield.calculate_measures.calculate_measures.tracks_to_measures"><code class="xref py py-func docutils literal notranslate"><span class="pre">opynfield.calculate_measures.calculate_measures.tracks_to_measures()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – the x coordinates of a <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a> object</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – the y coordinates of a <a class="reference internal" href="opynfield.readin.html#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.readin.track.Track</span></code></a> object</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the magnitude of the angle (in degrees) from a straight heading that the animal turned between
+each consecutive set of steps.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.calculate_measures.coverage_math">
+<span id="opynfield-calculate-measures-coverage-math-module"></span><h2>opynfield.calculate_measures.coverage_math module<a class="headerlink" href="#module-opynfield.calculate_measures.coverage_math" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.bins_traversed">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">bins_traversed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">past_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.bins_traversed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies which bins were visited along a path of <code class="docutils literal notranslate"><span class="pre">n_steps</span></code> from the current bin in the <code class="docutils literal notranslate"><span class="pre">step_direction</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>past_fly_bin</strong> (<em>int</em>) – the bin the animal was in at the previous tracking point</p></li>
+<li><p><strong>n_steps</strong> (<em>int</em>) – the number of bins the animal traversed</p></li>
+<li><p><strong>step_direction</strong> (<em>int</em>) – the direction the animal is traveling (1 if counterclockwise, -1 if clockwise)</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – number of total bins</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>which bins were visited along the path</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.fly_coverage">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">fly_coverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.fly_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Calculates the coverage of a tracking point from a bin visit array and assigns the coverage value to the coverage</dt><dd><p>array at that index.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>visits</strong> (<em>np.ndarray</em>) – bin visit array at a tracking point</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – number of total bins</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an array of coverage at each tracking point, updated up to the current tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.path_coverage">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">path_coverage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cov_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.path_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function formats inputs and calls <cite>_path_coverage</cite> to calculate the animal’s coverage over time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cov_bins</strong> (<em>np.ndarray</em>) – which bin the animal is located in at each tracking point</p></li>
+<li><p><strong>num_bins</strong> (<em>float</em>) – the total number of bins the arena edge region is divided into</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the coverage of the animal at each tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.sign_to_step">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">sign_to_step</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">past_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.sign_to_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies the direction of travel and the number of bins traversed in that direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>past_fly_bin</strong> (<em>int</em>) – the bin the animal was in at the previous tracking point</p></li>
+<li><p><strong>current_fly_bin</strong> (<em>int</em>) – the bin that the animal is in at the current tracking point</p></li>
+<li><p><strong>num_bins</strong> (<em>int</em>) – number of total bins</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tuple of the direction the animal is traveling (1 if counterclockwise, -1 if clockwise), and the number of
+bins the animal traversed in that direction of travel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.update_first_visit">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">update_first_visit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_vis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.update_first_visit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a bin visit array for the initial time point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>visits</strong> (<em>np.ndarray</em>) – bin visit array initialized with 0s</p></li>
+<li><p><strong>first_vis</strong> (<em>int</em>) – bin the animal was in for the first tracking point</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bin visit array updated with the first bin</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.update_visits">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">update_visits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">past_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">past_visits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.update_visits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines if the bin visit array needs to be updated with information from the current bin location, or if the
+bin visit counts remain unchanged. Calls <a class="reference internal" href="#opynfield.calculate_measures.coverage_math.update_visits_for_steps_between_bins" title="opynfield.calculate_measures.coverage_math.update_visits_for_steps_between_bins"><code class="xref py py-func docutils literal notranslate"><span class="pre">update_visits_for_steps_between_bins()</span></code></a> the bin visit array needs
+multiple updates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>past_fly_bin</strong> (<em>int</em>) – the bin the animal was in at the previous tracking point</p></li>
+<li><p><strong>current_fly_bin</strong> (<em>int</em>) – the bin that the animal is in at the current tracking point</p></li>
+<li><p><strong>past_visits</strong> (<em>np.ndarray</em>) – the bin visit array at the previous tracking point</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – number of total bins</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the bin visit array at the current tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.coverage_math.update_visits_for_steps_between_bins">
+<span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.coverage_math.</span></span><span class="sig-name descname"><span class="pre">update_visits_for_steps_between_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">past_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_fly_bin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">past_visits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.calculate_measures.coverage_math.update_visits_for_steps_between_bins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the bin visit array in cases where the animal has traversed across multiple bins in a single step by
+identifying the direction of travel, the number of bins traversed, and the specific bins that were visited during
+the travel between bins</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>past_fly_bin</strong> (<em>int</em>) – the bin the animal was in at the previous tracking point</p></li>
+<li><p><strong>current_fly_bin</strong> (<em>int</em>) – the bin that the animal is in at the current tracking point</p></li>
+<li><p><strong>past_visits</strong> (<em>np.ndarray</em>) – the bin visit array at the previous tracking point</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – number of total bins</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the bin visit array at the current tracking point</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.calculate_measures.standard_track">
+<span id="opynfield-calculate-measures-standard-track-module"></span><h2>opynfield.calculate_measures.standard_track module<a class="headerlink" href="#module-opynfield.calculate_measures.standard_track" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opynfield.calculate_measures.standard_track.</span></span><span class="sig-name descname"><span class="pre">StandardTrack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activity</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">turn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_plus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_minus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_zero_plus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_zero_zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coverage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent_coverage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pica</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pica_asymptote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgca</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgca_asymptote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_plus_given_plus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_minus_given_plus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_zero_given_plus</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_zero_plus_given_zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_zero_zero_given_zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_plus_given_any</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_minus_given_any</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_plus_zero_given_any</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_zero_plus_given_any</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p_zero_zero_given_any</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This dataclass stores all relevant original and derived measures associated with an animal’s track. It is
+produced after the track standardization procedure from <code class="xref py py-func docutils literal notranslate"><span class="pre">tracks_to_measures()</span></code> is completed.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.group">
+<span class="sig-name descname"><span class="pre">group</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.group" title="Permalink to this definition">¶</a></dt>
+<dd><p>group to which the track belongs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.x">
+<span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>the track’s x coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>the track’s y coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.t">
+<span class="sig-name descname"><span class="pre">t</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.t" title="Permalink to this definition">¶</a></dt>
+<dd><p>the time the track’s coordinates were recorded</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.r">
+<span class="sig-name descname"><span class="pre">r</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.r" title="Permalink to this definition">¶</a></dt>
+<dd><p>the track’s radial coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.theta">
+<span class="sig-name descname"><span class="pre">theta</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>the track’s angular coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.activity">
+<span class="sig-name descname"><span class="pre">activity</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.activity" title="Permalink to this definition">¶</a></dt>
+<dd><p>the track’s activity (step length between two consecutive points)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.turn">
+<span class="sig-name descname"><span class="pre">turn</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.turn" title="Permalink to this definition">¶</a></dt>
+<dd><p>the track’s turn angle (the angle in degrees that the animal turned between two consecutive steps)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_plus">
+<span class="sig-name descname"><span class="pre">p_plus_plus</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>the raw P++ of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_minus">
+<span class="sig-name descname"><span class="pre">p_plus_minus</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_minus" title="Permalink to this definition">¶</a></dt>
+<dd><p>the raw P+- of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_zero">
+<span class="sig-name descname"><span class="pre">p_plus_zero</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>the raw P+0 of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_zero_plus">
+<span class="sig-name descname"><span class="pre">p_zero_plus</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_zero_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>the raw P0+ of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_zero_zero">
+<span class="sig-name descname"><span class="pre">p_zero_zero</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_zero_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>the raw P00 of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.coverage_bins">
+<span class="sig-name descname"><span class="pre">coverage_bins</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.coverage_bins" title="Permalink to this definition">¶</a></dt>
+<dd><p>the bin the animal was in at each tracking point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.n_bins">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.n_bins" title="Permalink to this definition">¶</a></dt>
+<dd><p>the total number of bins the arena edge is divided into</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.coverage">
+<span class="sig-name descname"><span class="pre">coverage</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>the raw coverage of the track. See coverage types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.percent_coverage">
+<span class="sig-name descname"><span class="pre">percent_coverage</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.percent_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>the percent coverage of the track. See coverage types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.pica">
+<span class="sig-name descname"><span class="pre">pica</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.pica" title="Permalink to this definition">¶</a></dt>
+<dd><p>the PICA (Percent of Individual Coverage Asymptote) of the track. See coverage types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.pica_asymptote">
+<span class="sig-name descname"><span class="pre">pica_asymptote</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.pica_asymptote" title="Permalink to this definition">¶</a></dt>
+<dd><p>the asymptote of the animals time vs coverage model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.pgca">
+<span class="sig-name descname"><span class="pre">pgca</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.pgca" title="Permalink to this definition">¶</a></dt>
+<dd><p>the PGCA (Percent of Group Coverage Asymptote) of the group the track belongs to. Or an initialized dummy value of all ones. See coverage types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.pgca_asymptote">
+<span class="sig-name descname"><span class="pre">pgca_asymptote</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.pgca_asymptote" title="Permalink to this definition">¶</a></dt>
+<dd><p>the asymptote of the time vs coverage model for the group the track belongs to. Or an initialized dummy value of np.nan</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_plus_given_plus">
+<span class="sig-name descname"><span class="pre">p_plus_plus_given_plus</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_plus_given_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P++Given+ of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_minus_given_plus">
+<span class="sig-name descname"><span class="pre">p_plus_minus_given_plus</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_minus_given_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P+-Given+ of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_zero_given_plus">
+<span class="sig-name descname"><span class="pre">p_plus_zero_given_plus</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_zero_given_plus" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P+0Given+ of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_zero_plus_given_zero">
+<span class="sig-name descname"><span class="pre">p_zero_plus_given_zero</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_zero_plus_given_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P0+Given0 of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_zero_zero_given_zero">
+<span class="sig-name descname"><span class="pre">p_zero_zero_given_zero</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_zero_zero_given_zero" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P00Given0 of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_plus_given_any">
+<span class="sig-name descname"><span class="pre">p_plus_plus_given_any</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_plus_given_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P++GivenAny of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_minus_given_any">
+<span class="sig-name descname"><span class="pre">p_plus_minus_given_any</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_minus_given_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P+-GivenAny of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_plus_zero_given_any">
+<span class="sig-name descname"><span class="pre">p_plus_zero_given_any</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_plus_zero_given_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P+0GivenAny of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_zero_plus_given_any">
+<span class="sig-name descname"><span class="pre">p_zero_plus_given_any</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_zero_plus_given_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P0+GivenAny of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.p_zero_zero_given_any">
+<span class="sig-name descname"><span class="pre">p_zero_zero_given_any</span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.p_zero_zero_given_any" title="Permalink to this definition">¶</a></dt>
+<dd><p>the P00GivenAny of the track. See motion probability types for more information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">activity</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">coverage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">coverage_bins</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">n_bins</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">p_plus_minus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">p_plus_minus_given_any</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">p_plus_minus_given_plus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">p_plus_plus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">p_plus_plus_given_any</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">p_plus_plus_given_plus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">p_plus_zero</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">p_plus_zero_given_any</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">p_plus_zero_given_plus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">p_zero_plus</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">p_zero_plus_given_any</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">p_zero_plus_given_zero</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">p_zero_zero</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">p_zero_zero_given_any</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id19">
+<span class="sig-name descname"><span class="pre">p_zero_zero_given_zero</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id20">
+<span class="sig-name descname"><span class="pre">percent_coverage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id21">
+<span class="sig-name descname"><span class="pre">pgca</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id22">
+<span class="sig-name descname"><span class="pre">pgca_asymptote</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id23">
+<span class="sig-name descname"><span class="pre">pica</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id24">
+<span class="sig-name descname"><span class="pre">pica_asymptote</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id25">
+<span class="sig-name descname"><span class="pre">r</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.set_pgca">
+<span class="sig-name descname"><span class="pre">set_pgca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_pgca</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_pgca_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.set_pgca" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a method that re-sets the pgca and pgca_asymptote values from their dummy initialization values to
+their true values calculated during the track standardization procedure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_pgca</strong> (<em>np.ndarray</em>) – the PGCA (Percent of Group Coverage Asymptote) of the group the track belongs to. See
+coverage types for more information.</p></li>
+<li><p><strong>input_pgca_a</strong> (<em>float</em>) – the asymptote of the time vs coverage model for the group the track belongs to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id26">
+<span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id27">
+<span class="sig-name descname"><span class="pre">theta</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.calculate_measures.standard_track.StandardTrack.to_dataframes">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">to_dataframes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">instances</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'StandardTrack'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_fields_by_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.calculate_measures.standard_track.StandardTrack.to_dataframes" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class method, called in <code class="xref py py-func docutils literal notranslate"><span class="pre">individual_measures_to_dfs()</span></code>, will create a dataframe for each dataclass
+attribute that is either an array or is included in the ‘extra_fields_by_name’ argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>instances</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a><em>]</em>) – list of the standard tracks to be summarized together (usually all tracks belonging to the
+same group)</p></li>
+<li><p><strong>extra_fields_by_name</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which non-array fields also need to be stored in dataframes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a tuple of a dictionary of field names to dataframes and a list of all the field  names</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[dict[str, pd.DataFrame], list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id28">
+<span class="sig-name descname"><span class="pre">turn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id29">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id30">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-opynfield.calculate_measures">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opynfield.calculate_measures" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">opynfield.calculate_measures package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opynfield.calculate_measures.calculate_measures">opynfield.calculate_measures.calculate_measures module</a></li>
+<li><a class="reference internal" href="#module-opynfield.calculate_measures.coverage_math">opynfield.calculate_measures.coverage_math module</a></li>
+<li><a class="reference internal" href="#module-opynfield.calculate_measures.standard_track">opynfield.calculate_measures.standard_track module</a></li>
+<li><a class="reference internal" href="#module-opynfield.calculate_measures">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="opynfield.html"
+                          title="previous chapter">opynfield package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="opynfield.config.html"
+                          title="next chapter">opynfield.config package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/opynfield.calculate_measures.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opynfield.config.html" title="opynfield.config package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opynfield.html" title="opynfield package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opynfield 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >opynfield</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="opynfield.html" >opynfield package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">opynfield.calculate_measures package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Ellen McMullen.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

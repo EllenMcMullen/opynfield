@@ -1,0 +1,1140 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>opynfield.readin package &#8212; opynfield 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="opynfield.stat_test package" href="opynfield.stat_test.html" />
+    <link rel="prev" title="opynfield.plotting package" href="opynfield.plotting.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opynfield.stat_test.html" title="opynfield.stat_test package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="opynfield.plotting.html" title="opynfield.plotting package"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opynfield 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >opynfield</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="opynfield.html" accesskey="U">opynfield package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">opynfield.readin package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="opynfield-readin-package">
+<h1>opynfield.readin package<a class="headerlink" href="#opynfield-readin-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-opynfield.readin.anymaze_tracker">
+<span id="opynfield-readin-anymaze-tracker-module"></span><h2>opynfield.readin.anymaze_tracker module<a class="headerlink" href="#module-opynfield.readin.anymaze_tracker" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.anymaze_tracker.convert_time_stamp">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.anymaze_tracker.</span></span><span class="sig-name descname"><span class="pre">convert_time_stamp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_stamp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.anymaze_tracker.convert_time_stamp" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function converts the time column from the form 00:00:00.00 (or similar) to the form 0.00
+Note: there seems to be some inconsistency with how the time stamp column is saved in the Anymaze format, please
+submit an error report if you encounter a new format that is not addressed in this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>time_stamp</strong> (<em>np.ndarray</em>) – the original time column</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the re-formatted time column</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.anymaze_tracker.read_anymaze_center">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.anymaze_tracker.</span></span><span class="sig-name descname"><span class="pre">read_anymaze_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.anymaze_tracker.read_anymaze_center" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Anymaze tracker format that recorded the center position of the
+animal subject (rather than the head position). The function extracts the x, y, and t information and smooths,
+centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>arena_radius_cm</strong> (<em>float</em>) – the radius of the arena in which the track was recorded, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>running_window_length</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>window_step_size</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>trim</strong> (<em>int</em>) – how many points are recorded before the animal enters the arena (maximum of all animals in this track type), sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of Track objects with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.anymaze_tracker.read_anymaze_head">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.anymaze_tracker.</span></span><span class="sig-name descname"><span class="pre">read_anymaze_head</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.anymaze_tracker.read_anymaze_head" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Anymaze tracker format that recorded the head position of the
+animal subject (rather than the body center point). The function extracts the x, y, and t information and smooths,
+centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>arena_radius_cm</strong> (<em>float</em>) – the radius of the arena in which the track was recorded, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>running_window_length</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>window_step_size</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>trim</strong> (<em>int</em>) – how many points are recorded before the animal enters the arena (maximum of all animals in this track type), sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Track object with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.buridian_tracker">
+<span id="opynfield-readin-buridian-tracker-module"></span><h2>opynfield.readin.buridian_tracker module<a class="headerlink" href="#module-opynfield.readin.buridian_tracker" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.buridian_tracker.get_meta_info">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.buridian_tracker.</span></span><span class="sig-name descname"><span class="pre">get_meta_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.series.Series</span></span></span><a class="headerlink" href="#opynfield.readin.buridian_tracker.get_meta_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function extracts center point information from the arena in which the animal was recorded</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file</strong> (<em>str</em>) – the path to the metadata file for this track</p></li>
+<li><p><strong>arena_radius_cm</strong> (<em>float</em>) – the radius of the arena in which the track was recorded, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the x and y coordinates of the center point in cm and the radius of the arena in pixels</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.buridian_tracker.read_buridian">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.buridian_tracker.</span></span><span class="sig-name descname"><span class="pre">read_buridian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.buridian_tracker.read_buridian" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Buridian tracker format. The function extracts the x, y, and t
+information and smooths, centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>arena_radius_cm</strong> (<em>float</em>) – the radius of the arena in which the track was recorded, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>running_window_length</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>window_step_size</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Track object with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.etho_tracker">
+<span id="opynfield-readin-etho-tracker-module"></span><h2>opynfield.readin.etho_tracker module<a class="headerlink" href="#module-opynfield.readin.etho_tracker" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.combine_arena_coords">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">combine_arena_coords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracks_by_arena</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.combine_arena_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function combines the coordinates of all the tracks that were recorded in the same arena so that the arena
+center point can be estimated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>tracks_by_arena</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em><em>]</em>) – the dict of tracks recorded in each arena</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the combined x and y coordinates, indexed by arena</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, tuple[np.ndarray, np.ndarray]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.extract_arena_center_point">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">extract_arena_center_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combined_coords_by_arena</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.extract_arena_center_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function estimates the center point of the arena that tracks were recorded in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>combined_coords_by_arena</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>tuple</em><em>[</em><em>np.ndarray</em><em>, </em><em>np.ndarray</em><em>]</em><em>]</em>) – the combined x and y coordinates, indexed by arena</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the center points of the arenas, indexed by arena name</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, tuple[float, float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.read_etho_ml">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">read_etho_ml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.read_etho_ml" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Ethovision TextML Version tracker format. The function extracts
+the x, y, and t information and smooths, centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Track object with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.read_etho_txt">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">read_etho_txt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.read_etho_txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Ethovision Text Version tracker format. The function extracts the
+x, y, and t information and smooths, centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Track object with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.read_etho_v1">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">read_etho_v1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.read_etho_v1" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Ethovision Version 1 tracker format. The function extracts the x,
+y, and t information and smooths, centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Track object with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.read_etho_v2">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">read_etho_v2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.read_etho_v2" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function reads in all the tracks from the Ethovision Version 2 tracker format. The function extracts the x,
+y, and t information and smooths, centers, and converts the units of the track.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in this type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a Track object with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.etho_tracker.sort_tracks_by_arena">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.etho_tracker.</span></span><span class="sig-name descname"><span class="pre">sort_tracks_by_arena</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_etho_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.etho_tracker.sort_tracks_by_arena" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a dictionary of Track objects indexed by which ethovision arena they were recorded in</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>list_of_etho_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – the Tracks to sort by arena</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the dictionary of tracks by arena</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.multi_tracker">
+<span id="opynfield-readin-multi-tracker-module"></span><h2>opynfield.readin.multi_tracker module<a class="headerlink" href="#module-opynfield.readin.multi_tracker" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.multi_tracker.calc_center">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.multi_tracker.</span></span><span class="sig-name descname"><span class="pre">calc_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">combined_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">combined_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.multi_tracker.calc_center" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function estimates the center point of an arena from tracking coordinates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>combined_x</strong> – the x coordinates to estimate from</p></li>
+<li><p><strong>combined_y</strong> – the y coordinates the estimate from</p></li>
+<li><p><strong>verbose</strong> – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>trim</strong> (<em>int</em><em>, </em><em>defaults to 0</em>) – how many points are recorded before the animal enters the arena (maximum of all animals in this track type)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the center point of the arena</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple[float, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.multi_tracker.fill_missing_data">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.multi_tracker.</span></span><span class="sig-name descname"><span class="pre">fill_missing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.readin.multi_tracker.fill_missing_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function identified missing data points and interpolated the animals position at that point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<em>np.ndarray</em>) – the coordinates</p></li>
+<li><p><strong>time</strong> (<em>np.ndarray</em>) – the time coordinate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the interpolated coordinates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.multi_tracker.running_line">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.multi_tracker.</span></span><span class="sig-name descname"><span class="pre">running_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.readin.multi_tracker.running_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function smooths the tracking data in the same way that ethovision automatically smooths tracking data in
+order to minimize the impact of body wobble</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_array</strong> (<em>np.ndarray</em>) – the input coordinates</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – the running window length</p></li>
+<li><p><strong>dn</strong> (<em>int</em>) – the window step size</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the smoothed coordinates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.multi_tracker.subsample">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.multi_tracker.</span></span><span class="sig-name descname"><span class="pre">subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coord</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#opynfield.readin.multi_tracker.subsample" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function sub-samples the recorded coordinates to the desired data density</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>coord</strong> (<em>np.ndarray</em>) – the full-density coordinates</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the sampling frequency with which the data was recorded</p></li>
+<li><p><strong>sample_interval</strong> (<em>int</em>) – the desired density</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the sub-sampled coordinates</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.read_in">
+<span id="opynfield-readin-read-in-module"></span><h2>opynfield.readin.read_in module<a class="headerlink" href="#module-opynfield.readin.read_in" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.read_in.read_track_types">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.read_in.</span></span><span class="sig-name descname"><span class="pre">read_track_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups_with_file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_tracks</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.read_in.read_track_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates reading in all the data from each track type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_type</strong> (<em>str</em>) – the file type to read in</p></li>
+<li><p><strong>groups_with_file_type</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which groups have tracks recorded in that file type</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>arena_radius_cm</strong> (<em>float</em>) – the radius of the arena in which the track was recorded (only required for buridian and anymaze trackers), sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>running_window_length</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>window_step_size</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>trim</strong> (<em>int</em>) – how many points are recorded before the animal enters the arena (maximum of all animals in this track type), sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>all_tracks</strong> (<em>list</em><em>[</em><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><em>Track</em></a><em>]</em>) – a list with all the Track objects from previously read-in datatypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a list of Track objects with a consistent format for x y and t tracking points</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.run_all">
+<span id="opynfield-readin-run-all-module"></span><h2>opynfield.readin.run_all module<a class="headerlink" href="#module-opynfield.readin.run_all" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.run_all.groups_to_types">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.run_all.</span></span><span class="sig-name descname"><span class="pre">groups_to_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_and_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.run_all.groups_to_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function makes a list of which file types are used in the run</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>groups_and_types</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the input information of which groups were recorded with which filetypes</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the filetypes included in the run</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.run_all.run_all_track_types">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.run_all.</span></span><span class="sig-name descname"><span class="pre">run_all_track_types</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">groups_and_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track"><span class="pre">opynfield.readin.track.Track</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.run_all.run_all_track_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function coordinates the entire read-in process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>groups_and_types</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the input information of which groups were recorded with which filetypes</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – display progress update, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>arena_radius_cm</strong> (<em>float</em>) – the radius of the arena in which the track was recorded, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>running_window_length</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>window_step_size</strong> (<em>int</em>) – a smoothing function parameter set to match ethovision, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>sample_freq</strong> (<em>int</em>) – the frame rate that the track was recorded with, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>time_bin_size</strong> (<em>int</em>) – how many seconds should be aggregated together, sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+<li><p><strong>trim</strong> (<em>int</em>) – how many points are recorded before the animal enters the arena (maximum of all animals in this track type), sourced from <a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><code class="xref py py-class docutils literal notranslate"><span class="pre">opynfield.config.user_input.UserInput</span></code></a> object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>all the Tracks that were read in</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="#opynfield.readin.track.Track" title="opynfield.readin.track.Track">opynfield.readin.track.Track</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.run_all.types_to_groups">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.run_all.</span></span><span class="sig-name descname"><span class="pre">types_to_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_types_included</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">groups_and_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#opynfield.readin.run_all.types_to_groups" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a list for each filetype of which groups were recorded in that filetype</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_types_included</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – which filetypes were included in the run</p></li>
+<li><p><strong>groups_and_types</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the input information of which groups were recorded with which filetypes</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>which groups were recorded in which filetypes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict[str, list[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.summary_file">
+<span id="opynfield-readin-summary-file-module"></span><h2>opynfield.readin.summary_file module<a class="headerlink" href="#module-opynfield.readin.summary_file" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.summary_file.summarize">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.summary_file.</span></span><span class="sig-name descname"><span class="pre">summarize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracks_by_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.defaultdict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_cov_asymptote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><span class="pre">opynfield.config.cov_asymptote.CoverageAsymptote</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.summary_file.summarize" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function summarizes information about the kinds of tracks read in after the read-in process is complete. It
+generates a text file of information about the tracks and parameters used on them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tracks_by_group</strong> (<em>defaultdict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a><em>]</em><em>]</em>) – the tracks to summarize</p></li>
+<li><p><strong>test_cov_asymptote</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><em>CoverageAsymptote</em></a>) – the coverage asymptote information that was used</p></li>
+<li><p><strong>user_defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings that were used</p></li>
+<li><p><strong>model_settings</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em><em>]</em>) – the model settings that were used</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings that were used</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs that were used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="opynfield.readin.summary_file.summary_file">
+<span class="sig-prename descclassname"><span class="pre">opynfield.readin.summary_file.</span></span><span class="sig-name descname"><span class="pre">summary_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tracks_by_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">collections.defaultdict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><span class="pre">opynfield.calculate_measures.standard_track.StandardTrack</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_cov_asymptote</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><span class="pre">opynfield.config.cov_asymptote.CoverageAsymptote</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><span class="pre">opynfield.config.defaults_settings.Defaults</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><span class="pre">opynfield.config.model_settings.ModelSpecification</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><span class="pre">opynfield.config.plot_settings.PlotSettings</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><span class="pre">opynfield.config.user_input.UserInput</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.summary_file.summary_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls the summary information function and creates the text file output</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tracks_by_group</strong> (<em>defaultdict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><a class="reference internal" href="opynfield.calculate_measures.html#opynfield.calculate_measures.standard_track.StandardTrack" title="opynfield.calculate_measures.standard_track.StandardTrack"><em>StandardTrack</em></a><em>]</em><em>]</em>) – the tracks to summarize</p></li>
+<li><p><strong>test_cov_asymptote</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.cov_asymptote.CoverageAsymptote" title="opynfield.config.cov_asymptote.CoverageAsymptote"><em>CoverageAsymptote</em></a>) – the coverage asymptote information that was used</p></li>
+<li><p><strong>user_defaults</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.defaults_settings.Defaults" title="opynfield.config.defaults_settings.Defaults"><em>Defaults</em></a>) – the default settings that were used</p></li>
+<li><p><strong>model_settings</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>dict</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="opynfield.config.html#opynfield.config.model_settings.ModelSpecification" title="opynfield.config.model_settings.ModelSpecification"><em>ModelSpecification</em></a><em>]</em><em>]</em>) – the model settings that were used</p></li>
+<li><p><strong>plot_settings</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.plot_settings.PlotSettings" title="opynfield.config.plot_settings.PlotSettings"><em>PlotSettings</em></a>) – the plot settings that were used</p></li>
+<li><p><strong>user_config</strong> (<a class="reference internal" href="opynfield.config.html#opynfield.config.user_input.UserInput" title="opynfield.config.user_input.UserInput"><em>UserInput</em></a>) – the user inputs that were used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin.track">
+<span id="opynfield-readin-track-module"></span><h2>opynfield.readin.track module<a class="headerlink" href="#module-opynfield.readin.track" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">opynfield.readin.track.</span></span><span class="sig-name descname"><span class="pre">Track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">standardized</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This dataclass aggregates information from a single track once the coordinates are standardized, but before other
+measures are calculated</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.group">
+<span class="sig-name descname"><span class="pre">group</span></span><a class="headerlink" href="#opynfield.readin.track.Track.group" title="Permalink to this definition">¶</a></dt>
+<dd><p>the group to which the track belongs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.x">
+<span class="sig-name descname"><span class="pre">x</span></span><a class="headerlink" href="#opynfield.readin.track.Track.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>the x coordinates of the track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.y">
+<span class="sig-name descname"><span class="pre">y</span></span><a class="headerlink" href="#opynfield.readin.track.Track.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>the y coordinates of the track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.t">
+<span class="sig-name descname"><span class="pre">t</span></span><a class="headerlink" href="#opynfield.readin.track.Track.t" title="Permalink to this definition">¶</a></dt>
+<dd><p>the time coordinates of the track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.track_type">
+<span class="sig-name descname"><span class="pre">track_type</span></span><a class="headerlink" href="#opynfield.readin.track.Track.track_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>the recording type of the track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#opynfield.readin.track.Track.options" title="Permalink to this definition">¶</a></dt>
+<dd><p>additional information depending on the track type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.standardized">
+<span class="sig-name descname"><span class="pre">standardized</span></span><a class="headerlink" href="#opynfield.readin.track.Track.standardized" title="Permalink to this definition">¶</a></dt>
+<dd><p>has the track finished its standardization process?</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.buri_convert_units">
+<span class="sig-name descname"><span class="pre">buri_convert_units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.buri_convert_units" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.buri_convert_to_center">
+<span class="sig-name descname"><span class="pre">buri_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.buri_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.buri_running_line">
+<span class="sig-name descname"><span class="pre">buri_running_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.buri_running_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.buri_subsample">
+<span class="sig-name descname"><span class="pre">buri_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.buri_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.buri_fill_missing">
+<span class="sig-name descname"><span class="pre">buri_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.buri_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v1_numeric">
+<span class="sig-name descname"><span class="pre">etho_v1_numeric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v1_numeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v1_subsample">
+<span class="sig-name descname"><span class="pre">etho_v1_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v1_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v1_fill_missing">
+<span class="sig-name descname"><span class="pre">etho_v1_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v1_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v1_convert_to_center">
+<span class="sig-name descname"><span class="pre">etho_v1_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v1_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v2_numeric">
+<span class="sig-name descname"><span class="pre">etho_v2_numeric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v2_numeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v2_subsample">
+<span class="sig-name descname"><span class="pre">etho_v2_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v2_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v2_fill_missing">
+<span class="sig-name descname"><span class="pre">etho_v2_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v2_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_v2_convert_to_center">
+<span class="sig-name descname"><span class="pre">etho_v2_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_v2_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_txt_numeric">
+<span class="sig-name descname"><span class="pre">etho_txt_numeric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_txt_numeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_txt_subsample">
+<span class="sig-name descname"><span class="pre">etho_txt_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_txt_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_txt_fill_missing">
+<span class="sig-name descname"><span class="pre">etho_txt_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_txt_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_txt_convert_to_center">
+<span class="sig-name descname"><span class="pre">etho_txt_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_txt_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_ml_numeric">
+<span class="sig-name descname"><span class="pre">etho_ml_numeric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_ml_numeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_ml_subsample">
+<span class="sig-name descname"><span class="pre">etho_ml_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_ml_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_ml_fill_missing">
+<span class="sig-name descname"><span class="pre">etho_ml_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_ml_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.etho_ml_convert_to_center">
+<span class="sig-name descname"><span class="pre">etho_ml_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.etho_ml_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_center_numeric">
+<span class="sig-name descname"><span class="pre">anymaze_center_numeric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_center_numeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_center_running_line">
+<span class="sig-name descname"><span class="pre">anymaze_center_running_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_center_running_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_center_subsample">
+<span class="sig-name descname"><span class="pre">anymaze_center_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_center_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_center_fill_missing">
+<span class="sig-name descname"><span class="pre">anymaze_center_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_center_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_center_convert_to_center">
+<span class="sig-name descname"><span class="pre">anymaze_center_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_center_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_center_convert_units">
+<span class="sig-name descname"><span class="pre">anymaze_center_convert_units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_center_convert_units" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_head_numeric">
+<span class="sig-name descname"><span class="pre">anymaze_head_numeric</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_head_numeric" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_head_running_line">
+<span class="sig-name descname"><span class="pre">anymaze_head_running_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_head_running_line" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_head_subsample">
+<span class="sig-name descname"><span class="pre">anymaze_head_subsample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_head_subsample" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_head_fill_missing">
+<span class="sig-name descname"><span class="pre">anymaze_head_fill_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_head_fill_missing" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_head_convert_to_center">
+<span class="sig-name descname"><span class="pre">anymaze_head_convert_to_center</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_head_convert_to_center" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="opynfield.readin.track.Track.anymaze_head_convert_units">
+<span class="sig-name descname"><span class="pre">anymaze_head_convert_units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#opynfield.readin.track.Track.anymaze_head_convert_units" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">anymaze_center_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">anymaze_center_convert_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the units of the track</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">anymaze_center_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">anymaze_center_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes datatype to numeric</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id4">
+<span class="sig-name descname"><span class="pre">anymaze_center_running_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooths the coordinates using the running line formula</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">anymaze_center_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">anymaze_head_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_center</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">anymaze_head_convert_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the units of the track</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id8">
+<span class="sig-name descname"><span class="pre">anymaze_head_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id9">
+<span class="sig-name descname"><span class="pre">anymaze_head_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes datatype to numeric</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id10">
+<span class="sig-name descname"><span class="pre">anymaze_head_running_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooths the coordinates using the running line formula</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id11">
+<span class="sig-name descname"><span class="pre">anymaze_head_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id12">
+<span class="sig-name descname"><span class="pre">buri_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_point_x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_point_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id13">
+<span class="sig-name descname"><span class="pre">buri_convert_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arena_radius_cm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arena_radius_px</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the units of the track</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id14">
+<span class="sig-name descname"><span class="pre">buri_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id15">
+<span class="sig-name descname"><span class="pre">buri_running_line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">running_window_length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_step_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Smooths the coordinates using the running line formula</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">buri_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">etho_ml_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">track_center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">etho_ml_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id19">
+<span class="sig-name descname"><span class="pre">etho_ml_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes datatype to numeric</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id20">
+<span class="sig-name descname"><span class="pre">etho_ml_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id21">
+<span class="sig-name descname"><span class="pre">etho_txt_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_points_by_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id22">
+<span class="sig-name descname"><span class="pre">etho_txt_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id23">
+<span class="sig-name descname"><span class="pre">etho_txt_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes datatype to numeric</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id24">
+<span class="sig-name descname"><span class="pre">etho_txt_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id25">
+<span class="sig-name descname"><span class="pre">etho_v1_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_points_by_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id26">
+<span class="sig-name descname"><span class="pre">etho_v1_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id27">
+<span class="sig-name descname"><span class="pre">etho_v1_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes datatype to numeric</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id28">
+<span class="sig-name descname"><span class="pre">etho_v1_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id29">
+<span class="sig-name descname"><span class="pre">etho_v2_convert_to_center</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center_points_by_area</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd><p>Centers the coordinates based on the arena center point</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id30">
+<span class="sig-name descname"><span class="pre">etho_v2_fill_missing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills in the missing coordinates</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id31">
+<span class="sig-name descname"><span class="pre">etho_v2_numeric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id31" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes datatype to numeric</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id32">
+<span class="sig-name descname"><span class="pre">etho_v2_subsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_freq</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_bin_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id32" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-samples the coordinates to the desired density</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id33">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id33" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id34">
+<span class="sig-name descname"><span class="pre">options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span></em><a class="headerlink" href="#id34" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id35">
+<span class="sig-name descname"><span class="pre">standardized</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#id35" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id36">
+<span class="sig-name descname"><span class="pre">t</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id36" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id37">
+<span class="sig-name descname"><span class="pre">track_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id37" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id38">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id38" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id39">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span></em><a class="headerlink" href="#id39" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-opynfield.readin">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-opynfield.readin" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">opynfield.readin package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.anymaze_tracker">opynfield.readin.anymaze_tracker module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.buridian_tracker">opynfield.readin.buridian_tracker module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.etho_tracker">opynfield.readin.etho_tracker module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.multi_tracker">opynfield.readin.multi_tracker module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.read_in">opynfield.readin.read_in module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.run_all">opynfield.readin.run_all module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.summary_file">opynfield.readin.summary_file module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin.track">opynfield.readin.track module</a></li>
+<li><a class="reference internal" href="#module-opynfield.readin">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="opynfield.plotting.html"
+                          title="previous chapter">opynfield.plotting package</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="opynfield.stat_test.html"
+                          title="next chapter">opynfield.stat_test package</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/opynfield.readin.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="opynfield.stat_test.html" title="opynfield.stat_test package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="opynfield.plotting.html" title="opynfield.plotting package"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opynfield 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >opynfield</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="opynfield.html" >opynfield package</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">opynfield.readin package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2023, Ellen McMullen.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+    </div>
+  </body>
+</html>

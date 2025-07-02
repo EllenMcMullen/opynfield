@@ -9,11 +9,3 @@ delete contents of all under builds
 then to regenerate the html run:
 
 make html
-
-
-docs to finish:
-- motion probability types
-- output interpretation
-- tutorial
-- user input information
-- coverage types
